@@ -18,12 +18,12 @@ from src.core.text import TextDoc
 from src.model.client import (
     ChatMessage,
     ChatResult,
-    ModelConfig,
     OpenAICompatibleClient,
     ToolCall,
 )
 from src.model.protocol import ToolSpec
 from src.agent.tools import CorrectionToolset
+from src.agent.prompts import build_system_prompt, build_user_prompt
 
 
 @dataclass
@@ -67,63 +67,9 @@ class CorrectionAgent:
         # 工具集（每次处理新错误时重新创建）
         self._tools: Optional[CorrectionToolset] = None
 
-        # 系统提示词
-        self._system_prompt = self._build_system_prompt()
-
-    def _build_system_prompt(self) -> str:
-        """构建系统提示词。"""
-        return """你是一个小说文本纠错专家。你的任务是对小说中人物对话的包裹符号进行纠错。
-
-## 核心规则
-1. 小说人物对话的唯一合法包裹符号是成对的全角直角引号「」
-2. 你需要修复以下类型的错误：
-   a. 「「 或 」」连续出现（其中一个符号应为其他符号）
-   b. [ ]、【】等非「」符号包裹了对话
-   c. 对话内部缺失「或」，导致对话与旁白被错误合并
-   d. 成对不匹配（有「无」或有」无「）
-
-## 你的职责范围（严格遵守）
-1. 你的任务是修正——不是发现错误。错误位置已经由规则检测器定位好了
-2. 每次只处理一个错误。用 get_next_error 获取
-3. 只修改指定的错误位置，不要改其他地方
-4. 如果不确定，用工具多读上下文，不要猜
-
-## 工作流程
-1. 调用 get_next_error 获取当前错误
-2. 调用 read_lines 或 read_offset 阅读上下文
-3. 如有需要，调用 search_text 搜索关键词
-4. 确认错误后，调用 apply_fix 执行修正
-5. 如果确认不是错误，调用 skip_error 跳过
-6. 如果修错了，可以调用 revert_fix 回滚
-
-## 注意事项
-- 每次修正后会自动验证，请确保修正合理
-- 只修改对话包裹符号，不修改原文内容
-- 修改范围要保持最小"""
-
     def _build_error_prompt(self, error: ErrorRecord) -> str:
-        """为当前错误构建 user prompt。"""
-        msg = f"请处理以下错误：\n\n"
-        msg += f"错误 ID: {error.error_id}\n"
-        msg += f"错误类型: {error.error_type}\n"
-        msg += f"位置: 第{error.line_number}行 (offset {error.offset})\n"
-        msg += f"错误内容: {error.original_text[:80]}\n"
-        msg += f"上文: ...{error.context_before[-60:]}\n"
-        msg += f"下文: {error.context_after[:60]}...\n\n"
-
-        type_hints = {
-            "consecutive": "检测到连续相同的符号（「「 或 」」），请判断哪个符号是错的并修正。",
-            "unpaired": "检测到「和」数量不匹配，可能需要补上缺失的符号或删除多余的符号。",
-            "wrong_symbol": "检测到非标准符号（如 [ ] 【】 "" 等），请判断是否应替换为「」。",
-            "long_dialogue": "检测到超长对话，可能因缺失符号导致旁白被合并到对话中，请判断是否需要拆分。",
-            "missing_bracket": "该行包含对话特征词（说道：问：等）但缺少「」，请判断是否应补充。",
-        }
-        hint = type_hints.get(error.error_type, "")
-        if hint:
-            msg += f"提示: {hint}\n\n"
-
-        msg += "请使用工具分析上下文并处理此错误。"
-        return msg
+        """为当前错误构建 user prompt（使用 prompts 模块）。"""
+        return build_user_prompt(error)
 
     # ── 主循环 ──────────────────────────────────────────
 
@@ -207,7 +153,7 @@ class CorrectionAgent:
         )
 
         messages: List[ChatMessage] = [
-            ChatMessage(role="system", content=self._system_prompt),
+            ChatMessage(role="system", content=build_system_prompt(error.error_type)),
             ChatMessage(role="user", content=self._build_error_prompt(error)),
         ]
 
