@@ -1,0 +1,34 @@
+# Ollama 服务器配置（包含内网 IP，不上传）
+ip_config
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+
+# 数据文件（从 v1 复制，不上传）
+data/ori_story/
+data/processed_story/
+
+# 运行时生成
+.checkpoint/
+output/
+logs/
+error/
+
+# 音频文件（与 TTS 项目共享，无关）
+*.wav
+*.mp3
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# 临时文件
+*.log
+.tmp/
