@@ -24,6 +24,7 @@ from src.model.client import (
 from src.model.protocol import ToolSpec
 from src.agent.tools import CorrectionToolset
 from src.agent.prompts import build_system_prompt, build_user_prompt
+from src.verifier.agent import CorrectionVerifier
 
 
 @dataclass
@@ -209,6 +210,26 @@ class CorrectionAgent:
 
                     # 检查是否是终止性工具调用
                     if tc.name == "apply_fix":
+                        # 用 Verifier 验证修正
+                        if self._verifier:
+                            v_result = self._verifier.verify(
+                                error=error,
+                                original_text=tool_result.get("original_full", self._text.text),
+                                modified_text=self._tools.current_text,
+                                fix_detail={"replacement": tool_result.get("replacement", "")},
+                            )
+                            if v_result.verdict != "pass":
+                                # Verifier 不通过，回滚
+                                self._tools.revert_fix(error.error_id)
+                                result.verdict = "fail"
+                                result.reason = f"Verifier rejected: {v_result.reason}"
+                                messages.append(
+                                    ChatMessage(
+                                        role="user",
+                                        content=f"Verifier rejected the fix: {v_result.reason}. Please try a different approach.",
+                                    )
+                                )
+                                continue  # 继续下一轮对话
                         result.verdict = "pass"
                         result.fix_applied = tool_result.get("replacement", "")
                         result.reason = tool_result.get("action", "fix applied")
