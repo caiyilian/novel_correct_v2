@@ -262,6 +262,7 @@ class CorrectionToolset:
             "error_id": error_id,
             "action": "fix_applied",
             "original": original_slice[:80],
+            "original_full": text,  # 用于 Verifier 对比
             "replacement": replacement[:80],
         }
 
