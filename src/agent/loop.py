@@ -116,10 +116,7 @@ class CorrectionAgent:
 
             # 如果成功或跳过了，直接返回
             if result.verdict in ("pass", "uncertain"):
-                # 保存 checkpoint
-                self._tracker.save_correction(error)
-
-                # 如果 fix_applied 不为空，同步到错误队列
+                # 先更新错误队列状态（mark_fixed/mark_skipped 会修改 error.status）
                 if result.fix_applied and result.verdict == "pass":
                     self._queue.mark_fixed(
                         error.error_id,
@@ -129,6 +126,9 @@ class CorrectionAgent:
                     )
                 elif result.verdict == "uncertain":
                     self._queue.mark_skipped(error.error_id, reason=result.reason)
+
+                # 然后保存 checkpoint（此时 error.status 已经是正确的状态）
+                self._tracker.save_correction(error)
 
                 return result
 
