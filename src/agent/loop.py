@@ -87,13 +87,20 @@ class CorrectionAgent:
         results: List[AgentResult] = []
         total = self._queue.remaining()
         processed = 0
+        processed_ids: set[str] = set()  # 防止同一错误被重复处理
 
         while self._queue.remaining() > 0:
             error = self._queue.next_pending()
             if error is None:
                 break
 
+            # 防御：如果这个 error_id 已经处理过，跳过
+            if error.error_id in processed_ids:
+                self._queue.mark_failed(error.error_id, "stuck")
+                continue
+
             processed += 1
+            processed_ids.add(error.error_id)
             result = self._process_one_error(error)
 
             if progress_callback:
@@ -116,7 +123,8 @@ class CorrectionAgent:
 
             # 如果成功或跳过了，直接返回
             if result.verdict in ("pass", "uncertain"):
-                # 先更新错误队列状态（mark_fixed/mark_skipped 会修改 error.status）
+
+                # 先更新状态，再保存（确保 checkpoint 中 status 正确）
                 if result.fix_applied and result.verdict == "pass":
                     self._queue.mark_fixed(
                         error.error_id,
@@ -127,7 +135,7 @@ class CorrectionAgent:
                 elif result.verdict == "uncertain":
                     self._queue.mark_skipped(error.error_id, reason=result.reason)
 
-                # 然后保存 checkpoint（此时 error.status 已经是正确的状态）
+                # 状态更新后再保存 checkpoint
                 self._tracker.save_correction(error)
 
                 return result
