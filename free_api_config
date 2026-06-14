@@ -1,0 +1,4 @@
+# FreeTheAI 免费 API 配置
+FREE_API_BASE_URL=https://api.freetheai.xyz/v1
+FREE_API_KEY=sta_8fdf560a7e7abc681bca07ed886a7169bc5bd665123bb18b
+FREE_API_MODEL=bbl/gemini-2.5-flash
