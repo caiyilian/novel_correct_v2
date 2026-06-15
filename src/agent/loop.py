@@ -17,14 +17,10 @@ from src.core.progress import ProgressTracker
 from src.core.text import TextDoc
 from src.model.client import (
     ChatMessage,
-    ChatResult,
     OpenAICompatibleClient,
-    ToolCall,
 )
-from src.model.protocol import ToolSpec
 from src.agent.tools import CorrectionToolset
-from src.agent.prompts import build_system_prompt
-from src.verifier.agent import CorrectionVerifier
+from src.agent.prompts import build_system_prompt, build_user_prompt
 
 
 @dataclass
@@ -57,6 +53,7 @@ class CorrectionAgent:
         tracker: ProgressTracker,
         verifier: Optional[Any] = None,
         max_retries: int = 3,
+        max_rounds: int = 5,
     ):
         self._text = text_doc
         self._queue = error_queue
@@ -64,20 +61,10 @@ class CorrectionAgent:
         self._tracker = tracker
         self._verifier = verifier  # Stage 14 实现，暂时为 None
         self._max_retries = max_retries
+        self._max_rounds = max_rounds
 
         # 工具集（每次处理新错误时重新创建）
         self._tools: Optional[CorrectionToolset] = None
-
-    def _build_error_prompt(self, error: ErrorRecord) -> str:
-        """为当前错误构建简洁的 user prompt。"""
-        return (
-            f"## 当前错误\n\n"
-            f"错误 ID: {error.error_id}\n"
-            f"错误类型: {error.error_type}\n"
-            f"位置: 第{error.line_number}行 (offset {error.offset})\n"
-            f"错误内容: {error.original_text[:80]}\n\n"
-            f"请调用 apply_fix 或 skip_error 处理此错误。"
-        )
 
     # ── 主循环 ──────────────────────────────────────────
 
@@ -149,10 +136,13 @@ class CorrectionAgent:
 
             # 失败了，重试
             error.retry_count = attempt
+            if result.reason.startswith("No terminating tool call"):
+                break
 
         # 所有重试都失败
         result.verdict = "fail"
-        result.reason = f"All {self._max_retries} attempts failed"
+        if not result.reason or not result.reason.startswith("No terminating tool call"):
+            result.reason = f"All {self._max_retries} attempts failed"
         # 直接强制修改状态（防止 queue.mark_failed 内部异常）
         try:
             error.status = "failed"
@@ -182,16 +172,15 @@ class CorrectionAgent:
 
         messages: List[ChatMessage] = [
             ChatMessage(role="system", content=build_system_prompt(error.error_type)),
-            ChatMessage(role="user", content=self._build_error_prompt(error)),
+            ChatMessage(role="user", content=build_user_prompt(error)),
         ]
 
         tool_specs = CorrectionToolset.tool_specs()
 
         # 与 LLM 对话循环
         round_count = 0
-        max_rounds = 15  # 防止无限循环
 
-        while round_count < max_rounds:
+        while round_count < self._max_rounds:
             round_count += 1
 
             try:
@@ -237,6 +226,22 @@ class CorrectionAgent:
 
                     # 检查是否是终止性工具调用
                     if tc.name == "apply_fix":
+                        if not isinstance(tool_result, dict) or tool_result.get("status") != "ok":
+                            result.verdict = "fail"
+                            result.reason = (
+                                f"apply_fix failed: "
+                                f"{tool_result.get('message', 'unknown') if isinstance(tool_result, dict) else tool_result}"
+                            )
+                            messages.append(
+                                ChatMessage(
+                                    role="user",
+                                    content=(
+                                        f"{result.reason}. 请重新调用 apply_fix，"
+                                        f"或在确认不是错误时调用 skip_error。"
+                                    ),
+                                )
+                            )
+                            continue
                         # 用 Verifier 验证修正
                         if self._verifier:
                             v_result = self._verifier.verify(
@@ -278,6 +283,6 @@ class CorrectionAgent:
 
         # 没有调用终止性工具 → 视为失败
         if result.verdict not in ("pass", "uncertain"):
-            result.reason = "No terminating tool call in response"
+            result.reason = f"No terminating tool call within {self._max_rounds} rounds"
 
         return result

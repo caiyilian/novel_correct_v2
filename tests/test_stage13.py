@@ -103,11 +103,12 @@ try:
     assert "职责范围" in BASE_SYSTEM_PROMPT
     assert "工作流程" in BASE_SYSTEM_PROMPT
     assert "注意事项" in BASE_SYSTEM_PROMPT
-    assert "get_next_error" in BASE_SYSTEM_PROMPT
+    assert "用户消息给出的一个错误" in BASE_SYSTEM_PROMPT
     assert "apply_fix" in BASE_SYSTEM_PROMPT
     assert "skip_error" in BASE_SYSTEM_PROMPT
     assert "revert_fix" in BASE_SYSTEM_PROMPT
-    results.append(("base prompt", "ok", "contains rules, scope, workflow, notes"))
+    assert "get_next_error" not in BASE_SYSTEM_PROMPT
+    results.append(("base prompt", "ok", "direct current-error workflow"))
 except Exception as e:
     errors.append(("base prompt", str(e)))
 
@@ -117,10 +118,9 @@ try:
         full = build_system_prompt(etype)
         base_len = len(BASE_SYSTEM_PROMPT)
         total_len = len(full)
-        # 应该比 base 长（因为加了专用），但不应超过 base 的 2 倍
         assert total_len > base_len, f"{etype}: total <= base"
-        assert total_len < base_len * 2, f"{etype}: total ({total_len}) > 2x base ({base_len*2})"
-    results.append(("prompt total length", "ok", "base + dedicated within 2x base"))
+        assert total_len <= base_len + 2000, f"{etype}: total too long ({total_len})"
+    results.append(("prompt total length", "ok", "base + dedicated within absolute budget"))
 except Exception as e:
     errors.append(("prompt total length", str(e)))
 

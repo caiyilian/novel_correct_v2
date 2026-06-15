@@ -101,12 +101,14 @@ class FastCorrectionAgent:
         model_client,
         tracker: ProgressTracker,
         max_retries: int = 2,
+        max_rounds: int = 5,
     ):
         self._text = text_doc
         self._queue = error_queue
         self._model = model_client
         self._tracker = tracker
         self._max_retries = max_retries
+        self._max_rounds = max_rounds
         self._tools = None
 
     def run_all(self, progress_callback=None):
@@ -157,9 +159,8 @@ class FastCorrectionAgent:
             tool_specs = CorrectionToolset.tool_specs()
 
             round_count = 0
-            max_rounds = 10
 
-            while round_count < max_rounds:
+            while round_count < self._max_rounds:
                 round_count += 1
 
                 try:
@@ -216,6 +217,10 @@ class FastCorrectionAgent:
                         ChatMessage(role="user", content="请使用工具处理此错误，不要只回复文本。")
                     )
 
+            if result.verdict not in ("pass", "uncertain"):
+                result.reason = f"No terminating tool call within {self._max_rounds} rounds"
+                break
+
             if result.verdict in ("pass", "uncertain"):
                 # 先更新错误队列状态
                 if result.verdict == "pass":
@@ -231,6 +236,16 @@ class FastCorrectionAgent:
 
                 # 然后保存 checkpoint
                 self._tracker.save_correction(error)
+                result.duration = time.time() - start_time
+                return result
+
+        if result.verdict not in ("pass", "uncertain"):
+            if not result.reason:
+                result.reason = f"All {self._max_retries} attempts failed"
+            error.retry_count = result.retry_count
+            self._queue.mark_failed(error.error_id, reason=result.reason)
+            self._tracker.save_correction(error)
+
         result.duration = time.time() - start_time
         return result
 
@@ -239,7 +254,7 @@ class FastCorrectionAgent:
 
 
 def run_pipeline(novel_path: str, dry_run: bool = False, resume: bool = False,
-                 max_errors: Optional[int] = None):
+                 max_errors: Optional[int] = None, max_rounds: int = 5):
     print(f"\n{'='*55}")
     print(f"  FreeTheAI Correction - {Path(novel_path).name}")
     print(f"{'='*55}\n")
@@ -323,6 +338,7 @@ def run_pipeline(novel_path: str, dry_run: bool = False, resume: bool = False,
             error_queue=queue,
             model_client=client,
             tracker=tracker,
+            max_rounds=max_rounds,
         )
 
         count = 0
@@ -407,13 +423,20 @@ def main():
     parser.add_argument("--dry-run", action="store_true", help="Print errors without calling LLM")
     parser.add_argument("--resume", action="store_true", help="Resume from checkpoint")
     parser.add_argument("--max-errors", type=int, default=None, help="Max errors to process in this run")
+    parser.add_argument("--max-rounds", type=int, default=5, help="Max Agent rounds per attempt")
     args = parser.parse_args()
 
     if not Path(args.novel).exists():
         print(f"File not found: {args.novel}")
         sys.exit(1)
 
-    run_pipeline(args.novel, dry_run=args.dry_run, resume=args.resume, max_errors=args.max_errors)
+    run_pipeline(
+        args.novel,
+        dry_run=args.dry_run,
+        resume=args.resume,
+        max_errors=args.max_errors,
+        max_rounds=args.max_rounds,
+    )
 
 
 if __name__ == "__main__":
