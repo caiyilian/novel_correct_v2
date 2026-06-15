@@ -23,7 +23,7 @@ from src.model.client import (
 )
 from src.model.protocol import ToolSpec
 from src.agent.tools import CorrectionToolset
-from src.agent.prompts import build_system_prompt, build_user_prompt
+from src.agent.prompts import build_system_prompt
 from src.verifier.agent import CorrectionVerifier
 
 
@@ -69,8 +69,15 @@ class CorrectionAgent:
         self._tools: Optional[CorrectionToolset] = None
 
     def _build_error_prompt(self, error: ErrorRecord) -> str:
-        """为当前错误构建 user prompt（使用 prompts 模块）。"""
-        return build_user_prompt(error)
+        """为当前错误构建简洁的 user prompt。"""
+        return (
+            f"## 当前错误\n\n"
+            f"错误 ID: {error.error_id}\n"
+            f"错误类型: {error.error_type}\n"
+            f"位置: 第{error.line_number}行 (offset {error.offset})\n"
+            f"错误内容: {error.original_text[:80]}\n\n"
+            f"请调用 apply_fix 或 skip_error 处理此错误。"
+        )
 
     # ── 主循环 ──────────────────────────────────────────
 
@@ -146,8 +153,20 @@ class CorrectionAgent:
         # 所有重试都失败
         result.verdict = "fail"
         result.reason = f"All {self._max_retries} attempts failed"
-        self._queue.mark_failed(error.error_id, reason=result.reason)
-        self._tracker.save_correction(error)
+        # 直接强制修改状态（防止 queue.mark_failed 内部异常）
+        try:
+            error.status = "failed"
+            error.fail_reason = result.reason
+        except Exception:
+            pass
+        try:
+            self._queue.mark_failed(error.error_id, reason=result.reason)
+        except Exception as e:
+            pass
+        try:
+            self._tracker.save_correction(error)
+        except Exception as e:
+            pass
         result.duration = time.time() - start_time
         return result
 
