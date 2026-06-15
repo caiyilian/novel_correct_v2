@@ -8,10 +8,6 @@ __pycache__/
 dist/
 build/
 
-# 数据文件（从 v1 复制，不上传）
-data/ori_story/
-data/processed_story/
-
 # 运行时生成
 .checkpoint/
 output/
