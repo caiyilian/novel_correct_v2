@@ -47,17 +47,17 @@ tools = CorrectionToolset(text, queue)
 try:
     specs = CorrectionToolset.tool_specs()
     names = [s.name for s in specs]
-    assert len(specs) == 7, f"expected 7 tools, got {len(specs)}"
+    assert len(specs) == 6, f"expected 6 LLM tools, got {len(specs)}"
     assert "read_lines" in names
     assert "read_offset" in names
     assert "search_text" in names
-    assert "get_next_error" in names
     assert "apply_fix" in names
     assert "skip_error" in names
     assert "revert_fix" in names
+    assert "get_next_error" not in names  # 当前错误已由 user prompt 传入
     assert "get_progress" not in names  # LLM 不需要查看全局进度
     results.append(("ToolSpec definitions", "ok",
-                    f"7 tools defined (get_progress removed): {', '.join(names)}"))
+                    f"6 LLM tools defined: {', '.join(names)}"))
 except Exception as e:
     errors.append(("ToolSpec definitions", str(e)))
 
@@ -70,7 +70,7 @@ try:
         assert otool["function"]["name"] == spec.name
         assert len(otool["function"]["description"]) > 0
         assert "properties" in otool["function"]["parameters"]
-    results.append(("ToolSpec OpenAI format", "ok", "all 7 tools serializable"))
+    results.append(("ToolSpec OpenAI format", "ok", "all 6 LLM tools serializable"))
 except Exception as e:
     errors.append(("ToolSpec OpenAI format", str(e)))
 
@@ -133,7 +133,7 @@ try:
         error_id=err.error_id,
         start_offset=err.offset,
         end_offset=err.offset + len(err.original_text),
-        replacement="「修正后内容」"
+        replacement="「错误方括号内容」"
     )
     assert result["status"] == "ok"
     assert result["action"] == "fix_applied"
@@ -214,15 +214,27 @@ try:
 except Exception as e:
     errors.append(("unknown error_id", str(e)))
 
-# Test 16: current_text 属性
+# Test 16: apply_fix 拒绝修改正文内容
+try:
+    err = queue.all()[0]
+    result = tools.apply_fix(error_id=err.error_id, start_offset=err.offset,
+                             end_offset=err.offset + len(err.original_text),
+                             replacement="「正文被改掉」")
+    assert result["status"] == "error"
+    assert "only change dialogue wrapper symbols" in result["message"]
+    results.append(("apply_fix content guard", "ok", "non-symbol content cannot change"))
+except Exception as e:
+    errors.append(("apply_fix content guard", str(e)))
+
+# Test 17: current_text 属性
 try:
     # apply a fix and check current_text
     err = queue.all()[0]
     tools.apply_fix(error_id=err.error_id, start_offset=err.offset,
                     end_offset=err.offset + len(err.original_text),
-                    replacement="「修正后」")
+                    replacement="「错误方括号内容」")
     current = tools.current_text
-    assert "「修正后」" in current
+    assert "「错误方括号内容」" in current
     assert "[错误方括号内容]" not in current
     results.append(("current_text", "ok", "in-memory text updated after fix"))
 except Exception as e:
