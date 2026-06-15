@@ -17,9 +17,11 @@ class MockModelClient:
     def __init__(self, mode="fix"):
         self.mode = mode
         self.call_count = 0
+        self.tool_names_per_call = []
 
     def chat(self, messages, tools=None, temperature=None, max_tokens=None):
         self.call_count += 1
+        self.tool_names_per_call.append([tool.name for tool in (tools or [])])
         eid = "e-0001"
         for msg in messages:
             if hasattr(msg, 'content') and '错误 ID:' in msg.content:
@@ -32,7 +34,7 @@ class MockModelClient:
             return ChatResult(content="", tool_calls=[
                 ToolCall(id="c1", name="apply_fix",
                          arguments={"error_id": eid, "start_offset": 0, "end_offset": 6,
-                                    "replacement": "「修正」"})
+                                    "replacement": "「错误内容」"})
             ], raw={})
         elif self.mode == "skip":
             return ChatResult(content="", tool_calls=[
@@ -47,20 +49,38 @@ class MockModelClient:
             return ChatResult(content="", tool_calls=[
                 ToolCall(id="c2", name="apply_fix",
                          arguments={"error_id": eid, "start_offset": 0, "end_offset": 6,
-                                    "replacement": "「修正」"})
+                                    "replacement": "「错误内容」"})
+            ], raw={})
+        elif self.mode == "fifth_round_fix":
+            if self.call_count < 5:
+                return ChatResult(content="Need more analysis...", raw={})
+            return ChatResult(content="", tool_calls=[
+                ToolCall(id="c3", name="apply_fix",
+                         arguments={"error_id": eid, "start_offset": 0, "end_offset": 6,
+                                    "replacement": "「错误内容」"})
+            ], raw={})
+        elif self.mode == "sixth_round_fix":
+            if self.call_count < 6:
+                return ChatResult(content="Need more analysis...", raw={})
+            return ChatResult(content="", tool_calls=[
+                ToolCall(id="c4", name="apply_fix",
+                         arguments={"error_id": eid, "start_offset": 0, "end_offset": 6,
+                                    "replacement": "「错误内容」"})
             ], raw={})
 
 # ── Test cases ──────────────────────────────────────
 TEST_CASES = [
-    ("fix mode", "fix", 3),
-    ("skip mode", "skip", 1),
-    ("fail mode", "fail", 1),
-    ("text then fix", "text_then_fix", 3),
+    ("fix mode", "fix", 3, "pass", 1),
+    ("skip mode", "skip", 1, "uncertain", 1),
+    ("fail mode", "fail", 3, "fail", 5),
+    ("text then fix", "text_then_fix", 3, "pass", 2),
+    ("fifth round fix", "fifth_round_fix", 1, "pass", 5),
+    ("sixth round fix blocked", "sixth_round_fix", 1, "fail", 5),
 ]
 
 TEXT = TextDoc("【错误内容】结束")
 
-for test_name, mode, max_retries in TEST_CASES:
+for test_name, mode, max_retries, expected_verdict, expected_calls in TEST_CASES:
     try:
         q = ErrorQueue()
         q.add(ErrorRecord(error_type="wrong_symbol", line_number=1, offset=0, original_text=f"【{mode}】"))
@@ -72,6 +92,10 @@ for test_name, mode, max_retries in TEST_CASES:
         r = agent.run_all()
         assert len(r) == 1
         verdict = r[0].verdict
+        assert verdict == expected_verdict, f"expected {expected_verdict}, got {verdict}"
+        assert mock.call_count == expected_calls, f"expected {expected_calls} calls, got {mock.call_count}"
+        for tool_names in mock.tool_names_per_call:
+            assert "get_next_error" not in tool_names
         results.append((test_name, "ok",
                        f"verdict={verdict}, calls={mock.call_count}"))
         import shutil
