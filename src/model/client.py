@@ -139,6 +139,28 @@ class OpenAICompatibleClient:
 
     def __init__(self, config: Optional[ModelConfig] = None):
         self.config = config or ModelConfig()
+        self._start_heartbeat()
+
+    def _start_heartbeat(self) -> None:
+        """启动心跳线程，每 300 秒发一次轻量请求保持模型常驻。"""
+        import threading
+        def _heartbeat():
+            while True:
+                time.sleep(300)
+                try:
+                    # 发一个最小请求，重置 Ollama 的空闲计时器
+                    body = {"model": self.config.model, "messages": [{"role": "user", "content": ""}], "stream": False}
+                    req = urllib.request.Request(
+                        self.chat_completions_url,
+                        data=json.dumps(body).encode("utf-8"),
+                        headers={"Content-Type": "application/json"},
+                        method="POST",
+                    )
+                    urllib.request.urlopen(req, timeout=30)
+                except Exception:
+                    pass  # 心跳失败不影响主线
+        t = threading.Thread(target=_heartbeat, daemon=True)
+        t.start()
 
     @property
     def chat_completions_url(self) -> str:
@@ -165,7 +187,7 @@ class OpenAICompatibleClient:
         body: dict[str, Any] = {
             "model": self.config.model,
             "messages": [message.to_dict() for message in messages],
-            "keep_alive": "24h",  # 全天保持模型常驻
+            "keep_alive": 86400,  # 部分 Ollama 版本可能忽略此参数，依赖外部心跳
         }
         if tools:
             body["tools"] = [tool.to_openai_tool() for tool in tools]
