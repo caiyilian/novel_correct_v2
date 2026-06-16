@@ -22,7 +22,7 @@ from src.core.text import TextDoc
 from src.core.error_queue import ErrorQueue
 from src.core.progress import ProgressTracker
 from src.detector.pipeline import DetectorPipeline
-from src.model.client import ModelConfig, OpenAICompatibleClient
+from src.model.client import ChatMessage, ModelConfig, OpenAICompatibleClient
 from src.agent.loop import CorrectionAgent
 from src.agent.decision import CandidateDecisionAgent
 from src.verifier.agent import CorrectionVerifier
@@ -104,6 +104,18 @@ def run_pipeline(
         if model_name:
             config = ModelConfig(model=model_name)
         model = OpenAICompatibleClient(config)
+        # Warmup：先发一条简单请求，确保模型已加载并保持常驻
+        print("  Warming up model...", end=" ", flush=True)
+        try:
+            model.chat(
+                messages=[ChatMessage(role="user", content="hello")],
+                temperature=0.0,
+                max_tokens=10,
+            )
+            print("OK")
+        except Exception as e:
+            print(f"failed ({e})")
+            print("  Continuing anyway...")
 
     # 初始化 tracker
     tracker = ProgressTracker(novel_path)
