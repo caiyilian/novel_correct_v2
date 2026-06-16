@@ -30,6 +30,21 @@ class TextDoc:
         """返回全文。"""
         return self._text
 
+    def replace_range(self, start: int, end: int, replacement: str) -> str:
+        """
+        替换全文中的 [start, end) 范围，并返回被替换的原文。
+
+        start == end 表示插入。修改后会清空行缓存，保证后续检测读取新文本。
+        """
+        if start < 0 or end < start or end > len(self._text):
+            raise IndexError(
+                f"range [{start}, {end}) out of range (0..{len(self._text)})"
+            )
+        original = self._text[start:end]
+        self._text = self._text[:start] + replacement + self._text[end:]
+        self._lines = None
+        return original
+
     @property
     def encoding(self) -> str:
         """返回检测到的编码名称。"""

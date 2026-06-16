@@ -33,6 +33,9 @@ python main.py data/ori_story/第1卷.txt --detect
 # 检测 + 修正
 python main.py data/ori_story/第1卷.txt
 
+# 使用旧的 tool-calling Agent 实验模式
+python main.py data/ori_story/第1卷.txt --agent-tool-mode
+
 # 从 checkpoint 恢复
 python main.py data/ori_story/第1卷.txt --resume
 
@@ -49,6 +52,14 @@ python main.py --batch data/ori_story/
 - Python 3.10+
 - Ollama 服务（可本地或远程部署）
 - qwen3:30b 或任意支持 tool calling 的模型
+
+## 纠错模式
+
+默认纠错路径是“规则生成候选修复，LLM 只判断/选择”。程序负责生成
+offset 和 replacement，模型只需要选择候选、跳过或标记不确定。
+
+旧的 `apply_fix` tool-calling Agent 仍保留为实验模式，可用
+`--agent-tool-mode` 启用。
 
 ## 许可
 
