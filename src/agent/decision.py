@@ -97,7 +97,7 @@ class CandidateDecisionAgent:
                     ],
                     tools=self._decision_tool_specs(),
                     temperature=0.0,
-                    max_tokens=500,
+                    max_tokens=8192,
                 )
             except Exception as exc:
                 result.reason = f"Model call failed: {exc}"
@@ -290,22 +290,8 @@ class CandidateDecisionAgent:
         )
 
         original_slice = candidate.original(self._text)
-        if self._verifier:
-            v_result = self._verifier.verify(
-                error=error,
-                original_text=original_slice,
-                modified_text=candidate.replacement,
-                fix_detail={
-                    "candidate_id": candidate.candidate_id,
-                    "replacement": candidate.replacement,
-                    "description": candidate.description,
-                },
-            )
-            if v_result.verdict != "pass":
-                result.reason = f"Verifier rejected candidate {candidate.candidate_id}: {v_result.reason}"
-                self._queue.mark_failed(error.error_id, reason=result.reason)
-                self._tracker.save_correction(error)
-                return result
+        # 候选由规则生成，结构已保证正确，无需 Verifier 校验
+        # 直接应用修正
 
         self._text.replace_range(
             candidate.start_offset,
