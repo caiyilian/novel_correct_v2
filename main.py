@@ -24,6 +24,7 @@ from src.core.progress import ProgressTracker
 from src.detector.pipeline import DetectorPipeline
 from src.model.client import ModelConfig, OpenAICompatibleClient
 from src.agent.loop import CorrectionAgent
+from src.agent.decision import CandidateDecisionAgent
 from src.verifier.agent import CorrectionVerifier
 
 
@@ -57,6 +58,10 @@ def parse_args() -> argparse.Namespace:
                         help="每个错误的最大重试次数（默认 3）")
     parser.add_argument("--max-rounds", type=int, default=5,
                         help="每次尝试的最大 Agent 对话轮数（默认 5）")
+    parser.add_argument("--max-decision-retries", type=int, default=2,
+                        help="候选决策模式下每个错误的最大 LLM 判断次数（默认 2）")
+    parser.add_argument("--agent-tool-mode", action="store_true",
+                        help="使用旧的 tool-calling Agent 模式（默认使用候选决策模式）")
     return parser.parse_args()
 
 
@@ -69,6 +74,8 @@ def run_pipeline(
     model_name: str = "",
     max_retries: int = 3,
     max_rounds: int = 5,
+    max_decision_retries: int = 2,
+    agent_tool_mode: bool = False,
 ) -> None:
     """
     完整纠错管线。
@@ -92,13 +99,11 @@ def run_pipeline(
 
     # 初始化模型和 Verifier
     model = None
-    verifier = None
     if not dry_run:
         config = ModelConfig()
         if model_name:
             config = ModelConfig(model=model_name)
         model = OpenAICompatibleClient(config)
-        verifier = CorrectionVerifier(model_client=model)
 
     # 初始化 tracker
     tracker = ProgressTracker(novel_path)
@@ -133,7 +138,8 @@ def run_pipeline(
         return
 
     # Phase 2: Agent 修正
-    print(f"\n[3/3] Correcting errors (model={model.config.model if model else 'dry-run'})...")
+    mode_name = "agent-tool" if agent_tool_mode else "candidate-decision"
+    print(f"\n[3/3] Correcting errors (model={model.config.model if model else 'dry-run'}, mode={mode_name})...")
 
     round_num = 0
     while queue.remaining() > 0:
@@ -153,15 +159,25 @@ def run_pipeline(
             break
 
         # 创建 Agent 并运行
-        agent = CorrectionAgent(
-            text_doc=text,
-            error_queue=queue,
-            model_client=model,
-            tracker=tracker,
-            verifier=verifier,
-            max_retries=max_retries,
-            max_rounds=max_rounds,
-        )
+        if agent_tool_mode:
+            agent = CorrectionAgent(
+                text_doc=text,
+                error_queue=queue,
+                model_client=model,
+                tracker=tracker,
+                verifier=CorrectionVerifier(model_client=model),
+                max_retries=max_retries,
+                max_rounds=max_rounds,
+            )
+        else:
+            agent = CandidateDecisionAgent(
+                text_doc=text,
+                error_queue=queue,
+                model_client=model,
+                tracker=tracker,
+                verifier=CorrectionVerifier(),
+                max_decision_retries=max_decision_retries,
+            )
 
         def show_progress(processed, total, result):
             print(f"    [{processed}/{total}] {result.error_id}: {result.verdict}"
@@ -262,6 +278,8 @@ if __name__ == "__main__":
             model_name=args.model,
             max_retries=args.max_retries,
             max_rounds=args.max_rounds,
+            max_decision_retries=args.max_decision_retries,
+            agent_tool_mode=args.agent_tool_mode,
         )
         sys.exit(0)
 
@@ -277,4 +295,6 @@ if __name__ == "__main__":
         model_name=args.model,
         max_retries=args.max_retries,
         max_rounds=args.max_rounds,
+        max_decision_retries=args.max_decision_retries,
+        agent_tool_mode=args.agent_tool_mode,
     )
