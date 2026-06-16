@@ -35,7 +35,8 @@ class DetectorPipeline:
         UnpairedDetector,      # P0: 不成对
         WrongSymbolDetector,   # P1: 非标准符号
         LongDialogueDetector,  # P2: 超长对话
-        MissingBracketDetector, # P3: 缺失符号
+        # MissingBracketDetector 已移除：依赖于关键词猜对话，误报率高
+        # 而 OCR 完全丢失「」符号的情况少见，余下四个结构检测器已足够
     ]
 
     def __init__(self, detectors: Optional[List[BaseDetector]] = None):
