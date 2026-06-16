@@ -165,7 +165,7 @@ class OpenAICompatibleClient:
         body: dict[str, Any] = {
             "model": self.config.model,
             "messages": [message.to_dict() for message in messages],
-            "keep_alive": "30m",  # 保持模型常驻 30 分钟，防止 Ollama 自动卸载
+            "keep_alive": -1,  # 永久保持模型常驻，防止 Ollama 自动卸载
         }
         if tools:
             body["tools"] = [tool.to_openai_tool() for tool in tools]
