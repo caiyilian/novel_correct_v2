@@ -16,6 +16,14 @@ from src.core.text import TextDoc
 from src.model.protocol import ToolSpec
 
 
+CORRECTION_SYMBOLS = set("「」[]【】［］{}《》\"“”'‘’«»")
+
+
+def _non_symbol_content(text: str) -> str:
+    """去掉可纠正的包裹符号后保留正文内容。"""
+    return "".join(ch for ch in text if ch not in CORRECTION_SYMBOLS)
+
+
 @dataclass
 class SearchMatch:
     """搜索结果中的一条匹配记录。"""
@@ -45,7 +53,7 @@ class CorrectionToolset:
 
     @classmethod
     def tool_specs(cls) -> List[ToolSpec]:
-        """返回所有工具的 ToolSpec 列表。"""
+        """返回暴露给 LLM 的 ToolSpec 列表。"""
         return [
             ToolSpec(
                 name="read_lines",
@@ -93,17 +101,8 @@ class CorrectionToolset:
                 },
             ),
             ToolSpec(
-                name="get_next_error",
-                description="Get the next pending error that needs fixing. Returns error details including type, location, and surrounding context.",
-                parameters={
-                    "type": "object",
-                    "properties": {},
-                    "additionalProperties": False,
-                },
-            ),
-            ToolSpec(
                 name="apply_fix",
-                description="Apply a text replacement fix at the specified offset range. Use after analyzing the error context.",
+                description="Apply a text replacement fix at the specified offset range. The replacement must preserve the original non-symbol text content.",
                 parameters={
                     "type": "object",
                     "properties": {
@@ -242,13 +241,24 @@ class CorrectionToolset:
                            f"for text length {len(text)}",
             }
 
-        # 保存回滚信息
         original_slice = text[start_offset:end_offset]
+        if _non_symbol_content(original_slice) != _non_symbol_content(replacement):
+            return {
+                "status": "error",
+                "message": (
+                    "Replacement may only change dialogue wrapper symbols; "
+                    f"original content={_non_symbol_content(original_slice)!r}, "
+                    f"replacement content={_non_symbol_content(replacement)!r}"
+                ),
+            }
+
+        # 保存回滚信息
         self._history.append({
             "error_id": error_id,
             "start_offset": start_offset,
             "end_offset": end_offset,
             "original": original_slice,
+            "replacement": replacement,
         })
 
         # 执行替换
@@ -274,7 +284,7 @@ class CorrectionToolset:
             if entry["error_id"] == error_id:
                 text = self._current_text or self._text.text
                 start = entry["start_offset"]
-                end = entry["end_offset"]
+                end = start + len(entry.get("replacement", ""))
                 original = entry["original"]
 
                 # 回滚

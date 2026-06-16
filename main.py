@@ -55,6 +55,8 @@ def parse_args() -> argparse.Namespace:
                         help="模型名（覆盖 ip_config 中的配置）")
     parser.add_argument("--max-retries", type=int, default=3,
                         help="每个错误的最大重试次数（默认 3）")
+    parser.add_argument("--max-rounds", type=int, default=5,
+                        help="每次尝试的最大 Agent 对话轮数（默认 5）")
     return parser.parse_args()
 
 
@@ -66,6 +68,7 @@ def run_pipeline(
     dry_run: bool = False,
     model_name: str = "",
     max_retries: int = 3,
+    max_rounds: int = 5,
 ) -> None:
     """
     完整纠错管线。
@@ -157,6 +160,7 @@ def run_pipeline(
             tracker=tracker,
             verifier=verifier,
             max_retries=max_retries,
+            max_rounds=max_rounds,
         )
 
         def show_progress(processed, total, result):
@@ -257,6 +261,7 @@ if __name__ == "__main__":
             dry_run=args.dry_run,
             model_name=args.model,
             max_retries=args.max_retries,
+            max_rounds=args.max_rounds,
         )
         sys.exit(0)
 
@@ -271,4 +276,5 @@ if __name__ == "__main__":
         dry_run=args.dry_run,
         model_name=args.model,
         max_retries=args.max_retries,
+        max_rounds=args.max_rounds,
     )
