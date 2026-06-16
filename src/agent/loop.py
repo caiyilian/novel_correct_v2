@@ -188,7 +188,7 @@ class CorrectionAgent:
                     messages=messages,
                     tools=tool_specs,
                     temperature=0.0,
-                    max_tokens=2000,
+                    max_tokens=8192,
                 )
             except Exception as e:
                 result.reason = f"Model call failed: {e}"

@@ -165,6 +165,7 @@ class OpenAICompatibleClient:
         body: dict[str, Any] = {
             "model": self.config.model,
             "messages": [message.to_dict() for message in messages],
+            "keep_alive": "30m",  # 保持模型常驻 30 分钟，防止 Ollama 自动卸载
         }
         if tools:
             body["tools"] = [tool.to_openai_tool() for tool in tools]
@@ -237,6 +238,13 @@ class OpenAICompatibleClient:
             raise ModelResponseError(
                 "model response message content must be a string"
             )
+
+        # qwen3 等模型将思维链放在 reasoning 字段，最终回答在 content
+        # 如果 content 为空但有 reasoning，降级使用 reasoning
+        if not content:
+            reasoning = message.get("reasoning")
+            if isinstance(reasoning, str) and reasoning.strip():
+                content = reasoning
 
         return ChatResult(
             content=content,
