@@ -86,8 +86,11 @@ class ErrorQueue:
         return None
 
     def get(self, error_id: str) -> Optional[ErrorRecord]:
-        """通过 error_id 获取错误记录。"""
-        return self._errors.get(error_id)
+        """通过 error_id 获取错误记录（遍历查找，兼容 merge 后 key 不一致）。"""
+        for eid, err in self._errors.items():
+            if err.error_id == error_id:
+                return err
+        return None
 
     def all(self) -> List[ErrorRecord]:
         """获取所有错误记录（按 offset 排序）。"""
@@ -111,22 +114,25 @@ class ErrorQueue:
 
     def mark_fixed(self, error_id: str, fix: str = "",
                    verdict: str = "pass", reason: str = "") -> None:
-        """标记一条错误为已修复。"""
-        err = self._errors.get(error_id)
-        if err:
-            err.mark_fixed(fix, verdict, reason)
+        """标记一条错误为已修复（按 error_id 遍历查找，兼容 merge 后 key 不一致）。"""
+        for eid, err in self._errors.items():
+            if err.error_id == error_id:
+                err.mark_fixed(fix, verdict, reason)
+                return
 
     def mark_skipped(self, error_id: str, reason: str = "") -> None:
-        """标记一条错误为跳过。"""
-        err = self._errors.get(error_id)
-        if err:
-            err.mark_skipped(reason)
+        """标记一条错误为跳过（按 error_id 遍历查找）。"""
+        for eid, err in self._errors.items():
+            if err.error_id == error_id:
+                err.mark_skipped(reason)
+                return
 
     def mark_failed(self, error_id: str, reason: str = "") -> None:
-        """标记一条错误为失败。"""
-        err = self._errors.get(error_id)
-        if err:
-            err.mark_failed(reason)
+        """标记一条错误为失败（按 error_id 遍历查找）。"""
+        for eid, err in self._errors.items():
+            if err.error_id == error_id:
+                err.mark_failed(reason)
+                return
 
     # ── 进度查询 ────────────────────────────────────────
 
