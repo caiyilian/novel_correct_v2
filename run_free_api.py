@@ -32,6 +32,8 @@ from src.model.client import (
 )
 from src.model.protocol import ToolSpec
 from src.io.loader import TextLoader
+from src.agent.decision import CandidateDecisionAgent
+from src.verifier.agent import CorrectionVerifier
 
 
 # ─── 限流客户端 ──────────────────────────────────────────
@@ -254,7 +256,10 @@ class FastCorrectionAgent:
 
 
 def run_pipeline(novel_path: str, dry_run: bool = False, resume: bool = False,
-                 max_errors: Optional[int] = None, max_rounds: int = 5):
+                 detect: bool = False,
+                 max_errors: Optional[int] = None, max_rounds: int = 5,
+                 max_decision_retries: int = 2,
+                 agent_tool_mode: bool = False):
     print(f"\n{'='*55}")
     print(f"  FreeTheAI Correction - {Path(novel_path).name}")
     print(f"{'='*55}\n")
@@ -263,29 +268,6 @@ def run_pipeline(novel_path: str, dry_run: bool = False, resume: bool = False,
     print("[1/4] Loading text...")
     text = TextLoader().load(novel_path)
     print(f"  {text.line_count()} lines, {len(text.text)} chars")
-
-    # 初始化免费 API 客户端
-    api_config = load_free_api_config()
-    print(f"  API: {api_config['base_url']}")
-    print(f"  Model: {api_config['model']}")
-
-    config = ModelConfig(
-        base_url=api_config["base_url"],
-        api_key=api_config["api_key"],
-        model=api_config["model"],
-        timeout=60.0,
-        retries=3,
-        retry_delay=10.0,
-    )
-    client = RateLimitedClient(config, min_interval=7.0)
-
-    # 测试连接
-    print("  Testing connection...")
-    status = client.check_connection()
-    if not status.ok:
-        print(f"  Connection failed: {status.message}")
-        return
-    print(f"  Connection OK: {status.message}")
 
     # 初始化 tracker（使用独立 checkpoint 目录，避免与 Ollama 版冲突）
     tracker = ProgressTracker(novel_path, checkpoint_dir=".checkpoint_free")
@@ -311,6 +293,10 @@ def run_pipeline(novel_path: str, dry_run: bool = False, resume: bool = False,
         print("\n[OK] No errors found!")
         return
 
+    if detect:
+        print("\n[OK] Detection complete. Use without --detect to start correction.")
+        return
+
     if dry_run:
         print("\n[Dry-run] Errors found:")
         for err in queue.all():
@@ -319,13 +305,39 @@ def run_pipeline(novel_path: str, dry_run: bool = False, resume: bool = False,
         print(f"\n  {queue.remaining()} errors would need fixing.")
         return
 
+    # 初始化免费 API 客户端
+    api_config = load_free_api_config()
+    print(f"\n  API: {api_config['base_url']}")
+    print(f"  Model: {api_config['model']}")
+
+    config = ModelConfig(
+        base_url=api_config["base_url"],
+        api_key=api_config["api_key"],
+        model=api_config["model"],
+        timeout=60.0,
+        retries=3,
+        retry_delay=10.0,
+        keep_alive=None,
+        heartbeat_interval=None,
+    )
+    client = RateLimitedClient(config, min_interval=7.0)
+
+    # 测试连接
+    print("  Testing connection...")
+    status = client.check_connection()
+    if not status.ok:
+        print(f"  Connection failed: {status.message}")
+        return
+    print(f"  Connection OK: {status.message}")
+
     # Phase 2: Agent 修正（使用优化的 Agent，跳过 Verifier LLM）
-    print(f"\n[3/4] Correcting errors...")
+    mode_name = "agent-tool" if agent_tool_mode else "candidate-decision"
+    print(f"\n[3/4] Correcting errors (mode={mode_name})...")
 
     round_num = 0
-    max_rounds = 5
+    max_pipeline_rounds = 5
 
-    while queue.remaining() > 0 and round_num < max_rounds:
+    while queue.remaining() > 0 and round_num < max_pipeline_rounds:
         round_num += 1
         pending_before = queue.remaining()
 
@@ -333,13 +345,23 @@ def run_pipeline(novel_path: str, dry_run: bool = False, resume: bool = False,
 
         print(f"\n  --- Round {round_num}: {pending_before} errors remaining (processing up to {to_process}) ---")
 
-        agent = FastCorrectionAgent(
-            text_doc=text,
-            error_queue=queue,
-            model_client=client,
-            tracker=tracker,
-            max_rounds=max_rounds,
-        )
+        if agent_tool_mode:
+            agent = FastCorrectionAgent(
+                text_doc=text,
+                error_queue=queue,
+                model_client=client,
+                tracker=tracker,
+                max_rounds=max_rounds,
+            )
+        else:
+            agent = CandidateDecisionAgent(
+                text_doc=text,
+                error_queue=queue,
+                model_client=client,
+                tracker=tracker,
+                verifier=CorrectionVerifier(),
+                max_decision_retries=max_decision_retries,
+            )
 
         count = 0
         start_time = time.time()
@@ -424,6 +446,8 @@ def main():
     parser.add_argument("--resume", action="store_true", help="Resume from checkpoint")
     parser.add_argument("--max-errors", type=int, default=None, help="Max errors to process in this run")
     parser.add_argument("--max-rounds", type=int, default=5, help="Max Agent rounds per attempt")
+    parser.add_argument("--max-decision-retries", type=int, default=2, help="Max candidate decision calls per error")
+    parser.add_argument("--agent-tool-mode", action="store_true", help="Use legacy tool-calling Agent mode")
     args = parser.parse_args()
 
     if not Path(args.novel).exists():
@@ -434,8 +458,11 @@ def main():
         args.novel,
         dry_run=args.dry_run,
         resume=args.resume,
+        detect=args.detect,
         max_errors=args.max_errors,
         max_rounds=args.max_rounds,
+        max_decision_retries=args.max_decision_retries,
+        agent_tool_mode=args.agent_tool_mode,
     )
 
 
