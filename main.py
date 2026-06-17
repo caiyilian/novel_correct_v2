@@ -122,6 +122,7 @@ def run_pipeline(
 
     # Phase 1: 全量检测
     print("\n[2/3] Detecting errors...")
+    ErrorQueue.reset_counter()  # 重置错误 ID 计数器，防止跨运行重复
     pipeline = DetectorPipeline()
 
     if resume and tracker.has_checkpoint():
