@@ -70,6 +70,7 @@ def parse_args() -> argparse.Namespace:
 def run_pipeline(
     novel_path: str,
     resume: bool = False,
+    detect: bool = False,
     dry_run: bool = False,
     model_name: str = "",
     max_retries: int = 3,
@@ -99,7 +100,7 @@ def run_pipeline(
 
     # 初始化模型和 Verifier
     model = None
-    if not dry_run:
+    if not dry_run and not detect:
         config = ModelConfig()
         if model_name:
             config = ModelConfig(model=model_name)
@@ -146,7 +147,7 @@ def run_pipeline(
         print("\n[OK] No errors found. Text is already clean!")
         return
 
-    if args.detect:
+    if detect:
         print("\n[OK] Detection complete. Use without --detect to start correction.")
         return
 
@@ -287,6 +288,7 @@ if __name__ == "__main__":
         batch_process(
             args.batch,
             resume=args.resume,
+            detect=args.detect,
             dry_run=args.dry_run,
             model_name=args.model,
             max_retries=args.max_retries,
@@ -304,6 +306,7 @@ if __name__ == "__main__":
     run_pipeline(
         args.novel,
         resume=args.resume,
+        detect=args.detect,
         dry_run=args.dry_run,
         model_name=args.model,
         max_retries=args.max_retries,
