@@ -191,6 +191,7 @@ class ErrorQueue:
             summary[t] = summary.get(t, 0) + 1
         return summary
 
+    @classmethod
     def reset_counter(cls) -> None:
-        """重置自动 ID 计数器（仅测试用）。"""
+        """重置自动 ID 计数器。"""
         ErrorRecord._id_counter = 0
