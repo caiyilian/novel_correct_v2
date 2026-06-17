@@ -54,14 +54,20 @@ class CandidateDecisionAgent:
 
     def run_all(self, progress_callback: Optional[Callable] = None) -> List[AgentResult]:
         results: List[AgentResult] = []
-        total = self._queue.remaining()
+        # Apply text edits from the end of the document to the beginning so
+        # insertions/deletions do not invalidate offsets for later items.
+        pending_errors = sorted(
+            self._queue.pending(),
+            key=lambda item: item.offset,
+            reverse=True,
+        )
+        total = len(pending_errors)
         processed = 0
         processed_ids: set[str] = set()
 
-        while self._queue.remaining() > 0:
-            error = self._queue.next_pending()
-            if error is None:
-                break
+        for error in pending_errors:
+            if error.status != "pending":
+                continue
             if error.error_id in processed_ids:
                 self._queue.mark_failed(error.error_id, "stuck")
                 continue
