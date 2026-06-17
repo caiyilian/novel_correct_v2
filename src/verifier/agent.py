@@ -106,7 +106,7 @@ class CorrectionVerifier:
         left_delta = mod_left - orig_left
         right_delta = mod_right - orig_right
 
-        if left_delta != right_delta:
+        if left_delta != right_delta and error.error_type not in ("consecutive", "unpaired"):
             issues.append(
                 f"Unbalanced bracket change: 「{left_delta:+d}, 」{right_delta:+d}"
             )

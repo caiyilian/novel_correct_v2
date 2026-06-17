@@ -75,6 +75,9 @@ class ModelConfig:
     timeout: float = 120.0
     retries: int = 2
     retry_delay: float = 5.0
+    keep_alive: Optional[Any] = 86400
+    heartbeat_interval: Optional[float] = 300.0
+    heartbeat_timeout: float = 30.0
 
 
 @dataclass(frozen=True)
@@ -139,6 +142,36 @@ class OpenAICompatibleClient:
 
     def __init__(self, config: Optional[ModelConfig] = None):
         self.config = config or ModelConfig()
+        self._heartbeat_thread = None
+        if self.config.heartbeat_interval and self.config.heartbeat_interval > 0:
+            self._start_heartbeat()
+
+    def _start_heartbeat(self) -> None:
+        """启动心跳线程，每 300 秒发一次轻量请求保持模型常驻。"""
+        import threading
+        def _heartbeat():
+            while True:
+                time.sleep(float(self.config.heartbeat_interval or 300.0))
+                try:
+                    # 发一个最小请求，重置 Ollama 的空闲计时器
+                    body = {"model": self.config.model, "messages": [{"role": "user", "content": ""}], "stream": False}
+                    if self.config.keep_alive is not None:
+                        body["keep_alive"] = self.config.keep_alive
+                    req = urllib.request.Request(
+                        self.chat_completions_url,
+                        data=json.dumps(body).encode("utf-8"),
+                        headers={
+                            "Authorization": f"Bearer {self.config.api_key}",
+                            "Content-Type": "application/json",
+                        },
+                        method="POST",
+                    )
+                    urllib.request.urlopen(req, timeout=self.config.heartbeat_timeout)
+                except Exception:
+                    pass  # 心跳失败不影响主线
+        t = threading.Thread(target=_heartbeat, daemon=True)
+        t.start()
+        self._heartbeat_thread = t
 
     @property
     def chat_completions_url(self) -> str:
@@ -166,6 +199,8 @@ class OpenAICompatibleClient:
             "model": self.config.model,
             "messages": [message.to_dict() for message in messages],
         }
+        if self.config.keep_alive is not None:
+            body["keep_alive"] = self.config.keep_alive
         if tools:
             body["tools"] = [tool.to_openai_tool() for tool in tools]
         if temperature is not None:
@@ -237,6 +272,13 @@ class OpenAICompatibleClient:
             raise ModelResponseError(
                 "model response message content must be a string"
             )
+
+        # qwen3 等模型将思维链放在 reasoning 字段，最终回答在 content
+        # 如果 content 为空但有 reasoning，降级使用 reasoning
+        if not content:
+            reasoning = message.get("reasoning")
+            if isinstance(reasoning, str) and reasoning.strip():
+                content = reasoning
 
         return ChatResult(
             content=content,
