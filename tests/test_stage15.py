@@ -232,6 +232,42 @@ except Exception as exc:
     errors.append(("decision skip", str(exc)))
 
 
+# Test 8: ErrorQueue 合并后按新 record.error_id 更新状态，避免 next_pending 死循环
+try:
+    ErrorQueue.reset_counter()
+    queue = ErrorQueue()
+    low_priority = ErrorRecord(
+        error_type="missing_bracket",
+        line_number=1,
+        offset=100,
+        original_text="他说道：你好",
+    )
+    high_priority = ErrorRecord(
+        error_type="wrong_symbol",
+        line_number=1,
+        offset=110,
+        original_text="[你好]",
+    )
+    queue.add(low_priority)
+    queue.add(high_priority)
+
+    assert len(queue) == 1
+    assert queue.all()[0].error_id == high_priority.error_id
+    assert queue.get(high_priority.error_id) is high_priority
+
+    queue.mark_fixed(high_priority.error_id, fix="「你好」", verdict="pass", reason="merged id")
+    assert queue.remaining() == 0
+    assert queue.next_pending() is None
+    assert queue.get(high_priority.error_id).status == "fixed"
+
+    ErrorQueue.reset_counter()
+    fresh = ErrorRecord(error_type="wrong_symbol", line_number=1, offset=200, original_text="[新]")
+    assert fresh.error_id == "e-0001"
+    results.append(("error queue merged ids", "ok", high_priority.error_id))
+except Exception as exc:
+    errors.append(("error queue merged ids", str(exc)))
+
+
 print("=" * 55)
 print("  Stage 15 Verification Report — Candidate Decision")
 print("=" * 55)

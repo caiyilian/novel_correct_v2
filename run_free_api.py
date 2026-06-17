@@ -256,6 +256,7 @@ class FastCorrectionAgent:
 
 
 def run_pipeline(novel_path: str, dry_run: bool = False, resume: bool = False,
+                 detect: bool = False,
                  max_errors: Optional[int] = None, max_rounds: int = 5,
                  max_decision_retries: int = 2,
                  agent_tool_mode: bool = False):
@@ -267,29 +268,6 @@ def run_pipeline(novel_path: str, dry_run: bool = False, resume: bool = False,
     print("[1/4] Loading text...")
     text = TextLoader().load(novel_path)
     print(f"  {text.line_count()} lines, {len(text.text)} chars")
-
-    # 初始化免费 API 客户端
-    api_config = load_free_api_config()
-    print(f"  API: {api_config['base_url']}")
-    print(f"  Model: {api_config['model']}")
-
-    config = ModelConfig(
-        base_url=api_config["base_url"],
-        api_key=api_config["api_key"],
-        model=api_config["model"],
-        timeout=60.0,
-        retries=3,
-        retry_delay=10.0,
-    )
-    client = RateLimitedClient(config, min_interval=7.0)
-
-    # 测试连接
-    print("  Testing connection...")
-    status = client.check_connection()
-    if not status.ok:
-        print(f"  Connection failed: {status.message}")
-        return
-    print(f"  Connection OK: {status.message}")
 
     # 初始化 tracker（使用独立 checkpoint 目录，避免与 Ollama 版冲突）
     tracker = ProgressTracker(novel_path, checkpoint_dir=".checkpoint_free")
@@ -315,6 +293,10 @@ def run_pipeline(novel_path: str, dry_run: bool = False, resume: bool = False,
         print("\n[OK] No errors found!")
         return
 
+    if detect:
+        print("\n[OK] Detection complete. Use without --detect to start correction.")
+        return
+
     if dry_run:
         print("\n[Dry-run] Errors found:")
         for err in queue.all():
@@ -322,6 +304,31 @@ def run_pipeline(novel_path: str, dry_run: bool = False, resume: bool = False,
                 print(f"  [{err.error_id}] L{err.line_number:5d} {err.error_type:18s} {err.original_text[:60]}")
         print(f"\n  {queue.remaining()} errors would need fixing.")
         return
+
+    # 初始化免费 API 客户端
+    api_config = load_free_api_config()
+    print(f"\n  API: {api_config['base_url']}")
+    print(f"  Model: {api_config['model']}")
+
+    config = ModelConfig(
+        base_url=api_config["base_url"],
+        api_key=api_config["api_key"],
+        model=api_config["model"],
+        timeout=60.0,
+        retries=3,
+        retry_delay=10.0,
+        keep_alive=None,
+        heartbeat_interval=None,
+    )
+    client = RateLimitedClient(config, min_interval=7.0)
+
+    # 测试连接
+    print("  Testing connection...")
+    status = client.check_connection()
+    if not status.ok:
+        print(f"  Connection failed: {status.message}")
+        return
+    print(f"  Connection OK: {status.message}")
 
     # Phase 2: Agent 修正（使用优化的 Agent，跳过 Verifier LLM）
     mode_name = "agent-tool" if agent_tool_mode else "candidate-decision"
@@ -451,6 +458,7 @@ def main():
         args.novel,
         dry_run=args.dry_run,
         resume=args.resume,
+        detect=args.detect,
         max_errors=args.max_errors,
         max_rounds=args.max_rounds,
         max_decision_retries=args.max_decision_retries,
