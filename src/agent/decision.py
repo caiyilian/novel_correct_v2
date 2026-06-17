@@ -18,6 +18,7 @@ from src.core.error_queue import ErrorQueue
 from src.core.error_record import ErrorRecord
 from src.core.progress import ProgressTracker
 from src.core.text import TextDoc
+from src.detector.pipeline import DetectorPipeline
 from src.model.client import ChatMessage, OpenAICompatibleClient
 from src.model.protocol import ToolSpec
 
@@ -43,6 +44,8 @@ class CandidateDecisionAgent:
         verifier: Optional[Any] = None,
         max_decision_retries: int = 2,
         candidate_generator: Optional[CandidateGenerator] = None,
+        rule_precheck: bool = False,
+        llm_fallback: bool = True,
     ):
         self._text = text_doc
         self._queue = error_queue
@@ -51,6 +54,9 @@ class CandidateDecisionAgent:
         self._verifier = verifier
         self._max_decision_retries = max_decision_retries
         self._generator = candidate_generator or CandidateGenerator()
+        self._rule_precheck = rule_precheck
+        self._llm_fallback = llm_fallback
+        self._pipeline = DetectorPipeline() if rule_precheck else None
 
     def run_all(self, progress_callback: Optional[Callable] = None) -> List[AgentResult]:
         results: List[AgentResult] = []
@@ -92,6 +98,35 @@ class CandidateDecisionAgent:
             self._queue.mark_skipped(error.error_id, reason=result.reason)
             self._tracker.save_correction(error)
             return result
+
+        if self._rule_precheck:
+            selected, before_total, after_total = self._select_reducing_candidate(candidates)
+            if selected is not None:
+                applied = self._apply_candidate(
+                    error,
+                    selected,
+                    f"规则预检选择候选，检测错误数 {before_total} -> {after_total}",
+                )
+                applied.retry_count = 0
+                applied.tool_calls = [
+                    {
+                        "name": "rule_precheck",
+                        "arguments": {
+                            "candidate_id": selected.candidate_id,
+                            "before_total": before_total,
+                            "after_total": after_total,
+                        },
+                    }
+                ]
+                applied.duration = time.time() - start_time
+                return applied
+            if not self._llm_fallback:
+                result.verdict = "uncertain"
+                result.reason = "No candidate reduced detector errors"
+                result.duration = time.time() - start_time
+                self._queue.mark_skipped(error.error_id, reason=result.reason)
+                self._tracker.save_correction(error)
+                return result
 
         for attempt in range(1, self._max_decision_retries + 1):
             result.retry_count = attempt
@@ -324,6 +359,39 @@ class CandidateDecisionAgent:
         result.verdict = "pass"
         result.reason = reason or candidate.description
         return result
+
+    def _select_reducing_candidate(
+        self,
+        candidates: list[CorrectionCandidate],
+    ) -> tuple[Optional[CorrectionCandidate], int, int]:
+        if self._pipeline is None:
+            return None, 0, 0
+
+        before_total = self._detected_total(self._text)
+        best: Optional[CorrectionCandidate] = None
+        best_total = before_total
+        for candidate in candidates:
+            candidate_text = TextDoc(self._text.text)
+            candidate_text.replace_range(
+                candidate.start_offset,
+                candidate.end_offset,
+                candidate.replacement,
+            )
+            after_total = self._detected_total(candidate_text)
+            if after_total < best_total:
+                best = candidate
+                best_total = after_total
+        return best, before_total, best_total
+
+    def _detected_total(self, text: TextDoc) -> int:
+        if self._pipeline is None:
+            return 0
+
+        counter = ErrorRecord._id_counter
+        try:
+            return self._pipeline.run(text).total
+        finally:
+            ErrorRecord._id_counter = counter
 
 
 def _extract_json_object(content: str) -> Optional[str]:

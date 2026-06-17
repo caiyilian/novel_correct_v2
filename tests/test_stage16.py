@@ -1,5 +1,4 @@
 """Stage 16 验证脚本：第 1 卷候选生成覆盖率"""
-import json
 import os
 import shutil
 import sys
@@ -11,29 +10,23 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 from src.agent.candidates import CandidateGenerator
 from src.agent.decision import CandidateDecisionAgent
+from src.core.error_record import ErrorRecord
 from src.core.progress import ProgressTracker
 from src.detector.pipeline import DetectorPipeline
 from src.io.loader import TextLoader
-from src.model.client import ChatResult
 
 
 results = []
 errors = []
 
 
-class ApplyFirstClient:
+class NoChatClient:
     def __init__(self):
         self.call_count = 0
 
     def chat(self, messages, tools=None, temperature=None, max_tokens=None):
         self.call_count += 1
-        return ChatResult(
-            content=json.dumps(
-                {"decision": "apply", "choice_id": "c1", "reason": "规则候选可应用"},
-                ensure_ascii=False,
-            ),
-            raw={},
-        )
+        raise AssertionError("rule precheck mode should not call the LLM")
 
 
 try:
@@ -91,23 +84,36 @@ try:
     try:
         tracker = ProgressTracker("stage16_round.txt", checkpoint_dir=tmpdir)
         tracker.init_checkpoint(round_queue)
-        client = ApplyFirstClient()
+        client = NoChatClient()
+        counter_before_agent = ErrorRecord._id_counter
         round_results = CandidateDecisionAgent(
             round_text,
             round_queue,
             client,
             tracker,
+            rule_precheck=True,
+            llm_fallback=False,
         ).run_all()
         fixed = sum(1 for item in round_results if item.verdict == "pass")
+        skipped = sum(1 for item in round_results if item.verdict == "uncertain")
         no_candidates = [
             item.error_id
             for item in round_results
             if item.reason == "No rule candidates generated"
         ]
         assert fixed >= 30
+        assert skipped > 0
         assert not no_candidates
         assert round_queue.remaining() == 0
-        results.append(("one-round mock fixed", "ok", f"{fixed}/{len(round_results)}"))
+        assert client.call_count == 0
+        assert ErrorRecord._id_counter == counter_before_agent
+        results.append(
+            (
+                "one-round rule fixed",
+                "ok",
+                f"fixed={fixed}, skipped={skipped}, llm_calls={client.call_count}",
+            )
+        )
     finally:
         shutil.rmtree(tmpdir)
 except Exception as exc:
