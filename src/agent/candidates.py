@@ -72,6 +72,10 @@ class CandidateGenerator:
         "》": "」",
         "”": "」",
     }
+    _WRONG_DIALOGUE_CLOSERS = (
+        "]", "】", "］", "}", "》", "”", '"',
+        "[", "【", "［", "{", "《", "“",
+    )
     _NARRATION_CUES = (
         "他", "她", "我", "你", "少年", "少女", "男人", "女人",
         "老师", "同学", "对方", "众人", "大家", "这", "那",
@@ -274,6 +278,20 @@ class CandidateGenerator:
         content_start = start + 1
         content = full[content_start:close]
         candidates: list[CorrectionCandidate] = []
+
+        for index, ch in enumerate(content):
+            if ch not in self._WRONG_DIALOGUE_CLOSERS:
+                continue
+            self._candidate(
+                candidates,
+                error,
+                content_start + index,
+                content_start + index + 1,
+                "」",
+                f"将超长对话中疑似误识别的闭合符号 {ch!r} 替换为」",
+            )
+            if len(candidates) >= 3:
+                break
 
         for match in re.finditer("。", content):
             cue_start = match.end()
