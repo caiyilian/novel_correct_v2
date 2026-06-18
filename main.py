@@ -64,6 +64,8 @@ def parse_args() -> argparse.Namespace:
                         help="使用旧的 tool-calling Agent 模式（默认使用候选决策模式）")
     parser.add_argument("--llm-decision-fallback", action="store_true",
                         help="候选规则预检无法确定时继续调用 LLM 判断（默认直接跳过，避免长时间挂起）")
+    parser.add_argument("--max-pipeline-rounds", type=int, default=3,
+                        help="多轮纠错的最大轮数（默认 3）")
     return parser.parse_args()
 
 
@@ -80,6 +82,7 @@ def run_pipeline(
     max_decision_retries: int = 2,
     agent_tool_mode: bool = False,
     llm_decision_fallback: bool = False,
+    max_pipeline_rounds: int = 3,
 ) -> None:
     """
     完整纠错管线。
@@ -163,8 +166,12 @@ def run_pipeline(
     print(f"\n[3/3] Correcting errors (model={model_label}, mode={mode_name})...")
 
     round_num = 0
+    original_total = queue.total  # 记录原始总数用于进度判断
     while queue.remaining() > 0:
         round_num += 1
+        if round_num > max_pipeline_rounds:
+            print(f"\n  [!] Reached max pipeline rounds ({max_pipeline_rounds}), stopping.")
+            break
 
         pending_before = queue.remaining()
         print(f"\n  --- Round {round_num}: {pending_before} errors remaining ---")
@@ -219,22 +226,34 @@ def run_pipeline(
         # Phase 3: 重新检测（检查是否有新错误引入）
         print("    Re-detecting for new errors...")
         new_queue = pipeline.run(text)
+        print(f"    Before: {pending_before} errors, After re-detect: {new_queue.total} errors")
         if new_queue.total == 0:
             print(f"\n[OK] All errors fixed after round {round_num}!")
             break
 
-        # 过滤已处理的
+        # 按 offset 过滤已跳过的错误（error_id 每轮会变，不能用 ID 过滤）
+        skipped_keys = set()
+        for err in queue.all():
+            if err.status == "skipped" or err.status == "failed":
+                skipped_keys.add((err.offset, err.error_type))
+
         fresh_queue = ErrorQueue()
+        filtered = 0
         for err in new_queue:
-            if err.error_id not in tracker.get_processed_ids():
+            if (err.offset, err.error_type) in skipped_keys:
+                filtered += 1
+            else:
                 fresh_queue.add(err)
 
+        if filtered > 0:
+            print(f"    Filtered out {filtered} previously skipped errors")
         if fresh_queue.remaining() == 0:
             print(f"\n[OK] All errors fixed (no unprocessed remaining)!")
             break
 
-        if fresh_queue.remaining() >= pending_before:
-            print(f"\n  [!] No progress this round ({fresh_queue.remaining()} still pending)")
+        if fresh_queue.remaining() >= original_total:
+            print(f"\n  [!] No progress: {fresh_queue.remaining()} still pending "
+                  f"(original total: {original_total})")
             print(f"  Stopping to avoid infinite loop.")
             break
 
@@ -305,6 +324,7 @@ if __name__ == "__main__":
             max_decision_retries=args.max_decision_retries,
             agent_tool_mode=args.agent_tool_mode,
             llm_decision_fallback=args.llm_decision_fallback,
+            max_pipeline_rounds=args.max_pipeline_rounds,
         )
         sys.exit(0)
 
@@ -324,4 +344,5 @@ if __name__ == "__main__":
         max_decision_retries=args.max_decision_retries,
         agent_tool_mode=args.agent_tool_mode,
         llm_decision_fallback=args.llm_decision_fallback,
+        max_pipeline_rounds=args.max_pipeline_rounds,
     )
