@@ -55,6 +55,9 @@ class CandidateGenerator:
         "《": "》",
         "“": "”",
         '"': '"',
+        # Half-width variants
+        "(": ")",
+        "＜": "＞",
     }
     _CLOSE_TO_OPEN = {v: k for k, v in _OPEN_TO_CLOSE.items()}
     _WRONG_TO_STANDARD = {
@@ -71,10 +74,16 @@ class CandidateGenerator:
         "}": "」",
         "》": "」",
         "”": "」",
+        # Half-width and other variants
+        "(": "「",
+        ")": "」",
+        "＜": "「",
+        "＞": "」",
     }
     _WRONG_DIALOGUE_CLOSERS = (
         "]", "】", "］", "}", "》", "”", '"',
         "[", "【", "［", "{", "《", "“",
+        ")", "＞", "）", "（",
     )
     _NARRATION_CUES = (
         "他", "她", "我", "你", "少年", "少女", "男人", "女人",
@@ -118,15 +127,31 @@ class CandidateGenerator:
             )
         )
 
+    def _resolve_offset(self, full: str, offset: int, target_set: set) -> int:
+        """Scan forward from offset to find first character in target_set.
+        Returns the found position, or -1 if not found within reasonable range.
+        """
+        end = min(len(full), offset + 20)
+        for pos in range(offset, end):
+            if full[pos] in target_set:
+                return pos
+        return -1
+
     def _wrong_symbol(self, text: TextDoc, error: ErrorRecord) -> List[CorrectionCandidate]:
         full = text.text
         offset = error.offset
         if offset < 0 or offset >= len(full):
             return []
 
+        # Scan forward to find the actual wrong symbol (offset may point to whitespace)
+        resolved = self._resolve_offset(full, offset, set(self._WRONG_TO_STANDARD.keys()))
+        if resolved == -1:
+            return []
+        offset = resolved
         ch = full[offset]
         candidates: list[CorrectionCandidate] = []
 
+        # Strategy 1: Check for paired symbols
         pair = self._find_wrong_symbol_pair(full, offset, ch)
         if pair:
             start, end = pair
@@ -140,6 +165,7 @@ class CandidateGenerator:
                 "将成对的非标准包裹符号替换为「」",
             )
 
+        # Strategy 2: Single symbol replacement
         mapped = self._WRONG_TO_STANDARD.get(ch)
         if mapped:
             self._candidate(
@@ -150,6 +176,39 @@ class CandidateGenerator:
                 mapped,
                 f"将单个非标准符号 {ch!r} 替换为 {mapped!r}",
             )
+
+        # Strategy 3: Handle nested symbols like [text「text」text]
+        # Look for mixed bracket patterns
+        for open_ch, close_ch in self._OPEN_TO_CLOSE.items():
+            if open_ch in ("「", "」"):
+                continue
+            # Search for open_ch before offset and close_ch after offset
+            start_search = max(0, offset - 200)
+            open_pos = full.rfind(open_ch, start_search, offset)
+            if open_pos != -1:
+                close_pos = full.find(close_ch, offset + 1, min(len(full), offset + 200))
+                if close_pos != -1:
+                    inner = full[open_pos + 1:close_pos]
+                    self._candidate(
+                        candidates,
+                        error,
+                        open_pos,
+                        close_pos + 1,
+                        f"「{inner}」",
+                        f"将嵌套的非标准包裹符号 {open_ch}{close_ch} 替换为「」",
+                    )
+
+        # Strategy 4: Handle cases where 「」 encloses wrong symbols like 「text[text]text」
+        # The detector may flag the inner [ or ]
+        if ch in ("[", "]", "【", "】", "［", "］", "{", "}", "《", "》", '"', "“", "”"):
+            # Check if we're inside a valid 「...」 pair
+            left_quote = full.rfind("「", max(0, offset - 500), offset)
+            right_quote = full.find("」", offset + 1, min(len(full), offset + 500))
+            if left_quote != -1 and right_quote != -1:
+                # We're inside a dialogue, just replace the single wrong symbol
+                if mapped:
+                    # Already added above, but ensure it's there
+                    pass
 
         return self._dedupe(candidates)
 
@@ -176,12 +235,20 @@ class CandidateGenerator:
     def _consecutive(self, text: TextDoc, error: ErrorRecord) -> List[CorrectionCandidate]:
         full = text.text
         offset = error.offset
-        if offset < 0 or offset >= len(full) or full[offset] not in ("「", "」"):
+        if offset < 0 or offset >= len(full):
             return []
+
+        # Scan forward to find the actual bracket (offset may point to whitespace/newline)
+        resolved = self._resolve_offset(full, offset, {"「", "」"})
+        if resolved == -1:
+            return []
+        offset = resolved
 
         candidates: list[CorrectionCandidate] = []
         current = full[offset]
         opposite = "」" if current == "「" else "「"
+
+        # Candidate 1: flip the symbol at offset
         self._candidate(
             candidates,
             error,
@@ -191,6 +258,7 @@ class CandidateGenerator:
             "替换当前连续符号，使「」交替",
         )
 
+        # Candidate 2: flip the previous dialogue symbol (if same as current)
         previous = self._previous_dialogue_symbol(full, offset)
         if previous is not None and full[previous] == current:
             self._candidate(
@@ -201,6 +269,32 @@ class CandidateGenerator:
                 opposite,
                 "替换前一个连续符号，使「」交替",
             )
+
+        # Candidate 3: if the consecutive is at the start of a line (after \n),
+        # also try flipping the NEWLINE-adjacent bracket that precedes this one
+        # Pattern: 」\n    「 → the 「 after \n is consecutive to the 」 before \n
+        # Fix: flip the 「 to 」 (making it a closing bracket for the previous line)
+        if current == "「":
+            # Check if this 「 follows newline+whitespace after a previous 「 or 」
+            # The consecutive detector only flags when same bracket type appears twice
+            # So 「 after \n means the bracket before \n was also 「
+            # Look for the dialogue symbol before the nearest newline
+            for search_pos in range(offset - 1, max(0, offset - 100), -1):
+                if full[search_pos] == "\n":
+                    # Found newline, now look back for the bracket before it
+                    pre_newline = self._previous_dialogue_symbol(full, search_pos)
+                    if pre_newline is not None and full[pre_newline] == "「":
+                        self._candidate(
+                            candidates,
+                            error,
+                            pre_newline,
+                            pre_newline + 1,
+                            "」",
+                            "将换行前的左引号「改为」以消除跨行连续",
+                        )
+                    break
+                if full[search_pos] in ("「", "」"):
+                    break
 
         return self._dedupe(candidates)
 
@@ -217,6 +311,11 @@ class CandidateGenerator:
         if offset < 0 or offset >= len(full):
             return []
 
+        # Scan forward to find the actual bracket
+        resolved = self._resolve_offset(full, offset, {"「", "」"})
+        if resolved == -1:
+            return []
+        offset = resolved
         ch = full[offset]
         candidates: list[CorrectionCandidate] = []
         if ch == "」":
@@ -268,8 +367,14 @@ class CandidateGenerator:
     def _long_dialogue(self, text: TextDoc, error: ErrorRecord) -> List[CorrectionCandidate]:
         full = text.text
         start = error.offset
-        if start < 0 or start >= len(full) or full[start] != "「":
+        if start < 0 or start >= len(full):
             return []
+
+        # Scan forward to find the opening 「
+        resolved = self._resolve_offset(full, start, {"「"})
+        if resolved == -1:
+            return []
+        start = resolved
 
         close = full.find("」", start + 1)
         if close == -1:
@@ -279,6 +384,7 @@ class CandidateGenerator:
         content = full[content_start:close]
         candidates: list[CorrectionCandidate] = []
 
+        # Strategy 1: replace wrong closing symbols inside the dialogue
         for index, ch in enumerate(content):
             if ch not in self._WRONG_DIALOGUE_CLOSERS:
                 continue
@@ -293,6 +399,7 @@ class CandidateGenerator:
             if len(candidates) >= 3:
                 break
 
+        # Strategy 2: split on 。+ narration cues
         for match in re.finditer("。", content):
             cue_start = match.end()
             if not any(content.startswith(cue, cue_start) for cue in self._NARRATION_CUES):
@@ -313,6 +420,99 @@ class CandidateGenerator:
             )
             if len(candidates) >= 3:
                 break
+
+        # Strategy 3: split on ？or ！or ……+ narration cues (for long dialogues without 。)
+        if len(candidates) < 3:
+            for boundary in ("？", "！", "……"):
+                for match in re.finditer(re.escape(boundary), content):
+                    cue_start = match.end()
+                    # Check if what follows looks like narration (starts with known cue)
+                    rest = content[cue_start:].lstrip()
+                    if not any(rest.startswith(cue) for cue in self._NARRATION_CUES):
+                        continue
+                    self._candidate(
+                        candidates,
+                        error,
+                        content_start + match.start(),
+                        content_start + match.end(),
+                        match.group() + "」",
+                        f"在{boundary}后插入」以拆分超长对话",
+                    )
+                    if len(candidates) >= 3:
+                        break
+
+        # Strategy 4: if the long dialogue has \n\n + narration, insert 」before \n\n
+        if len(candidates) < 2:
+            nl_pos = content.find("\n\n")
+            if nl_pos != -1:
+                # Check if there's narration after \n\n
+                after_nl = content[nl_pos + 2:].lstrip()
+                if any(after_nl.startswith(cue) for cue in self._NARRATION_CUES):
+                    self._candidate(
+                        candidates,
+                        error,
+                        content_start + nl_pos,
+                        content_start + nl_pos,
+                        "」\n\n",
+                        "在换行前插入」以分离旁白",
+                    )
+
+        # Strategy 5: split on 。 + any character that looks like narration start (not just known cues)
+        # This handles cases where narration starts with a name or other indicator
+        if len(candidates) < 3:
+            for match in re.finditer("。", content):
+                cue_start = match.end()
+                rest = content[cue_start:].lstrip()
+                if not rest:
+                    continue
+                # Heuristic: narration often starts with a name/pronoun or descriptive word
+                # Check if rest starts with common narration patterns
+                narration_starts = self._NARRATION_CUES + (
+                    "却", "又", "却", "还", "便", "就", "只", "只见", "只听",
+                    "忽", "蓦", "猛", "顿", "陡", "霍", "豁", "倏",
+                )
+                if any(rest.startswith(cue) for cue in narration_starts):
+                    second_end = content.find("。", cue_start)
+                    if second_end == -1:
+                        continue
+                    second_end += 1
+                    segment = content[match.start():second_end]
+                    replacement = "。」" + segment[1:-1] + "。「"
+                    self._candidate(
+                        candidates,
+                        error,
+                        content_start + match.start(),
+                        content_start + second_end,
+                        replacement,
+                        "在疑似旁白段两侧补上」「以拆分超长对话(扩展触发词)",
+                    )
+                    if len(candidates) >= 3:
+                        break
+
+        # Strategy 6: Handle multiple consecutive segments - split at each 。+narration
+        if len(candidates) < 2:
+            # Try to find multiple split points
+            splits = []
+            for match in re.finditer("。", content):
+                cue_start = match.end()
+                rest = content[cue_start:].lstrip()
+                if any(rest.startswith(cue) for cue in self._NARRATION_CUES):
+                    second_end = content.find("。", cue_start)
+                    if second_end != -1:
+                        splits.append((match.start(), second_end + 1))
+            if len(splits) >= 2:
+                # Generate candidate that splits at first split point
+                first_start, first_end = splits[0]
+                segment = content[first_start:first_end]
+                replacement = "。」" + segment[1:-1] + "。「"
+                self._candidate(
+                    candidates,
+                    error,
+                    content_start + first_start,
+                    content_start + first_end,
+                    replacement,
+                    "在首个疑似旁白段两侧补上」「以拆分超长对话",
+                )
 
         return self._dedupe(candidates)
 
