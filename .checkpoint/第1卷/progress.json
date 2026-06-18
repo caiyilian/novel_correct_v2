@@ -1,22 +1,23 @@
 {
   "novel_path": "E:\\projects\\novel_correct_v2\\data\\ori_story\\第1卷.txt",
   "progress": {
-    "total": 171,
-    "pending": 0,
-    "fixed": 171,
+    "total": 272,
+    "pending": 272,
+    "fixed": 0,
     "skipped": 0,
     "failed": 0,
-    "remaining": 0,
-    "done": 171,
-    "percent": 100.0
+    "remaining": 272,
+    "done": 0,
+    "percent": 0.0
   },
   "type_summary": {
+    "missing_bracket": 101,
     "wrong_symbol": 1,
     "consecutive": 139,
     "unpaired": 19,
     "long_dialogue": 12
   },
   "hard_indicators": {},
-  "timestamp": 1781697808.2750652,
-  "datetime": "2026-06-17T20:03:28.275065"
+  "timestamp": 1781516247.5601146,
+  "datetime": "2026-06-15T17:37:27.560115"
 }
