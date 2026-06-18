@@ -259,7 +259,8 @@ def run_pipeline(novel_path: str, dry_run: bool = False, resume: bool = False,
                  detect: bool = False,
                  max_errors: Optional[int] = None, max_rounds: int = 5,
                  max_decision_retries: int = 2,
-                 agent_tool_mode: bool = False):
+                 agent_tool_mode: bool = False,
+                 llm_decision_fallback: bool = False):
     print(f"\n{'='*55}")
     print(f"  FreeTheAI Correction - {Path(novel_path).name}")
     print(f"{'='*55}\n")
@@ -305,30 +306,32 @@ def run_pipeline(novel_path: str, dry_run: bool = False, resume: bool = False,
         print(f"\n  {queue.remaining()} errors would need fixing.")
         return
 
-    # 初始化免费 API 客户端
-    api_config = load_free_api_config()
-    print(f"\n  API: {api_config['base_url']}")
-    print(f"  Model: {api_config['model']}")
+    client = None
+    if agent_tool_mode or llm_decision_fallback:
+        # 初始化免费 API 客户端
+        api_config = load_free_api_config()
+        print(f"\n  API: {api_config['base_url']}")
+        print(f"  Model: {api_config['model']}")
 
-    config = ModelConfig(
-        base_url=api_config["base_url"],
-        api_key=api_config["api_key"],
-        model=api_config["model"],
-        timeout=60.0,
-        retries=3,
-        retry_delay=10.0,
-        keep_alive=None,
-        heartbeat_interval=None,
-    )
-    client = RateLimitedClient(config, min_interval=7.0)
+        config = ModelConfig(
+            base_url=api_config["base_url"],
+            api_key=api_config["api_key"],
+            model=api_config["model"],
+            timeout=60.0,
+            retries=3,
+            retry_delay=10.0,
+            keep_alive=None,
+            heartbeat_interval=None,
+        )
+        client = RateLimitedClient(config, min_interval=7.0)
 
-    # 测试连接
-    print("  Testing connection...")
-    status = client.check_connection()
-    if not status.ok:
-        print(f"  Connection failed: {status.message}")
-        return
-    print(f"  Connection OK: {status.message}")
+        # 测试连接
+        print("  Testing connection...")
+        status = client.check_connection()
+        if not status.ok:
+            print(f"  Connection failed: {status.message}")
+            return
+        print(f"  Connection OK: {status.message}")
 
     # Phase 2: Agent 修正（使用优化的 Agent，跳过 Verifier LLM）
     mode_name = "agent-tool" if agent_tool_mode else "candidate-decision"
@@ -361,6 +364,8 @@ def run_pipeline(novel_path: str, dry_run: bool = False, resume: bool = False,
                 tracker=tracker,
                 verifier=CorrectionVerifier(),
                 max_decision_retries=max_decision_retries,
+                rule_precheck=True,
+                llm_fallback=llm_decision_fallback,
             )
 
         count = 0
@@ -448,6 +453,7 @@ def main():
     parser.add_argument("--max-rounds", type=int, default=5, help="Max Agent rounds per attempt")
     parser.add_argument("--max-decision-retries", type=int, default=2, help="Max candidate decision calls per error")
     parser.add_argument("--agent-tool-mode", action="store_true", help="Use legacy tool-calling Agent mode")
+    parser.add_argument("--llm-decision-fallback", action="store_true", help="Call LLM when rule precheck cannot select a candidate")
     args = parser.parse_args()
 
     if not Path(args.novel).exists():
@@ -463,6 +469,7 @@ def main():
         max_rounds=args.max_rounds,
         max_decision_retries=args.max_decision_retries,
         agent_tool_mode=args.agent_tool_mode,
+        llm_decision_fallback=args.llm_decision_fallback,
     )
 
 
