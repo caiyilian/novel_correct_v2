@@ -268,6 +268,63 @@ except Exception as exc:
     errors.append(("error queue merged ids", str(exc)))
 
 
+# Test 9: long_dialogue 内部混入错误闭合符号时生成候选
+try:
+    text = TextDoc("「果然没错]\n\n    在大厅里继续说明了很长一段内容，直到后面才出现真正的右引号。」")
+    error = ErrorRecord(
+        error_id="e-long-mixed",
+        error_type="long_dialogue",
+        line_number=1,
+        offset=0,
+        original_text=text.text[:60],
+    )
+    candidates = CandidateGenerator().generate(text, error)
+    assert candidates
+    assert candidates[0].original(text) == "]"
+    assert candidates[0].replacement == "」"
+    results.append(("long_dialogue mixed symbol", "ok", candidates[0].description))
+except Exception as exc:
+    errors.append(("long_dialogue mixed symbol", str(exc)))
+
+
+# Test 10: 候选决策按 offset 倒序处理，避免前序插入导致后续 offset 失效
+try:
+    first_line = "「" + "a" * 60
+    text = TextDoc(first_line + "\n[你好]结束")
+    wrong_offset = text.text.find("[")
+    queue = ErrorQueue([
+        ErrorRecord(
+            error_id="e-unpaired-first",
+            error_type="unpaired",
+            line_number=1,
+            offset=0,
+            original_text="「aaa",
+        ),
+        ErrorRecord(
+            error_id="e-wrong-later",
+            error_type="wrong_symbol",
+            line_number=2,
+            offset=wrong_offset,
+            original_text="[你好]",
+        ),
+    ])
+    tracker, tmpdir = make_tracker(queue, "descending.txt")
+    client = MockDecisionClient([
+        json.dumps({"decision": "apply", "choice_id": "c1", "reason": "先处理后文"}, ensure_ascii=False),
+        json.dumps({"decision": "apply", "choice_id": "c1", "reason": "再补前文"}, ensure_ascii=False),
+    ])
+    result = CandidateDecisionAgent(text, queue, client, tracker).run_all()
+    assert [item.error_id for item in result] == ["e-wrong-later", "e-unpaired-first"]
+    assert all(item.verdict == "pass" for item in result)
+    assert "「你好」" in text.text
+    assert text.text.startswith(first_line + "」\n")
+    assert queue.remaining() == 0
+    shutil.rmtree(tmpdir)
+    results.append(("decision descending offsets", "ok", f"calls={client.call_count}"))
+except Exception as exc:
+    errors.append(("decision descending offsets", str(exc)))
+
+
 print("=" * 55)
 print("  Stage 15 Verification Report — Candidate Decision")
 print("=" * 55)
