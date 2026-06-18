@@ -62,6 +62,8 @@ def parse_args() -> argparse.Namespace:
                         help="候选决策模式下每个错误的最大 LLM 判断次数（默认 2）")
     parser.add_argument("--agent-tool-mode", action="store_true",
                         help="使用旧的 tool-calling Agent 模式（默认使用候选决策模式）")
+    parser.add_argument("--llm-decision-fallback", action="store_true",
+                        help="候选规则预检无法确定时继续调用 LLM 判断（默认直接跳过，避免长时间挂起）")
     return parser.parse_args()
 
 
@@ -77,6 +79,7 @@ def run_pipeline(
     max_rounds: int = 5,
     max_decision_retries: int = 2,
     agent_tool_mode: bool = False,
+    llm_decision_fallback: bool = False,
 ) -> None:
     """
     完整纠错管线。
@@ -100,7 +103,10 @@ def run_pipeline(
 
     # 初始化模型和 Verifier
     model = None
-    if not dry_run and not detect:
+    needs_model = not dry_run and not detect and (
+        agent_tool_mode or llm_decision_fallback
+    )
+    if needs_model:
         config = ModelConfig()
         if model_name:
             config = ModelConfig(model=model_name)
@@ -153,7 +159,8 @@ def run_pipeline(
 
     # Phase 2: Agent 修正
     mode_name = "agent-tool" if agent_tool_mode else "candidate-decision"
-    print(f"\n[3/3] Correcting errors (model={model.config.model if model else 'dry-run'}, mode={mode_name})...")
+    model_label = model.config.model if model else "rule-precheck"
+    print(f"\n[3/3] Correcting errors (model={model_label}, mode={mode_name})...")
 
     round_num = 0
     while queue.remaining() > 0:
@@ -191,6 +198,8 @@ def run_pipeline(
                 tracker=tracker,
                 verifier=CorrectionVerifier(),
                 max_decision_retries=max_decision_retries,
+                rule_precheck=True,
+                llm_fallback=llm_decision_fallback,
             )
 
         def show_progress(processed, total, result):
@@ -295,6 +304,7 @@ if __name__ == "__main__":
             max_rounds=args.max_rounds,
             max_decision_retries=args.max_decision_retries,
             agent_tool_mode=args.agent_tool_mode,
+            llm_decision_fallback=args.llm_decision_fallback,
         )
         sys.exit(0)
 
@@ -313,4 +323,5 @@ if __name__ == "__main__":
         max_rounds=args.max_rounds,
         max_decision_retries=args.max_decision_retries,
         agent_tool_mode=args.agent_tool_mode,
+        llm_decision_fallback=args.llm_decision_fallback,
     )
