@@ -140,11 +140,9 @@ def run_pipeline(
         processed_ids = tracker.get_processed_ids()
         print(f"  {len(processed_ids)} errors already processed")
 
-    # 全量检测
-    if resume and tracker.has_checkpoint():
-        queue = pipeline.run_with_checkpoint(text, tracker)
-    else:
-        queue = pipeline.run(text)
+    # 全量检测（始终全量检测，不按 error_id 过滤，因为修正后偏移量会变）
+    queue = pipeline.run(text)
+    if not resume or not tracker.has_checkpoint():
         tracker.init_checkpoint(queue)
 
     stats = queue.type_summary()
@@ -167,6 +165,8 @@ def run_pipeline(
 
     round_num = 0
     original_total = queue.total  # 记录原始总数用于进度判断
+    prev_remaining = queue.total  # 上一轮剩余错误数，用于判断收敛
+    no_progress_rounds = 0  # 连续无进步轮数
     while queue.remaining() > 0:
         round_num += 1
         if round_num > max_pipeline_rounds:
@@ -251,15 +251,20 @@ def run_pipeline(
             print(f"\n[OK] All errors fixed (no unprocessed remaining)!")
             break
 
-        if fresh_queue.remaining() >= original_total:
-            print(f"\n  [!] No progress: {fresh_queue.remaining()} still pending "
-                  f"(original total: {original_total})")
-            print(f"  Stopping to avoid infinite loop.")
-            break
+        # 收敛性检查：连续 2 轮错误数不再减少才停止（参考开发方案设计）
+        if fresh_queue.remaining() >= prev_remaining:
+            no_progress_rounds += 1
+            print(f"  [!] No progress this round: {fresh_queue.remaining()} >= {prev_remaining} "
+                  f"(no-progress rounds: {no_progress_rounds}/2)")
+            if no_progress_rounds >= 2:
+                print(f"  Stopping: 2 consecutive rounds without error reduction.")
+                break
+        else:
+            no_progress_rounds = 0  # 有进步，重置计数器
 
-        # 有新错误，继续下一轮
+        prev_remaining = fresh_queue.remaining()
         queue = fresh_queue
-        print(f"  {fresh_queue.remaining()} new errors found, continuing...")
+        print(f"  {fresh_queue.remaining()} errors after re-detect, continuing to round {round_num + 1}...")
 
     # 生成报告
     print(f"\n{'='*55}")
@@ -269,6 +274,13 @@ def run_pipeline(
     print(f"  Total: {s['total_errors']}, Fixed: {s['fixed']}, "
           f"Skipped: {s['skipped']}, Failed: {s['failed']}")
     print(f"  Report saved to output/correction_report.json")
+
+    # 保存纠错后的小说全文
+    novel_name = Path(novel_path).stem
+    corrected_path = Path("output") / f"corrected_{novel_name}.txt"
+    text.save(corrected_path)
+    print(f"  Corrected novel saved to {corrected_path}")
+
     print(f"{'='*55}\n")
 
 
