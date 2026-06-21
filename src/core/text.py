@@ -7,6 +7,7 @@ TextDoc — 文本文档的核心数据结构
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import List, Optional
 
 
@@ -125,6 +126,12 @@ class TextDoc:
             )
         # 前面 line_num-1 行 + 它们之间的换行符
         return sum(len(l) + 1 for l in lines[:line_num - 1])
+
+    def save(self, path: str | Path, encoding: str = "utf-8") -> None:
+        """将当前文本（含所有修正）保存到文件。"""
+        Path(path).parent.mkdir(parents=True, exist_ok=True)
+        with open(path, "w", encoding=encoding) as f:
+            f.write(self._text)
 
     def __repr__(self) -> str:
         return (
