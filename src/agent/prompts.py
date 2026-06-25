@@ -164,6 +164,18 @@ _TYPE_PROMPT_MAP = {
     "missing_bracket": ("缺失符号", MISSING_BRACKET_PROMPT),
 }
 
+CONTEXT_BUDGET_CHARS = {
+    "consecutive": 200,
+    "wrong_symbol": 400,
+    "unpaired": 400,
+    "long_dialogue": 2000,
+    "missing_bracket": 2000,
+}
+
+
+def context_budget_for_error_type(error_type: str) -> int:
+    return CONTEXT_BUDGET_CHARS.get(error_type, 400)
+
 
 def build_user_prompt(error: ErrorRecord) -> str:
     """
@@ -180,10 +192,11 @@ def build_user_prompt(error: ErrorRecord) -> str:
     msg += f"位置: 第{error.line_number}行 (offset {error.offset})\n"
     msg += f"错误内容: {error.original_text[:100]}\n\n"
 
+    context_budget = context_budget_for_error_type(error.error_type)
     if error.context_before:
-        msg += f"上文: ...{error.context_before[-80:]}\n\n"
+        msg += f"上文: ...{error.context_before[-context_budget:]}\n\n"
     if error.context_after:
-        msg += f"下文: {error.context_after[:80]}...\n\n"
+        msg += f"下文: {error.context_after[:context_budget]}...\n\n"
 
     msg += "## 操作\n"
     msg += (
