@@ -101,6 +101,10 @@ class ErrorRecord:
     fail_reason: str = ""
     """失败的原因（仅当 status=failed 时有效）。"""
 
+    # ── 嵌套标记（WrongSymbolDetector 专用） ──
+    is_nested: bool = False
+    """此符号是否在「」内部（决定修复优先级：嵌套的低优先级）。"""
+
     # ── 元信息 ──
     created_at: float = 0.0
     """记录创建时间（time.time()）。"""
@@ -174,6 +178,7 @@ class ErrorRecord:
             "skip_reason": self.skip_reason,
             "fail_reason": self.fail_reason,
             "retry_count": self.retry_count,
+            "is_nested": self.is_nested,
         }
 
     @classmethod
