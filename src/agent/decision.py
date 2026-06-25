@@ -19,6 +19,7 @@ from src.core.error_record import ErrorRecord
 from src.core.progress import ProgressTracker
 from src.core.text import TextDoc
 from src.detector.pipeline import DetectorPipeline
+from src.agent.prompts import context_budget_for_error_type
 from src.model.client import ChatMessage, OpenAICompatibleClient
 from src.model.protocol import ToolSpec
 from src.model.token_tracker import TokenTracker
@@ -267,6 +268,7 @@ class CandidateDecisionAgent:
         ]
 
     def _user_prompt(self, error: ErrorRecord, candidates: list[CorrectionCandidate]) -> str:
+        context_budget = context_budget_for_error_type(error.error_type)
         payload = {
             "error": {
                 "error_id": error.error_id,
@@ -274,10 +276,14 @@ class CandidateDecisionAgent:
                 "line_number": error.line_number,
                 "offset": error.offset,
                 "original_text": error.original_text,
-                "context_before": error.context_before[-120:],
-                "context_after": error.context_after[:120],
+                "context_budget_chars": context_budget,
+                "context_before": error.context_before[-context_budget:],
+                "context_after": error.context_after[:context_budget],
             },
-            "candidates": [candidate.preview(self._text) for candidate in candidates],
+            "candidates": [
+                candidate.preview(self._text, context=context_budget)
+                for candidate in candidates
+            ],
             "required_output": {
                 "decision": "apply | skip | uncertain",
                 "choice_id": "candidate_id when decision=apply, otherwise empty",
