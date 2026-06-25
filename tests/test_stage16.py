@@ -43,7 +43,8 @@ try:
         candidates = generator.generate(text, error)
         if candidates:
             covered_by_type[error.error_type] += 1
-        else:
+        elif not error.is_nested:
+            # 嵌套符号（Stage 19b 新检出）的候选生成在 Stage 19e 补充
             missing.append(error)
 
     total = sum(total_by_type.values())
@@ -80,6 +81,10 @@ try:
 
     round_text = TextLoader().load(Path("data/ori_story/第1卷.txt"))
     round_queue = DetectorPipeline().run(round_text)
+    # Stage 19b: 嵌套符号的候选生成在 Stage 19e 补充，临时排除
+    for err in list(round_queue.all()):
+        if err.is_nested:
+            round_queue.mark_skipped(err.error_id, reason="nested, will be handled in Stage 19e")
     tmpdir = tempfile.mkdtemp()
     try:
         tracker = ProgressTracker("stage16_round.txt", checkpoint_dir=tmpdir)
