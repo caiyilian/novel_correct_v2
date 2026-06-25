@@ -363,8 +363,35 @@ class CandidateDecisionAgent:
         )
 
         original_slice = candidate.original(self._text)
-        # 候选由规则生成，结构已保证正确，无需 Verifier 校验
-        # 直接应用修正
+        candidate_text = TextDoc(self._text.text)
+        candidate_text.replace_range(
+            candidate.start_offset,
+            candidate.end_offset,
+            candidate.replacement,
+        )
+        if self._verifier:
+            verifier_result = self._verifier.verify(
+                error=error,
+                original_text=self._text.text,
+                modified_text=candidate_text.text,
+                fix_detail={
+                    "candidate_id": candidate.candidate_id,
+                    "replacement": candidate.replacement,
+                },
+            )
+            if verifier_result.verdict == "fail":
+                result.verdict = "uncertain"
+                result.reason = f"Verifier rejected candidate: {verifier_result.reason}"
+                result.fix_applied = ""
+                self._queue.mark_skipped(error.error_id, reason=result.reason)
+                self._tracker.save_correction(
+                    error,
+                    fix_result={
+                        "candidate_id": candidate.candidate_id,
+                        "verifier": verifier_result.__dict__,
+                    },
+                )
+                return result
 
         self._text.replace_range(
             candidate.start_offset,
