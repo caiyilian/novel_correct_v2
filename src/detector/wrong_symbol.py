@@ -44,6 +44,12 @@ CLOSER_MAP = {
     "{": "}", "《": "》",
 }
 
+CLOSER_TO_OPENER = {closer: opener for opener, closer in CLOSER_MAP.items()}
+
+# 只跳过非常明确的非对话注释/标记。不要因为括号内容短就跳过，
+# 小说对话里常见 [重要的事] 这类短文本，仍应交给后续流程判断。
+EXPLICIT_COMMENT_LABELS = {"注", "插图", "图", "表", "序号"}
+
 
 class WrongSymbolDetector(BaseDetector):
     """
@@ -118,19 +124,27 @@ class WrongSymbolDetector(BaseDetector):
         return True
 
     def _looks_like_paired_bracket(self, text: str, offset: int, ch: str) -> bool:
-        """检查符号是否可能是成对括号（如 [1]、【注】等非对话用途）。"""
+        """检查符号是否是明确注释/标记（如 [1]、【注】）。"""
         if ch in PAIRED_OPENERS:
             closer = CLOSER_MAP.get(ch)
             if closer:
-                # 查找闭符号
                 rest = text[offset + 1:offset + 50]
                 close_pos = rest.find(closer)
                 if close_pos != -1 and close_pos < 20:
-                    # 很短的括号内容，可能是注释/标记
-                    inner = rest[:close_pos]
-                    if not self._looks_like_dialogue(inner):
-                        return True
+                    return self._is_explicit_comment_label(rest[:close_pos])
+        elif ch in CLOSER_TO_OPENER:
+            opener = CLOSER_TO_OPENER[ch]
+            before = text[max(0, offset - 50):offset]
+            open_pos = before.rfind(opener)
+            if open_pos != -1 and len(before) - open_pos < 20:
+                return self._is_explicit_comment_label(before[open_pos + 1:])
         return False
+
+    @staticmethod
+    def _is_explicit_comment_label(inner: str) -> bool:
+        """只识别固定注释标签或纯数字脚注。"""
+        label = inner.strip()
+        return label.isdigit() or label in EXPLICIT_COMMENT_LABELS
 
     def _should_skip(self, text_doc: TextDoc, full_text: str,
                      offset: int, ch: str) -> bool:

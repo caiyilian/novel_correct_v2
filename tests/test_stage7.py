@@ -158,7 +158,7 @@ except Exception as e:
 
 # Test 14: ErrorRecord 字段完整性
 try:
-    text = "[hello]「world」"
+    text = "x[hello]「world」"
     doc = TextDoc(text)
     detector = WrongSymbolDetector()
     errs = detector.detect(doc)
