@@ -70,6 +70,7 @@ class WrongSymbolDetector(BaseDetector):
         errors: List[ErrorRecord] = []
         full_text = text.text
         ascii_dq_open: Optional[int] = None  # ASCII 直引号配对的偏移量
+        ascii_dq_open_nested: bool = False
         in_bracket_depth: int = 0  # 当前「」嵌套深度
 
         for offset, ch in enumerate(full_text):
@@ -88,6 +89,7 @@ class WrongSymbolDetector(BaseDetector):
                 if ascii_dq_open is None:
                     # 开引号
                     ascii_dq_open = offset
+                    ascii_dq_open_nested = is_nested
                 else:
                     # 闭引号，记录一对
                     close_offset = offset
@@ -106,6 +108,10 @@ class WrongSymbolDetector(BaseDetector):
                 # 检查这个符号前后是否可能是对话
                 if not self._should_skip(text, full_text, offset, ch):
                     errors.append(self._make_error(text, full_text, offset, ch, is_nested=is_nested))
+
+        if ascii_dq_open is not None:
+            errors.append(self._make_error(
+                text, full_text, ascii_dq_open, '"', is_nested=ascii_dq_open_nested))
 
         return errors
 
