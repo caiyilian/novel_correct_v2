@@ -9,11 +9,16 @@ from src.core.text import TextDoc
 from src.core.error_queue import ErrorQueue
 from src.core.error_record import ErrorRecord
 from src.detector.pipeline import DetectorPipeline
-from src.agent.candidates import CandidateGenerator
+from src.agent.decision import CandidateDecisionAgent
 
 
 results = []
 errors = []
+
+
+class DummyTracker:
+    def save_correction(self, *args, **kwargs):
+        pass
 
 
 def check(name, condition, detail=""):
@@ -35,8 +40,7 @@ queue = pipeline.run(text)
 original_total = queue.total
 check("initial detection", original_total == 2, f"found {original_total} errors")
 
-# Simulate multi-round with rule pre-check
-gen = CandidateGenerator()
+# Simulate multi-round with the same rule pre-check decision path as main.py.
 round_num = 0
 max_rounds = 5
 total_fixed = 0
@@ -44,22 +48,16 @@ final_total = original_total
 
 while queue.remaining() > 0 and round_num < max_rounds:
     round_num += 1
-    round_fixed = 0
-    round_skipped = 0
-
-    while True:
-        error = queue.next_pending()
-        if error is None:
-            break
-        candidates = gen.generate(text, error)
-        if candidates:
-            c = candidates[0]
-            text.replace_range(c.start_offset, c.end_offset, c.replacement)
-            queue.mark_fixed(error.error_id, fix=c.replacement, verdict="pass", reason=c.description)
-            round_fixed += 1
-        else:
-            queue.mark_skipped(error.error_id, reason="no candidate")
-            round_skipped += 1
+    agent = CandidateDecisionAgent(
+        text_doc=text,
+        error_queue=queue,
+        model_client=None,
+        tracker=DummyTracker(),
+        rule_precheck=True,
+        llm_fallback=False,
+    )
+    results_this_round = agent.run_all()
+    round_fixed = sum(1 for result in results_this_round if result.verdict == "pass")
 
     total_fixed += round_fixed
 
@@ -102,7 +100,6 @@ check("clean text: 0 errors", clean_queue.total == 0)
 # Use a text that won't converge in 1 round
 stuck_text = TextDoc("「「A\n")
 stuck_queue = pipeline.run(stuck_text)
-gen2 = CandidateGenerator()
 
 for r in range(3):
     while True:
