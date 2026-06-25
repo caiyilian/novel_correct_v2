@@ -37,6 +37,13 @@ def _load_ip_config() -> dict[str, str]:
     return config
 
 
+def _safe_int(value: Any) -> int:
+    try:
+        return int(value or 0)
+    except (TypeError, ValueError):
+        return 0
+
+
 _ip_config = _load_ip_config()
 
 DEFAULT_BASE_URL = _ip_config.get("OLLAMA_BASE_URL", "http://localhost:11434/v1")
@@ -120,10 +127,18 @@ class ToolCall:
 
 
 @dataclass(frozen=True)
+class TokenUsage:
+    prompt_tokens: int = 0
+    completion_tokens: int = 0
+    total_tokens: int = 0
+
+
+@dataclass(frozen=True)
 class ChatResult:
     content: str = ""
     tool_calls: list[ToolCall] = field(default_factory=list)
     raw: dict[str, Any] = field(default_factory=dict)
+    usage: TokenUsage = field(default_factory=TokenUsage)
 
 
 @dataclass(frozen=True)
@@ -284,7 +299,34 @@ class OpenAICompatibleClient:
             content=content,
             tool_calls=self._parse_tool_calls(message.get("tool_calls")),
             raw=payload,
+            usage=self._parse_token_usage(payload),
         )
+
+    @staticmethod
+    def _parse_token_usage(payload: dict[str, Any]) -> TokenUsage:
+        prompt_eval_count = _safe_int(payload.get("prompt_eval_count"))
+        eval_count = _safe_int(payload.get("eval_count"))
+        if prompt_eval_count or eval_count:
+            return TokenUsage(
+                prompt_tokens=prompt_eval_count,
+                completion_tokens=eval_count,
+                total_tokens=prompt_eval_count + eval_count,
+            )
+
+        usage = payload.get("usage")
+        if isinstance(usage, dict):
+            prompt_tokens = _safe_int(usage.get("prompt_tokens"))
+            completion_tokens = _safe_int(usage.get("completion_tokens"))
+            total_tokens = _safe_int(usage.get("total_tokens"))
+            if total_tokens == 0 and (prompt_tokens or completion_tokens):
+                total_tokens = prompt_tokens + completion_tokens
+            return TokenUsage(
+                prompt_tokens=prompt_tokens,
+                completion_tokens=completion_tokens,
+                total_tokens=total_tokens,
+            )
+
+        return TokenUsage()
 
     def _parse_tool_calls(self, value: Any) -> list[ToolCall]:
         if value is None:
