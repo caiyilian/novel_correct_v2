@@ -13,6 +13,7 @@ main.py — novel_correct_v2 CLI 入口
 from __future__ import annotations
 
 import argparse
+import json
 import sys
 import time
 from pathlib import Path
@@ -307,19 +308,155 @@ def batch_process(batch_dir: str, **kwargs):
         print("\n" + "-" * 55 + "\n")
 
 
+def _icon(ok: bool) -> str:
+    """Status icon safe for GBK terminals."""
+    return "[OK]" if ok else "[NG]"
+
+
+def _load_json_safe(path: Path) -> Optional[dict]:
+    """Load JSON file, return None if not found."""
+    if path.exists():
+        try:
+            with open(path, encoding="utf-8") as f:
+                return json.load(f)
+        except (json.JSONDecodeError, OSError):
+            return None
+    return None
+
+
 def show_report(novel_path: str):
-    """只查看上次纠错报告。"""
+    """
+    查看增强版纠错质量报告。
+
+    读取 checkpoint + output 目录中的报告文件，综合展示：
+    - 修正进度摘要
+    - 硬性指标达标情况（实时检测修正后文本）
+    - Token 消耗统计
+    - 符号平衡状态
+    """
+    from src.detector.pipeline import DetectorPipeline
+    from src.io.loader import TextLoader
+
+    novel_name = Path(novel_path).stem
     tracker = ProgressTracker(novel_path)
     summary = tracker.get_progress_summary()
-    if summary is None:
-        print(f"No checkpoint found for {novel_path}")
-        return
-    print(f"\nReport for {Path(novel_path).name}:")
-    print(f"  Progress: {summary.get('progress', {})}")
-    print(f"  Type distribution: {summary.get('type_summary', {})}")
-    indicators = tracker.get_indicators()
-    if indicators:
-        print(f"  Hard indicators: {indicators}")
+    indicators = tracker.get_indicators() or {}
+
+    print(f"\n{'=' * 60}")
+    print(f"  Quality Report -- {novel_name}")
+    print(f"{'=' * 60}")
+
+    # --- Section 1: Correction Summary (from checkpoint) ---
+    print(f"\n  I. Correction Summary")
+    print(f"  {'-' * 56}")
+    if summary:
+        prog = summary.get("progress", {})
+        type_sum = summary.get("type_summary", {})
+        print(f"  Total errors: {prog.get('total', '?'):>6}")
+        print(f"  Fixed:        {prog.get('fixed', '?'):>6}")
+        print(f"  Skipped:      {prog.get('skipped', '?'):>6}")
+        print(f"  Failed:       {prog.get('failed', '?'):>6}")
+        print(f"  Remaining:    {prog.get('remaining', '?'):>6}")
+        if type_sum:
+            print(f"  By type: {', '.join(f'{k}={v}' for k, v in type_sum.items())}")
+    else:
+        print(f"  (no checkpoint data)")
+
+    # --- Section 2: Hard Indicators (realtime from corrected text) ---
+    print(f"\n  II. Hard Indicators (realtime)")
+    print(f"  {'-' * 56}")
+    corrected_path = Path("output") / f"corrected_{novel_name}.txt"
+    if corrected_path.exists():
+        corrected_doc = TextLoader().load(str(corrected_path))
+        text = corrected_doc.text
+        LQ = "\u300c"
+        RQ = "\u300d"
+        left_count = text.count(LQ)
+        right_count = text.count(RQ)
+        balanced = left_count == right_count
+
+        # Non-standard symbols
+        non_std_set = set("[]\u3010\u3011\uff3b\uff3d{}\u300a\u300b\u201c\u201d")
+        non_std_count = sum(1 for ch in text if ch in non_std_set)
+
+        # Consecutive symbols check
+        consecutive_found = False
+        for i in range(1, len(text)):
+            if text[i] == text[i - 1] and text[i] in (LQ, RQ):
+                consecutive_found = True
+                break
+
+        print(f"  Quote balance: {_icon(balanced)}  "
+              f"( {left_count} vs {right_count})")
+        print(f"  Consecutive symbols: {_icon(not consecutive_found)}")
+        print(f"  Non-standard symbols: {_icon(non_std_count == 0)}  "
+              f"( {non_std_count} remaining)")
+        print(f"  Text: {len(text)} chars, {corrected_doc.line_count()} lines")
+
+        # Compare with checkpoint indicators
+        if indicators:
+            from_stored = indicators.get("quote_balanced",
+                                         indicators.get("balanced", None))
+            if from_stored is not None:
+                diff = "match" if from_stored == balanced else "MISMATCH"
+                print(f"  (checkpoint agrees: {diff})")
+    else:
+        print(f"  (corrected file not found: {corrected_path})")
+        print(f"  Run the pipeline first to generate corrected output.")
+
+    # --- Section 3: Token Usage (from output/token_usage.json) ---
+    print(f"\n  III. Token Usage")
+    print(f"  {'-' * 56}")
+    token_report = _load_json_safe(Path("output") / "token_usage.json")
+    if token_report:
+        total_tokens = token_report.get("total_tokens", 0)
+        n_records = token_report.get("total_records", 0)
+        cost = token_report.get("estimated_cost_cny", 0)
+        context_limit = token_report.get("context_limit", "?")
+
+        records = token_report.get("records", [])
+        if records:
+            usage_pcts = [r.get("context_window_pct", 0) for r in records]
+            avg_pct = sum(usage_pcts) / len(usage_pcts) if usage_pcts else 0
+            max_pct = max(usage_pcts) if usage_pcts else 0
+        else:
+            avg_pct = max_pct = 0
+
+        print(f"  Total tokens:  {total_tokens:>10,}")
+        print(f"  LLM calls:     {n_records:>10}")
+        print(f"  Avg ctx util:  {avg_pct:>9.1f}%")
+        print(f"  Max ctx util:  {max_pct:>9.1f}%")
+        print(f"  Context limit: {context_limit:>10,}")
+        print(f"  Est. cost:     CNY {cost:>8.2f}")
+    else:
+        print(f"  (no token usage data in output/token_usage.json)")
+
+    # --- Section 4: Correction Report Summary (from output/) ---
+    print(f"\n  IV. Correction Report")
+    print(f"  {'-' * 56}")
+    corr_report = _load_json_safe(Path("output") / "correction_report.json")
+    if corr_report:
+        s = corr_report.get("summary", {})
+        print(f"  Final: {s.get('fixed',0)} fixed, {s.get('skipped',0)} skipped, "
+              f"{s.get('failed',0)} failed, {s.get('remaining',0)} remaining")
+        # Print first few corrections as samples
+        corrections = corr_report.get("corrections", [])
+        skipped = corr_report.get("skipped", [])
+        if corrections:
+            print(f"  Sample corrections (last {len(corrections)}):")
+            for c in corrections[-5:]:
+                orig = c.get("original_text", "")[:40]
+                fix = c.get("fix_applied", "")[:40]
+                print(f"    {c.get('error_id','')}: {orig} -> {fix}")
+        if skipped:
+            print(f"  Skipped ({len(skipped)}):")
+            for s_item in skipped[:3]:
+                print(f"    {s_item.get('error_id','')} type={s_item.get('error_type','')}: "
+                      f"{s_item.get('skip_reason','')[:60]}")
+    else:
+        print(f"  (no correction report in output/)")
+
+    print(f"\n{'=' * 60}\n")
 
 
 # ── 入口 ──────────────────────────────────────────────
