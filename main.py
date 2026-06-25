@@ -23,6 +23,7 @@ from src.core.error_queue import ErrorQueue
 from src.core.progress import ProgressTracker
 from src.detector.pipeline import DetectorPipeline
 from src.model.client import ChatMessage, ModelConfig, OpenAICompatibleClient
+from src.model.token_tracker import TokenTracker
 from src.agent.loop import CorrectionAgent
 from src.agent.decision import CandidateDecisionAgent
 from src.verifier.agent import CorrectionVerifier
@@ -129,6 +130,7 @@ def run_pipeline(
 
     # 初始化 tracker
     tracker = ProgressTracker(novel_path)
+    token_tracker = TokenTracker()
 
     # Phase 1: 全量检测
     print("\n[2/3] Detecting errors...")
@@ -196,6 +198,7 @@ def run_pipeline(
                 verifier=CorrectionVerifier(model_client=model),
                 max_retries=max_retries,
                 max_rounds=max_rounds,
+                token_tracker=token_tracker,
             )
         else:
             agent = CandidateDecisionAgent(
@@ -207,6 +210,7 @@ def run_pipeline(
                 max_decision_retries=max_decision_retries,
                 rule_precheck=True,
                 llm_fallback=llm_decision_fallback,
+                token_tracker=token_tracker,
             )
 
         def show_progress(processed, total, result):
@@ -270,10 +274,16 @@ def run_pipeline(
     print(f"\n{'='*55}")
     print(f"  Generating report...")
     report = tracker.generate_report(error_queue=queue, output_dir="output")
+    token_report_path = Path("output") / "token_usage.json"
+    token_tracker.save(token_report_path)
     s = report["summary"]
     print(f"  Total: {s['total_errors']}, Fixed: {s['fixed']}, "
           f"Skipped: {s['skipped']}, Failed: {s['failed']}")
     print(f"  Report saved to output/correction_report.json")
+    print(
+        f"  Token usage: {token_tracker.total_tokens} tokens "
+        f"across {len(token_tracker.records)} calls"
+    )
 
     # 保存纠错后的小说全文
     novel_name = Path(novel_path).stem
