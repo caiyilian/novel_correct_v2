@@ -21,6 +21,7 @@ from src.core.text import TextDoc
 from src.detector.pipeline import DetectorPipeline
 from src.model.client import ChatMessage, OpenAICompatibleClient
 from src.model.protocol import ToolSpec
+from src.model.token_tracker import TokenTracker
 
 
 NON_STANDARD_SYMBOLS = set('[]【】［］{}《》“”"')
@@ -49,6 +50,7 @@ class CandidateDecisionAgent:
         candidate_generator: Optional[CandidateGenerator] = None,
         rule_precheck: bool = False,
         llm_fallback: bool = True,
+        token_tracker: Optional[TokenTracker] = None,
     ):
         self._text = text_doc
         self._queue = error_queue
@@ -60,6 +62,7 @@ class CandidateDecisionAgent:
         self._rule_precheck = rule_precheck
         self._llm_fallback = llm_fallback
         self._pipeline = DetectorPipeline() if rule_precheck else None
+        self._token_tracker = token_tracker
 
     def run_all(self, progress_callback: Optional[Callable] = None) -> List[AgentResult]:
         results: List[AgentResult] = []
@@ -156,6 +159,13 @@ class CandidateDecisionAgent:
                     temperature=0.0,
                     max_tokens=8192,
                 )
+                if self._token_tracker:
+                    self._token_tracker.record(
+                        source="candidate_decision",
+                        error_id=error.error_id,
+                        error_type=error.error_type,
+                        usage=response.usage,
+                    )
             except Exception as exc:
                 result.reason = f"Model call failed: {exc}"
                 break
