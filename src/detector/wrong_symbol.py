@@ -51,6 +51,9 @@ class WrongSymbolDetector(BaseDetector):
 
     只记录位置和上下文，不直接替换。由 LLM 判断该符号在上下文中
     是否真的是对话包裹符。
+
+    Stage 19b: 取消「」内部的跳过。所有非标准符号都标记，
+    但通过 is_nested=True 区分（嵌套的降为低优先级）。
     """
 
     name = "wrong_symbol_detector"
@@ -71,9 +74,8 @@ class WrongSymbolDetector(BaseDetector):
             elif ch == "」":
                 in_bracket_depth = max(0, in_bracket_depth - 1)
                 continue
-            # 在「」内部的内容跳过检测（弯引号/方括号可能是正常嵌套）
-            if in_bracket_depth > 0:
-                continue
+            # 判断当前符号是否在「」内部（Stage 19b: 不再跳过，只标记 is_nested）
+            is_nested = in_bracket_depth > 0
 
             # 处理 ASCII 直引号（需要成对匹配）
             if ch == '"':
@@ -89,7 +91,7 @@ class WrongSymbolDetector(BaseDetector):
                     content = full_text[open_offset + 1:close_offset]
                     if self._looks_like_dialogue(content):
                         errors.extend(self._make_ascii_dq_errors(
-                            text, full_text, open_offset, close_offset, content))
+                            text, full_text, open_offset, close_offset, content, is_nested=is_nested))
                 continue
 
             # 处理单个符号
@@ -97,7 +99,7 @@ class WrongSymbolDetector(BaseDetector):
                 # 跳过已知的成对括号内的内容（避免重复检测同一个括号两次）
                 # 检查这个符号前后是否可能是对话
                 if not self._should_skip(text, full_text, offset, ch):
-                    errors.append(self._make_error(text, full_text, offset, ch))
+                    errors.append(self._make_error(text, full_text, offset, ch, is_nested=is_nested))
 
         return errors
 
@@ -146,7 +148,7 @@ class WrongSymbolDetector(BaseDetector):
         return False
 
     def _make_error(self, text_doc: TextDoc, full_text: str,
-                    offset: int, ch: str) -> ErrorRecord:
+                    offset: int, ch: str, is_nested: bool = False) -> ErrorRecord:
         """为单个非标准符号创建 ErrorRecord。"""
         line_num = text_doc.offset_to_line(offset)
         context_start = max(0, offset - 80)
@@ -159,11 +161,12 @@ class WrongSymbolDetector(BaseDetector):
             context_before=full_text[offset - 80:offset],
             context_after=full_text[offset + 1:offset + 81],
             original_text=full_text[max(0, offset - 3):offset + 4],
+            is_nested=is_nested,
         )
 
     def _make_ascii_dq_errors(self, text_doc: TextDoc, full_text: str,
                                open_offset: int, close_offset: int,
-                               content: str) -> List[ErrorRecord]:
+                               content: str, is_nested: bool = False) -> List[ErrorRecord]:
         """为一对 ASCII 引号创建 ErrorRecord。"""
         errors: List[ErrorRecord] = []
 
@@ -176,6 +179,7 @@ class WrongSymbolDetector(BaseDetector):
                 context_before=full_text[offset - 80:offset],
                 context_after=full_text[offset + 1:offset + 81],
                 original_text=full_text[max(0, offset - 3):offset + 4],
+                is_nested=is_nested,
             ))
 
         return errors
