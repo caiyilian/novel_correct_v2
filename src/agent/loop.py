@@ -19,6 +19,7 @@ from src.model.client import (
     ChatMessage,
     OpenAICompatibleClient,
 )
+from src.model.token_tracker import TokenTracker
 from src.agent.tools import CorrectionToolset
 from src.agent.prompts import build_system_prompt, build_user_prompt
 
@@ -54,6 +55,7 @@ class CorrectionAgent:
         verifier: Optional[Any] = None,
         max_retries: int = 3,
         max_rounds: int = 5,
+        token_tracker: Optional[TokenTracker] = None,
     ):
         self._text = text_doc
         self._queue = error_queue
@@ -62,6 +64,7 @@ class CorrectionAgent:
         self._verifier = verifier  # Stage 14 实现，暂时为 None
         self._max_retries = max_retries
         self._max_rounds = max_rounds
+        self._token_tracker = token_tracker
 
         # 工具集（每次处理新错误时重新创建）
         self._tools: Optional[CorrectionToolset] = None
@@ -190,6 +193,13 @@ class CorrectionAgent:
                     temperature=0.0,
                     max_tokens=8192,
                 )
+                if self._token_tracker:
+                    self._token_tracker.record(
+                        source="correction_agent",
+                        error_id=error.error_id,
+                        error_type=error.error_type,
+                        usage=response.usage,
+                    )
             except Exception as e:
                 result.reason = f"Model call failed: {e}"
                 result.duration = time.time() - start_time
