@@ -122,9 +122,22 @@ class CorrectionVerifier:
                     f"Bracket count decreased: {orig_total_brackets} → {mod_total_brackets}"
                 )
 
-        # 3. 检查修改后的文本是否还有连续符号错误
-        if self._has_consecutive_brackets(modified_text):
-            issues.append("Modified text still has consecutive brackets")
+        # 3. 检查修改不应引入新的连续符号错误
+        orig_consecutive = self._count_consecutive_brackets(original_text)
+        mod_consecutive = self._count_consecutive_brackets(modified_text)
+        if (
+            error.error_type == "consecutive"
+            and mod_consecutive >= orig_consecutive
+            and orig_consecutive > 0
+        ):
+            issues.append(
+                f"Consecutive brackets not reduced: {orig_consecutive} -> {mod_consecutive}"
+            )
+        elif mod_consecutive > orig_consecutive:
+            issues.append(
+                f"Modified text introduced consecutive brackets: "
+                f"{orig_consecutive} -> {mod_consecutive}"
+            )
 
         # 4. 验证错误类型的特定检查
         type_issue = self._check_by_type(error, original_text, modified_text)
@@ -148,13 +161,19 @@ class CorrectionVerifier:
     @staticmethod
     def _has_consecutive_brackets(text: str) -> bool:
         """检查文本中是否有连续相同的「」符号。"""
+        return CorrectionVerifier._count_consecutive_brackets(text) > 0
+
+    @staticmethod
+    def _count_consecutive_brackets(text: str) -> int:
+        """统计文本中连续相同「」符号的次数。"""
         last = "」"
+        count = 0
         for ch in text:
             if ch in ("「", "」"):
                 if ch == last:
-                    return True
+                    count += 1
                 last = ch
-        return False
+        return count
 
     def _check_by_type(
         self,
