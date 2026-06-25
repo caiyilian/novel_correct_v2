@@ -23,6 +23,9 @@ from src.model.client import ChatMessage, OpenAICompatibleClient
 from src.model.protocol import ToolSpec
 
 
+NON_STANDARD_SYMBOLS = set('[]【】［］{}《》“”"')
+
+
 @dataclass(frozen=True)
 class CandidateDecision:
     """Parsed model decision for a generated candidate list."""
@@ -101,11 +104,24 @@ class CandidateDecisionAgent:
 
         if self._rule_precheck:
             selected, before_total, after_total = self._select_reducing_candidate(candidates)
+            reason_prefix = "规则预检选择候选"
+            if selected is None:
+                selected, before_total, after_total = self._select_standardizing_candidate(
+                    error, candidates, before_total)
+                reason_prefix = "规则标准化选择候选"
+            if selected is None:
+                selected, before_total, after_total = self._select_unpaired_balancing_candidate(
+                    error, candidates, before_total)
+                reason_prefix = "规则配平孤立引号选择候选"
+            if selected is None:
+                selected, before_total, after_total = self._select_balanced_quote_candidate(
+                    error, candidates, before_total)
+                reason_prefix = "规则平衡拆分选择候选"
             if selected is not None:
                 applied = self._apply_candidate(
                     error,
                     selected,
-                    f"规则预检选择候选，检测错误数 {before_total} -> {after_total}",
+                    f"{reason_prefix}，检测错误数 {before_total} -> {after_total}",
                 )
                 applied.retry_count = 0
                 applied.tool_calls = [
@@ -382,6 +398,140 @@ class CandidateDecisionAgent:
                 best = candidate
                 best_total = after_total
         return best, before_total, best_total
+
+    def _select_balanced_quote_candidate(
+        self,
+        error: ErrorRecord,
+        candidates: list[CorrectionCandidate],
+        before_total: int,
+    ) -> tuple[Optional[CorrectionCandidate], int, int]:
+        if self._pipeline is None or error.error_type != "long_dialogue":
+            return None, before_total, before_total
+
+        best: Optional[CorrectionCandidate] = None
+        best_total = before_total
+        best_span = 10**9
+        for candidate in candidates:
+            original = candidate.original(self._text)
+            left_delta = candidate.replacement.count("「") - original.count("「")
+            right_delta = candidate.replacement.count("」") - original.count("」")
+            if left_delta <= 0 or left_delta != right_delta:
+                continue
+
+            candidate_text = TextDoc(self._text.text)
+            candidate_text.replace_range(
+                candidate.start_offset,
+                candidate.end_offset,
+                candidate.replacement,
+            )
+            after_total = self._detected_total(candidate_text)
+            span = candidate.end_offset - candidate.start_offset
+            if best is None or after_total < best_total or (
+                after_total == best_total and span < best_span
+            ):
+                best = candidate
+                best_total = after_total
+                best_span = span
+
+        return best, before_total, best_total
+
+    def _select_standardizing_candidate(
+        self,
+        error: ErrorRecord,
+        candidates: list[CorrectionCandidate],
+        before_total: int,
+    ) -> tuple[Optional[CorrectionCandidate], int, int]:
+        if self._pipeline is None or error.error_type != "wrong_symbol":
+            return None, before_total, before_total
+
+        best: Optional[CorrectionCandidate] = None
+        best_total = before_total
+        best_span = 10**9
+        for candidate in candidates:
+            original = candidate.original(self._text)
+            before_non_standard = self._non_standard_count(original)
+            after_non_standard = self._non_standard_count(candidate.replacement)
+            if before_non_standard == 0 or after_non_standard >= before_non_standard:
+                continue
+
+            candidate_text = TextDoc(self._text.text)
+            candidate_text.replace_range(
+                candidate.start_offset,
+                candidate.end_offset,
+                candidate.replacement,
+            )
+            span = candidate.end_offset - candidate.start_offset
+            after_total = self._detected_total(candidate_text)
+            is_single_symbol_standardization = (
+                span == 1 and candidate.replacement in {"「", "」"}
+            )
+            if after_total > before_total and not is_single_symbol_standardization:
+                continue
+
+            if best is None or after_total < best_total or (
+                after_total == best_total and span < best_span
+            ):
+                best = candidate
+                best_total = after_total
+                best_span = span
+
+        return best, before_total, best_total
+
+    def _select_unpaired_balancing_candidate(
+        self,
+        error: ErrorRecord,
+        candidates: list[CorrectionCandidate],
+        before_total: int,
+    ) -> tuple[Optional[CorrectionCandidate], int, int]:
+        if self._pipeline is None or error.error_type != "unpaired":
+            return None, before_total, before_total
+
+        before_balance = self._quote_balance_score(self._text.text)
+        best: Optional[CorrectionCandidate] = None
+        best_total = before_total
+        best_balance = before_balance
+        best_span = 10**9
+        for candidate in candidates:
+            original = candidate.original(self._text)
+            if (
+                self._non_standard_count(candidate.replacement)
+                > self._non_standard_count(original)
+            ):
+                continue
+
+            candidate_text = TextDoc(self._text.text)
+            candidate_text.replace_range(
+                candidate.start_offset,
+                candidate.end_offset,
+                candidate.replacement,
+            )
+            balance = self._quote_balance_score(candidate_text.text)
+            if balance >= before_balance:
+                continue
+
+            after_total = self._detected_total(candidate_text)
+            span = candidate.end_offset - candidate.start_offset
+            if best is None or balance < best_balance or (
+                balance == best_balance
+                and (
+                    after_total < best_total
+                    or (after_total == best_total and span < best_span)
+                )
+            ):
+                best = candidate
+                best_total = after_total
+                best_balance = balance
+                best_span = span
+
+        return best, before_total, best_total
+
+    @staticmethod
+    def _non_standard_count(text: str) -> int:
+        return sum(1 for ch in text if ch in NON_STANDARD_SYMBOLS)
+
+    @staticmethod
+    def _quote_balance_score(text: str) -> int:
+        return abs(text.count("「") - text.count("」"))
 
     def _detected_total(self, text: TextDoc) -> int:
         if self._pipeline is None:

@@ -43,9 +43,9 @@ class ErrorQueue:
         if merge_target is not None:
             # 合并到已有记录：保留更严重的问题
             existing = self._errors[merge_target]
-            # 优先级：wrong_symbol > consecutive > unpaired > long_dialogue > missing_bracket
+            # 优先级：wrong_symbol > unpaired > consecutive > long_dialogue > missing_bracket
             priority = {
-                "wrong_symbol": 0, "consecutive": 1, "unpaired": 2,
+                "wrong_symbol": 0, "unpaired": 1, "consecutive": 2,
                 "long_dialogue": 3, "missing_bracket": 4,
             }
             if priority.get(record.error_type, 99) < priority.get(existing.error_type, 99):
