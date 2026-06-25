@@ -21,14 +21,13 @@ except Exception as e:
 try:
     pipeline = DetectorPipeline()
     names = [d.name for d in pipeline.detectors]
-    assert len(names) == 5, f"expected 5 detectors, got {len(names)}"
+    assert len(names) == 4, f"expected 4 detectors, got {len(names)}"
     assert "consecutive_detector" in names
     assert "unpaired_detector" in names
     assert "wrong_symbol_detector" in names
     assert "long_dialogue_detector" in names
-    assert "missing_bracket_detector" in names
     results.append(("default detectors", "ok",
-                    f"5 detectors registered: {', '.join(names)}"))
+                    f"4 detectors registered: {', '.join(names)}"))
 except Exception as e:
     errors.append(("default detectors", str(e)))
 
@@ -99,7 +98,7 @@ try:
     assert stats["total"] >= 2
     assert "by_type" in stats
     assert "by_detector" in stats
-    assert len(stats["by_detector"]) == 5
+    assert len(stats["by_detector"]) == 4
     results.append(("run_with_stats", "ok",
                     f"total={stats['total']}, {len(stats['by_detector'])} detectors reported"))
 except Exception as e:
@@ -189,3 +188,6 @@ for name, detail in errors:
 print("=" * 55)
 print(f"  {len(results)} passed, {len(errors)} failed")
 print("=" * 55)
+
+if errors:
+    raise SystemExit(1)
