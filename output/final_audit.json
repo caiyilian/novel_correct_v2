@@ -1,0 +1,393 @@
+{
+  "schema_version": 1,
+  "enforced_volumes": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "pass": false,
+  "totals": {
+    "corrected_left": 12732,
+    "corrected_right": 12732,
+    "answer_left": 12776,
+    "answer_right": 12776,
+    "bracket_left": 0,
+    "bracket_right": 0,
+    "gap_left": 44,
+    "gap_right": 44
+  },
+  "volumes": [
+    {
+      "volume": 1,
+      "enforced": false,
+      "corrected_path": "output\\corrected_第1卷.txt",
+      "answer_path": "data\\answer\\answer_第1卷.txt",
+      "corrected": {
+        "left": 1346,
+        "right": 1346
+      },
+      "answer": {
+        "left": 1349,
+        "right": 1349
+      },
+      "gap": {
+        "left": 3,
+        "right": 3
+      },
+      "quote_balanced": true,
+      "answer_balanced": true,
+      "paragraph_imbalance_count": 57,
+      "brackets": {
+        "left_square": 0,
+        "right_square": 0
+      },
+      "empty_dialogue_count": 0,
+      "nonstandard_symbols": {},
+      "manual_evidence": [],
+      "whitelist_evidence": [],
+      "blocking_reasons": [],
+      "status": "frozen_reference"
+    },
+    {
+      "volume": 2,
+      "enforced": true,
+      "corrected_path": "output\\corrected_第2卷.txt",
+      "answer_path": "data\\answer\\answer_第2卷.txt",
+      "corrected": {
+        "left": 1425,
+        "right": 1425
+      },
+      "answer": {
+        "left": 1425,
+        "right": 1425
+      },
+      "gap": {
+        "left": 0,
+        "right": 0
+      },
+      "quote_balanced": true,
+      "answer_balanced": true,
+      "paragraph_imbalance_count": 376,
+      "brackets": {
+        "left_square": 0,
+        "right_square": 0
+      },
+      "empty_dialogue_count": 0,
+      "nonstandard_symbols": {},
+      "manual_evidence": [
+        "output\\vol2_bracket_manual_queue_fix5.json"
+      ],
+      "whitelist_evidence": [
+        "output\\vol2_nonstandard_whitelist_fix6.json",
+        "output\\vol2_nonstandard_whitelist_fix7.json"
+      ],
+      "blocking_reasons": [
+        "paragraph_imbalance"
+      ],
+      "status": "fail_with_manual_evidence"
+    },
+    {
+      "volume": 3,
+      "enforced": true,
+      "corrected_path": "output\\corrected_第3卷.txt",
+      "answer_path": "data\\answer\\answer_第3卷.txt",
+      "corrected": {
+        "left": 1183,
+        "right": 1183
+      },
+      "answer": {
+        "left": 1215,
+        "right": 1215
+      },
+      "gap": {
+        "left": 32,
+        "right": 32
+      },
+      "quote_balanced": true,
+      "answer_balanced": true,
+      "paragraph_imbalance_count": 0,
+      "brackets": {
+        "left_square": 0,
+        "right_square": 0
+      },
+      "empty_dialogue_count": 0,
+      "nonstandard_symbols": {
+        "“": 5,
+        "”": 2
+      },
+      "manual_evidence": [
+        "output\\vol3_manual_review_queue.json",
+        "output\\vol3_manual_review_queue.md"
+      ],
+      "whitelist_evidence": [],
+      "blocking_reasons": [
+        "quote_count_gap"
+      ],
+      "status": "fail_with_manual_evidence"
+    },
+    {
+      "volume": 4,
+      "enforced": true,
+      "corrected_path": "output\\corrected_第4卷.txt",
+      "answer_path": "data\\answer\\answer_第4卷.txt",
+      "corrected": {
+        "left": 1561,
+        "right": 1561
+      },
+      "answer": {
+        "left": 1561,
+        "right": 1561
+      },
+      "gap": {
+        "left": 0,
+        "right": 0
+      },
+      "quote_balanced": true,
+      "answer_balanced": true,
+      "paragraph_imbalance_count": 2,
+      "brackets": {
+        "left_square": 0,
+        "right_square": 0
+      },
+      "empty_dialogue_count": 0,
+      "nonstandard_symbols": {
+        "《": 1,
+        "》": 2
+      },
+      "manual_evidence": [],
+      "whitelist_evidence": [
+        "output\\vol4_nonstandard_whitelist_fix8.json"
+      ],
+      "blocking_reasons": [
+        "paragraph_imbalance"
+      ],
+      "status": "fail"
+    },
+    {
+      "volume": 5,
+      "enforced": true,
+      "corrected_path": "output\\corrected_第5卷.txt",
+      "answer_path": "data\\answer\\answer_第5卷.txt",
+      "corrected": {
+        "left": 1455,
+        "right": 1455
+      },
+      "answer": {
+        "left": 1459,
+        "right": 1459
+      },
+      "gap": {
+        "left": 4,
+        "right": 4
+      },
+      "quote_balanced": true,
+      "answer_balanced": true,
+      "paragraph_imbalance_count": 0,
+      "brackets": {
+        "left_square": 0,
+        "right_square": 0
+      },
+      "empty_dialogue_count": 0,
+      "nonstandard_symbols": {},
+      "manual_evidence": [
+        "output\\vol5_source_missing_gap_queue_fix10_5.json",
+        "output\\vol5_source_missing_gap_queue_fix10_5.md"
+      ],
+      "whitelist_evidence": [],
+      "blocking_reasons": [
+        "quote_count_gap"
+      ],
+      "status": "fail_with_manual_evidence"
+    },
+    {
+      "volume": 6,
+      "enforced": true,
+      "corrected_path": "output\\corrected_第6卷.txt",
+      "answer_path": "data\\answer\\answer_第6卷.txt",
+      "corrected": {
+        "left": 1201,
+        "right": 1201
+      },
+      "answer": {
+        "left": 1202,
+        "right": 1202
+      },
+      "gap": {
+        "left": 1,
+        "right": 1
+      },
+      "quote_balanced": true,
+      "answer_balanced": true,
+      "paragraph_imbalance_count": 0,
+      "brackets": {
+        "left_square": 0,
+        "right_square": 0
+      },
+      "empty_dialogue_count": 0,
+      "nonstandard_symbols": {
+        "《": 2,
+        "》": 2
+      },
+      "manual_evidence": [
+        "output\\vol6_gap_manual_queue_fix9.json",
+        "output\\vol6_gap_manual_queue_fix9.md"
+      ],
+      "whitelist_evidence": [
+        "output\\vol6_nonstandard_whitelist_fix9.json"
+      ],
+      "blocking_reasons": [
+        "quote_count_gap"
+      ],
+      "status": "fail_with_manual_evidence"
+    },
+    {
+      "volume": 7,
+      "enforced": true,
+      "corrected_path": "output\\corrected_第7卷.txt",
+      "answer_path": "data\\answer\\answer_第7卷.txt",
+      "corrected": {
+        "left": 1172,
+        "right": 1172
+      },
+      "answer": {
+        "left": 1176,
+        "right": 1176
+      },
+      "gap": {
+        "left": 4,
+        "right": 4
+      },
+      "quote_balanced": true,
+      "answer_balanced": true,
+      "paragraph_imbalance_count": 0,
+      "brackets": {
+        "left_square": 0,
+        "right_square": 0
+      },
+      "empty_dialogue_count": 0,
+      "nonstandard_symbols": {
+        "《": 1,
+        "》": 1
+      },
+      "manual_evidence": [
+        "output\\vol7_manual_review_queue_fix10_7.json",
+        "output\\vol7_manual_review_queue_fix10_7.md"
+      ],
+      "whitelist_evidence": [
+        "output\\vol7_nonstandard_whitelist_fix10_7.json"
+      ],
+      "blocking_reasons": [
+        "quote_count_gap"
+      ],
+      "status": "fail_with_manual_evidence"
+    },
+    {
+      "volume": 8,
+      "enforced": true,
+      "corrected_path": "output\\corrected_第8卷.txt",
+      "answer_path": "data\\answer\\answer_第8卷.txt",
+      "corrected": {
+        "left": 930,
+        "right": 930
+      },
+      "answer": {
+        "left": 930,
+        "right": 930
+      },
+      "gap": {
+        "left": 0,
+        "right": 0
+      },
+      "quote_balanced": true,
+      "answer_balanced": true,
+      "paragraph_imbalance_count": 0,
+      "brackets": {
+        "left_square": 0,
+        "right_square": 0
+      },
+      "empty_dialogue_count": 0,
+      "nonstandard_symbols": {},
+      "manual_evidence": [],
+      "whitelist_evidence": [],
+      "blocking_reasons": [],
+      "status": "pass"
+    },
+    {
+      "volume": 9,
+      "enforced": true,
+      "corrected_path": "output\\corrected_第9卷.txt",
+      "answer_path": "data\\answer\\answer_第9卷.txt",
+      "corrected": {
+        "left": 997,
+        "right": 997
+      },
+      "answer": {
+        "left": 997,
+        "right": 997
+      },
+      "gap": {
+        "left": 0,
+        "right": 0
+      },
+      "quote_balanced": true,
+      "answer_balanced": true,
+      "paragraph_imbalance_count": 0,
+      "brackets": {
+        "left_square": 0,
+        "right_square": 0
+      },
+      "empty_dialogue_count": 0,
+      "nonstandard_symbols": {},
+      "manual_evidence": [],
+      "whitelist_evidence": [],
+      "blocking_reasons": [],
+      "status": "pass"
+    },
+    {
+      "volume": 10,
+      "enforced": true,
+      "corrected_path": "output\\corrected_第10卷.txt",
+      "answer_path": "data\\answer\\answer_第10卷.txt",
+      "corrected": {
+        "left": 1462,
+        "right": 1462
+      },
+      "answer": {
+        "left": 1462,
+        "right": 1462
+      },
+      "gap": {
+        "left": 0,
+        "right": 0
+      },
+      "quote_balanced": true,
+      "answer_balanced": true,
+      "paragraph_imbalance_count": 0,
+      "brackets": {
+        "left_square": 0,
+        "right_square": 0
+      },
+      "empty_dialogue_count": 0,
+      "nonstandard_symbols": {},
+      "manual_evidence": [],
+      "whitelist_evidence": [],
+      "blocking_reasons": [],
+      "status": "pass"
+    }
+  ],
+  "failure_count": 6,
+  "failed_volumes": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ]
+}
