@@ -41,7 +41,101 @@ def strip_punct(s: str) -> str:
     return re.sub(r"[？?!！·.。：:、，,～~…—‥\s\"\'\\n\\r]", "", s)
 
 
-def report(corrected_path: str, answer_path: str, json_path: Optional[str] = None) -> dict:
+def text_similarity(a: str, b: str) -> float:
+    """字符集重叠率: overlap / max(len(a), len(b))"""
+    if not a and not b:
+        return 1.0
+    if not a or not b:
+        return 0.0
+    sa, sb = set(a), set(b)
+    overlap = len(sa & sb)
+    larger = max(len(sa), len(sb))
+    return overlap / larger
+
+
+def find_align_diffs(corr: List[str], ans: List[str],
+                     match_threshold: float = 0.50) -> List[dict]:
+    """
+    双指针对话分段差异分析。
+
+    对两段对话列表做结构对齐：
+    - 内容相似 → 指针同步推进（i++, j++）
+    - corr[i]+corr[i+1] ≈ ans[j] → corrected_split
+    - corr[i] ≈ ans[j]+ans[j+1] → answer_split
+    - 尾部多出 → extra
+    """
+    diffs: List[dict] = []
+    i = j = 0
+
+    while i < len(corr) and j < len(ans):
+        c_norm = strip_punct(corr[i][1:-1])
+        a_norm = strip_punct(ans[j][1:-1])
+        sim = text_similarity(c_norm, a_norm)
+
+        if sim >= match_threshold:
+            i += 1
+            j += 1
+            continue
+
+        # Try corrected_split: corr[i] + corr[i+1] ≈ ans[j]
+        if i + 1 < len(corr):
+            merged_norm = strip_punct(corr[i][1:-1] + corr[i + 1][1:-1])
+            sim_m = text_similarity(merged_norm, a_norm)
+            if sim_m >= match_threshold:
+                diffs.append({
+                    "type": "corrected_split",
+                    "corrected_idx": i,
+                    "answer_idx": j,
+                    "corrected": [corr[i][1:-1], corr[i + 1][1:-1]],
+                    "answer": ans[j][1:-1],
+                    "similarity": round(sim_m, 3),
+                })
+                i += 2
+                j += 1
+                continue
+
+        # Try answer_split: corr[i] ≈ ans[j] + ans[j+1]
+        if j + 1 < len(ans):
+            merged_norm = strip_punct(ans[j][1:-1] + ans[j + 1][1:-1])
+            sim_m = text_similarity(merged_norm, c_norm)
+            if sim_m >= match_threshold:
+                diffs.append({
+                    "type": "answer_split",
+                    "corrected_idx": i,
+                    "answer_idx": j,
+                    "corrected": corr[i][1:-1],
+                    "answer": [ans[j][1:-1], ans[j + 1][1:-1]],
+                    "similarity": round(sim_m, 3),
+                })
+                i += 1
+                j += 2
+                continue
+
+        # No match — content differs but structurally parallel, advance both
+        i += 1
+        j += 1
+
+    # Tail extras
+    while i < len(corr):
+        diffs.append({
+            "type": "corrected_extra",
+            "corrected_idx": i,
+            "corrected": corr[i][1:-1],
+        })
+        i += 1
+    while j < len(ans):
+        diffs.append({
+            "type": "answer_extra",
+            "answer_idx": j,
+            "answer": ans[j][1:-1],
+        })
+        j += 1
+
+    return diffs
+
+
+def report(corrected_path: str, answer_path: str, json_path: Optional[str] = None,
+           align: bool = False) -> dict:
     corr_text = load_text(corrected_path)
     ans_text = load_text(answer_path)
     corr = extract_dialogues(corr_text)
@@ -129,6 +223,41 @@ def report(corrected_path: str, answer_path: str, json_path: Optional[str] = Non
         for i in range(len(ans), len(corr)):
             extra_dialogues.append(corr[i])
 
+    # 分段差异分析（仅 --align）
+    alignment_diffs: List[dict] = []
+    if align:
+        alignment_diffs = find_align_diffs(corr, ans)
+
+        print(f"\n  -- Alignment Analysis --")
+        print(f"  Total alignment diffs: {len(alignment_diffs)}")
+        print()
+
+        # 按类型统计
+        type_counts: dict = {}
+        for d in alignment_diffs:
+            type_counts[d["type"]] = type_counts.get(d["type"], 0) + 1
+        for t, c in sorted(type_counts.items()):
+            print(f"    {t}: {c}")
+        print()
+
+        # 输出前 15 条
+        print(f"  Alignment diffs (first 15):")
+        for idx, d in enumerate(alignment_diffs[:15]):
+            t = d["type"]
+            if t == "corrected_split":
+                print(f"  [{idx+1}] 修正分离(2段=答案1段) 修正#{d['corrected_idx']+1}")
+                print(f"        修正: {'  +  '.join(d['corrected'])}")
+                print(f"        答案: {d['answer']}")
+            elif t == "answer_split":
+                print(f"  [{idx+1}] 答案分离(答案2段=修正1段) 答案#{d['answer_idx']+1}")
+                print(f"        修正: {d['corrected']}")
+                print(f"        答案: {'  +  '.join(d['answer'])}")
+            elif t == "corrected_extra":
+                print(f"  [{idx+1}] 修正多一段 #{d['corrected_idx']+1}: {d['corrected'][:60]}")
+            elif t == "answer_extra":
+                print(f"  [{idx+1}] 答案多一段 #{d['answer_idx']+1}: {d['answer'][:60]}")
+            print()
+
     data = {
         "corrected_total": len(corr),
         "corrected_empty": empty_c,
@@ -142,6 +271,7 @@ def report(corrected_path: str, answer_path: str, json_path: Optional[str] = Non
         "total_compared": n,
         "empty_dialogues": empty_positions,
         "extra_dialogues": extra_dialogues,
+        "alignment_diffs": alignment_diffs if align else [],
     }
 
     if json_path:
@@ -158,6 +288,7 @@ if __name__ == "__main__":
     parser.add_argument("corrected", help="corrected file path")
     parser.add_argument("answer", help="answer file path")
     parser.add_argument("--json", default="", help="output JSON path")
+    parser.add_argument("--align", action="store_true", help="run alignment analysis")
     args = parser.parse_args()
 
-    report(args.corrected, args.answer, json_path=args.json or None)
+    report(args.corrected, args.answer, json_path=args.json or None, align=args.align)
