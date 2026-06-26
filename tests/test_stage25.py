@@ -169,6 +169,49 @@ except Exception as exc:
     errors.append(f"  [FAIL] valid apply: {exc}")
 
 
+# === Test 6: invalid candidate_id should be fatal ===
+try:
+    import subprocess
+
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".txt", delete=False, encoding="utf-8") as f:
+        f.write("\u300c\u4f60\u597d\u5417?\u300d")
+        text_path = f.name
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".jsonl", delete=False, encoding="utf-8") as f:
+        f.write(json.dumps({
+            "type": "question_mark", "offset": 4, "original": "?", "candidate": "\uff1f",
+        }) + "\n")
+        cand_path = f.name
+    with tempfile.NamedTemporaryFile(mode="w", suffix=".jsonl", delete=False, encoding="utf-8") as f:
+        # decision=apply but candidate_id=bad_id -> should be fatal
+        f.write(json.dumps({"decision": "apply", "candidate_id": "bad_id", "case_id": "test"}) + "\n")
+        dec_path = f.name
+    out_path = tempfile.mktemp(suffix=".txt")
+
+    result = subprocess.run(
+        [sys.executable, "tools/apply_polish_decisions.py",
+         text_path, "--candidates", cand_path,
+         "--decisions", dec_path, "--output", out_path],
+        capture_output=True, text=True, cwd=os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    )
+    check("invalid candidate_id: returns non-zero", result.returncode != 0)
+    check("invalid candidate_id: prints error", "Error" in result.stderr or "invalid" in result.stderr.lower())
+
+    # Output file should NOT exist or be unmodified
+    if os.path.exists(out_path):
+        with open(out_path, "r", encoding="utf-8") as f:
+            output = f.read()
+        check("invalid candidate_id: output preserves ?",
+              "\uff1f" not in output or "?" in output)
+
+    os.unlink(text_path)
+    os.unlink(cand_path)
+    os.unlink(dec_path)
+    if os.path.exists(out_path):
+        os.unlink(out_path)
+except Exception as exc:
+    errors.append(f"  [FAIL] invalid candidate_id: {exc}")
+
+
 # === Summary ===
 print()
 for r in results:

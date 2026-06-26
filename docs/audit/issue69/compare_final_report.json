@@ -1,0 +1,230 @@
+{
+  "corrected_total": 1345,
+  "corrected_empty": 0,
+  "corrected_nonempty": 1345,
+  "answer_total": 1349,
+  "answer_empty": 0,
+  "answer_nonempty": 1349,
+  "exact_matches": 252,
+  "punct_differences": 43,
+  "content_differences": 1050,
+  "total_compared": 1345,
+  "empty_dialogues": [],
+  "extra_dialogues": [],
+  "alignment_diffs": [
+    {
+      "type": "answer_split",
+      "corrected_idx": 45,
+      "answer_idx": 45,
+      "corrected": "喂！",
+      "answer": [
+        "……",
+        "喂！"
+      ],
+      "similarity": 1.0
+    },
+    {
+      "type": "corrected_split",
+      "corrected_idx": 97,
+      "answer_idx": 98,
+      "corrected": [
+        "不，不可能。",
+        "你说你是赫萝，对吧？"
+      ],
+      "answer": "你说你是赫萝，对吧？",
+      "similarity": 0.7
+    },
+    {
+      "type": "corrected_split",
+      "corrected_idx": 151,
+      "answer_idx": 151,
+      "corrected": [
+        "不过，还是有例外。",
+        "如果附近有比最后收割的熟麦还要大量的麦子，咱就可以在麦子之间移动，而不用担心被人类看到，村里的人说过吧？太贪心收割的话，就会追不到丰收之神。而让它逃跑了。"
+      ],
+      "answer": "如果附近有比最后收割的熟麦还要大量的麦子，咱就可以在麦子之间移动，而不用担心被人类看到。村里的人说过呗？太贪心收割的话，就会追不到丰收之神，而让祂逃跑了。",
+      "similarity": 0.912
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 174,
+      "answer_idx": 173,
+      "corrected": "不过，咱想耍先旅行。难得人在远离故乡的异国，而且过了这么漫长的岁月，许多人事物应该都变了，藉机增广见闻也是一件好事。",
+      "answer": [
+        "出生的故乡",
+        "不过，咱想要先旅行。难得人在远离故乡的异国，而且过了这么漫长的岁月，许多人事物应该都变了，借机增广见闻也是一件好事。"
+      ],
+      "similarity": 0.918
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 218,
+      "answer_idx": 218,
+      "corrected": "就算是狼，也会整理自己的毛。汝是长得挺不错，但好歹要把自己梳洗乾净些。",
+      "answer": [
+        "你说什么！",
+        "就算是狼，也会整理自己的毛。汝是长得挺不错，但好歹要把自己梳洗干净些。"
+      ],
+      "similarity": 0.844
+    },
+    {
+      "type": "corrected_split",
+      "corrected_idx": 231,
+      "answer_idx": 232,
+      "corrected": [
+        "这…：真是非常奇妙啊。",
+        "我住在一个叫做佩连佐的城镇。我的葡萄园从没有采用过这么奇妙的方法来买卖葡萄，不知道这样会不会有问题啊？"
+      ],
+      "answer": "我住在一个叫做佩连佐的城镇，我的葡萄园从没采用过这么奇妙的方法来买卖葡萄，不知道这样会不会有问题啊？",
+      "similarity": 0.907
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 308,
+      "answer_idx": 308,
+      "corrected": "既然你没变，故乡也一定没变啊。",
+      "answer": [
+        "……",
+        "既然你没变，故乡也一定没变啊。"
+      ],
+      "similarity": 1.0
+    },
+    {
+      "type": "corrected_split",
+      "corrected_idx": 320,
+      "answer_idx": 321,
+      "corrected": [
+        "尾巴的毛髮浓密，如果把毛剃下来卖，相信可以卖个不错的价格。 ",
+        "你守护了好几百年的农夫们，应该也对时间很在意吧。"
+      ],
+      "answer": "你守护了好几百年的农夫们，应该也对时间很在意吧。",
+      "similarity": 0.5
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 363,
+      "answer_idx": 363,
+      "corrected": "你不用把脸遮起来吗？",
+      "answer": [
+        "嗯？",
+        "你不用把脸遮起来吗？"
+      ],
+      "similarity": 0.9
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 385,
+      "answer_idx": 386,
+      "corrected": "狼不爱吃辣。有—次咱们找到遇难船只上的货物，吃了长得像尖牙的红色果实，下场是翻天覆地呐。",
+      "answer": [
+        "狼给人的感觉是爱吃辛辣的食物，说到爱吃甜食会让人联想到熊。",
+        "狼不爱吃辣。有一次咱们找到遇难船只上的货物，吃了长得像尖牙的红色果实，下场是翻天覆地呐。"
+      ],
+      "similarity": 0.725
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 418,
+      "answer_idx": 420,
+      "corrected": "苹果是恶魔的果实，充满诱惑咱们的香甜味道。",
+      "answer": [
+        "你真会吃。",
+        "苹果是恶魔的果实，充满诱惑咱们的香甜味道。"
+      ],
+      "similarity": 0.81
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 590,
+      "answer_idx": 593,
+      "corrected": "咱可爱吗？",
+      "answer": [
+        "……",
+        "咱可爱吗？"
+      ],
+      "similarity": 1.0
+    },
+    {
+      "type": "corrected_split",
+      "corrected_idx": 602,
+      "answer_idx": 606,
+      "corrected": [
+        "哎，毕竟咱的耳朵不是万能的。",
+        "杰廉还是有可能没说谎。"
+      ],
+      "answer": "杰廉还是有可能没说谎。",
+      "similarity": 0.526
+    },
+    {
+      "type": "corrected_split",
+      "corrected_idx": 770,
+      "answer_idx": 773,
+      "corrected": [
+        "汝心情很好呐。",
+        "这种时候谁会心情不好啊？今天是我人生中最快乐的一天。"
+      ],
+      "answer": "这种时候谁会心情不好啊？今天是我人生中最快乐的一天。",
+      "similarity": 0.885
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 867,
+      "answer_idx": 869,
+      "corrected": "咱不想再一个人了。",
+      "answer": [
+        "你一个人旅行也没问题吧？",
+        "咱不想再一个人了。"
+      ],
+      "similarity": 0.5
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 917,
+      "answer_idx": 920,
+      "corrected": "汝的圭意不错。不过，咱也有一些想法，",
+      "answer": [
+        "要不兵分两路？",
+        "汝的主意不错。不过，咱也有一些想法。"
+      ],
+      "similarity": 0.684
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 1289,
+      "answer_idx": 1293,
+      "corrected": "她去市场了。您的伙伴非常急性子，她说要到市场为旅行整装。",
+      "answer": [
+        "那、那赫萝现在人呢？",
+        "她去市场了。您的伙伴非常急性子，她说要到市场为旅行整装。"
+      ],
+      "similarity": 0.759
+    },
+    {
+      "type": "corrected_split",
+      "corrected_idx": 1291,
+      "answer_idx": 1296,
+      "corrected": [
+        "是的。前往崔尼城的手下今天早上平安归来，并且完成与国王的交易。",
+        "我们以特权作为诱饵，向梅迪欧商行进行交涉，梅迪欧商行 \n \n    似乎也掌握了一切事态，明白他们已经输了。一切可说进行得十分顺利。"
+      ],
+      "answer": "是的。前往崔尼城的手下今天早上平安归来，并且完成与国王的交易。我们已经顺利取得梅迪欧商行最想要的特权。我们以特权作为诱饵，向梅迪欧商行进行交涉，梅迪欧商行似乎也掌握了一切事态，明白他们已经输了。一切可说进行得十分顺利。",
+      "similarity": 0.943
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 1305,
+      "answer_idx": 1309,
+      "corrected": "能够听到您这么说，我就安心许多·不过——",
+      "answer": [
+        "做生意总是会有预料之外的事情发生。",
+        "能够听到您这么说，我就安心许多。不过——"
+      ],
+      "similarity": 0.516
+    },
+    {
+      "type": "corrected_extra",
+      "corrected_idx": 1344,
+      "corrected": "狼与香辛料"
+    }
+  ]
+}
