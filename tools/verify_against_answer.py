@@ -7,8 +7,8 @@ Line structures may differ (answer may merge paragraphs), so comparison
 is based on content with whitespace ignored.
 
 Usage:
-    python tools/verify_against_answer.py output/corrected_NAME.txt data/answer_NAME.txt
-    python tools/verify_against_answer.py output/corrected_NAME.txt data/answer_NAME.txt --json output/verify_report.json
+    python tools/verify_against_answer.py output/corrected_NAME.txt data/answer/answer_NAME.txt
+    python tools/verify_against_answer.py output/corrected_NAME.txt data/answer/answer_NAME.txt --json output/verify_report.json
 """
 
 from __future__ import annotations
