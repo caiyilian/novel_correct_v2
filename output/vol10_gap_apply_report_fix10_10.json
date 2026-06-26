@@ -1,0 +1,38 @@
+{
+  "volume": "第10卷",
+  "stage": "Fix 10-10",
+  "corrected_path": "output\\corrected_第10卷.txt",
+  "modified_corrected_text": true,
+  "answer_text_copied": false,
+  "applied_count": 1,
+  "before": {
+    "left_quote": 1461,
+    "right_quote": 1461,
+    "balanced_jp": true,
+    "empty_dialogues": 0
+  },
+  "after": {
+    "left_quote": 1462,
+    "right_quote": 1462,
+    "balanced_jp": true,
+    "empty_dialogues": 0
+  },
+  "applied": [
+    {
+      "case_id": "vol10-fix10-gap-0001",
+      "offset": 4590,
+      "original": "狼骨",
+      "replacement": "「狼骨」",
+      "reason": "answer structure treats this source phrase as an independently wrapped segment",
+      "context_before": "\\n \\n    像是年纪轻轻就在凯尔贝掌管商会分行的基曼；或是凭一己之力扭转整个凯尔贝的局势后，还企图独占利益的伊弗。 \\n \\n    不过，罗伦斯等人最后好不容易掌握到能够让一切圆满结束的关键，也得到了狼骨的情报作为报酬，并因而搭上了这艘船。 \\n \\n    在罗伦斯怀里，有著为了让罗伦斯方便行事，由伊弗与基曼联名写下的介绍信。 \\n \\n    在初访温菲尔王国之际，没有一样武器比这封介绍信更让人心安。",
+      "context_after": "\\n \\n    像是年纪轻轻就在凯尔贝掌管商会分行的基曼；或是凭一己之力扭转整个凯尔贝的局势后，还企图独占利益的伊弗。 \\n \\n    不过，罗伦斯等人最后好不容易掌握到能够让一切圆满结束的关键，也得到了「狼骨」的情报作为报酬，并因而搭上了这艘船。 \\n \\n    在罗伦斯怀里，有著为了让罗伦斯方便行事，由伊弗与基曼联名写下的介绍信。 \\n \\n    在初访温菲尔王国之际，没有一样武器比这封介绍信更让人心"
+    }
+  ],
+  "guard_checks": {
+    "guard_phrase_found": true,
+    "target_offset_guard": true,
+    "quote_target_reached": true,
+    "quote_balance_fixed": true,
+    "empty_dialogues_unchanged": true
+  }
+}
