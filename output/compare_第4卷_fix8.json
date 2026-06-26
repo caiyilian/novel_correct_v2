@@ -1,0 +1,15 @@
+{
+  "corrected_total": 1561,
+  "corrected_empty": 0,
+  "corrected_nonempty": 1561,
+  "answer_total": 1561,
+  "answer_empty": 0,
+  "answer_nonempty": 1561,
+  "exact_matches": 1460,
+  "punct_differences": 9,
+  "content_differences": 92,
+  "total_compared": 1561,
+  "empty_dialogues": [],
+  "extra_dialogues": [],
+  "alignment_diffs": []
+}
