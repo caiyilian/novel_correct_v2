@@ -1,0 +1,68 @@
+{
+  "volume": "第2卷",
+  "stage": "Fix 7",
+  "corrected_path": "output\\corrected_第2卷.txt",
+  "modified_corrected_text": true,
+  "answer_text_copied": false,
+  "applied_count": 3,
+  "manual_review_count": 0,
+  "whitelist_count": 0,
+  "before": {
+    "left_quote": 1422,
+    "right_quote": 1422,
+    "balanced_jp": true,
+    "empty_dialogues": 0,
+    "left_square": 0,
+    "right_square": 0,
+    "curly_left": 1,
+    "curly_right": 1
+  },
+  "after": {
+    "left_quote": 1425,
+    "right_quote": 1425,
+    "balanced_jp": true,
+    "empty_dialogues": 0,
+    "left_square": 0,
+    "right_square": 0,
+    "curly_left": 0,
+    "curly_right": 0
+  },
+  "applied": [
+    {
+      "case_id": "vol2-fix7-gap-0001",
+      "offset": 91341,
+      "original": "\n \n    我明白。 \n \n    此刻，第二故乡断然地排拒罗伦斯在门外。",
+      "replacement": "\n \n    「我明白。」 \n \n    此刻，第二故乡断然地排拒罗伦斯在门外。",
+      "reason": "bare dialogue line between spoken turns",
+      "context_before": "强，他实在无法让自己支撑下去。 \\n \\n    「还有，你应该知道公会的会员之间不得有借贷行为的规炬吧?另外，公会本身也不能借钱 \\n \\n    给你。毕竟得以身作则给周遭的人看。」 \\n \\n    我明白。 \\n \\n    此刻，第二故乡断然地排拒罗伦斯在门外。 \\n \\n    「照雷玛里欧商行的家伙所说，你的债务偿还期限是两天后。雷玛里欧商行也因为投资兵备 \\n \\n ",
+      "context_after": "强，他实在无法让自己支撑下去。 \\n \\n    「还有，你应该知道公会的会员之间不得有借贷行为的规炬吧?另外，公会本身也不能借钱 \\n \\n    给你。毕竟得以身作则给周遭的人看。」 \\n \\n    「我明白。」 \\n \\n    此刻，第二故乡断然地排拒罗伦斯在门外。 \\n \\n    「照雷玛里欧商行的家伙所说，你的债务偿还期限是两天后。雷玛里欧商行也因为投资兵备 \\n "
+    },
+    {
+      "case_id": "vol2-fix7-gap-0002",
+      "offset": 132712,
+      "original": "说了句“怎么可能”结果被赫萝斜眼一瞪",
+      "replacement": "说了句「怎么可能」结果被赫萝斜眼一瞪",
+      "reason": "curly inline dialogue quote normalized to project wrapper",
+      "context_before": " 长袍底下的耳朵动了一下，赫萝不悦的程度似乎不怎么低。 \\n \\n    「就是那只狗的眼神。那只狗的眼神说『如果敢碰羊一根汗毛，随时咬断汝的喉咙!』呐。」 \\n \\n    罗伦斯苦笑着说了句“怎么可能”结果被赫萝斜眼一瞪，不禁有些慑住。 \\n \\n    「没有什么比搞不清楚自己身份的狗更教人生气的了.」 \\n \\n    赫萝别开脸说道。 \\n \\n    或许狗与狼就像鸽",
+      "context_after": " 长袍底下的耳朵动了一下，赫萝不悦的程度似乎不怎么低。 \\n \\n    「就是那只狗的眼神。那只狗的眼神说『如果敢碰羊一根汗毛，随时咬断汝的喉咙!』呐。」 \\n \\n    罗伦斯苦笑着说了句「怎么可能」结果被赫萝斜眼一瞪，不禁有些慑住。 \\n \\n    「没有什么比搞不清楚自己身份的狗更教人生气的了.」 \\n \\n    赫萝别开脸说道。 \\n \\n    或许狗与狼就像鸽"
+    },
+    {
+      "case_id": "vol2-fix7-gap-0003",
+      "offset": 157735,
+      "original": "一呵呵呵呵呵。汝这家伙也真是奇怪，把咱的衣服当成宝一样。一",
+      "replacement": "「呵呵呵呵呵。汝这家伙也真是奇怪，把咱的衣服当成宝一样。」",
+      "reason": "OCR dash-like wrappers around a spoken line normalized to Japanese quotes",
+      "context_before": "伦斯的外套底下，取出折叠整齐的长袍。 \\n \\n    赫萝先是露出有些惊讶的表情，然后用有点湿的长袍擦了脸。她原本被蒙蒙细雨淋得湿答答 \\n \\n    的脸干爽了许多。 \\n \\n    一呵呵呵呵呵。汝这家伙也真是奇怪，把咱的衣服当成宝一样。一 \\n \\n    赫萝像是看见了什么耀眼的东西似的，一脸开心地看著她刚用来擦脸、折叠整齐的长袍，但 \\n \\n    是她的尾巴却",
+      "context_after": "伦斯的外套底下，取出折叠整齐的长袍。 \\n \\n    赫萝先是露出有些惊讶的表情，然后用有点湿的长袍擦了脸。她原本被蒙蒙细雨淋得湿答答 \\n \\n    的脸干爽了许多。 \\n \\n    「呵呵呵呵呵。汝这家伙也真是奇怪，把咱的衣服当成宝一样。」 \\n \\n    赫萝像是看见了什么耀眼的东西似的，一脸开心地看著她刚用来擦脸、折叠整齐的长袍，但 \\n \\n    是她的尾巴却"
+    }
+  ],
+  "guard_checks": {
+    "exact_source_snippets_unique": true,
+    "quote_target_reached": true,
+    "quote_balance_fixed": true,
+    "square_brackets_still_zero": true,
+    "curly_quotes_zero": true,
+    "empty_dialogues_unchanged": true
+  },
+  "known_residual_structure_note": "Alignment still contains historical OCR boundary artifacts such as dash-like closers. This stage is limited to reaching the Volume 2 1425/1425 wrapper target without OCR text rewriting."
+}
