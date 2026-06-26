@@ -41,15 +41,17 @@ def save_text(path: str, text: str):
         f.write(text)
 
 
-def quick_verify(text: str, original: str, initial_non_std: int = 9999) -> List[str]:
+def quick_verify(text: str, original: str, initial_non_std: int = 9999,
+                 initial_balance_diff: int = 0) -> List[str]:
     """快速规则验证，返回失败列表。"""
     failures = []
 
-    # 1. Quote balance
+    # 1. Quote balance — check it didn't get worse
     left = text.count("\u300c")
     right = text.count("\u300d")
-    if left != right:
-        failures.append(f"quote_balance: {left} vs {right}")
+    new_diff = abs(left - right)
+    if new_diff > initial_balance_diff:
+        failures.append(f"quote_balance: {left} vs {right} (worse: {new_diff} > {initial_balance_diff})")
 
     # 2. Non-standard symbols — check it didn't get worse
     non_std_set = set("[]\u3010\u3011\uff3b\uff3d{}\u300a\u300b\u201c\u201d")
@@ -111,9 +113,10 @@ def main():
 
     original_text = load_text(args.answer) if args.answer else ""
 
-    # Pre-compute initial non-standard count for delta check
+    # Pre-compute initial counts for delta checks
     non_std_set = set("[]\u3010\u3011\uff3b\uff3d{}\u300a\u300b\u201c\u201d")
     initial_non_std = sum(1 for ch in text if ch in non_std_set)
+    initial_balance_diff = abs(text.count("\u300c") - text.count("\u300d"))
 
     # Build apply list: decisions with "apply" matched to candidates by index
     applies: List[Tuple[int, dict, dict]] = []  # (index_in_candidates, candidate, decision)
@@ -177,7 +180,7 @@ def main():
         patched = result_text[:offset] + candidate_char + result_text[offset + length:]
 
         # Quick verify
-        verification_failures = quick_verify(patched, original_text, initial_non_std)
+        verification_failures = quick_verify(patched, original_text, initial_non_std, initial_balance_diff)
 
         if verification_failures:
             ops.append({

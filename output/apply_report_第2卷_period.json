@@ -1,0 +1,1390 @@
+{
+  "input": "output/corrected_第2卷_stage4c.txt",
+  "output": "output/corrected_第2卷_stage4d.txt",
+  "total_candidates": 155,
+  "to_apply": 153,
+  "applied": 153,
+  "failed": 0,
+  "operations": [
+    {
+      "candidate_index": 0,
+      "decision_id": "period-000000",
+      "offset": 10462,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 1,
+      "decision_id": "period-000001",
+      "offset": 15728,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 2,
+      "decision_id": "period-000002",
+      "offset": 19714,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 3,
+      "decision_id": "period-000003",
+      "offset": 19735,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 4,
+      "decision_id": "period-000004",
+      "offset": 20765,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 5,
+      "decision_id": "period-000005",
+      "offset": 31985,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 6,
+      "decision_id": "period-000006",
+      "offset": 45080,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 7,
+      "decision_id": "period-000007",
+      "offset": 47065,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 8,
+      "decision_id": "period-000008",
+      "offset": 49031,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 9,
+      "decision_id": "period-000009",
+      "offset": 51087,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 10,
+      "decision_id": "period-000010",
+      "offset": 52177,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 11,
+      "decision_id": "period-000011",
+      "offset": 52186,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 12,
+      "decision_id": "period-000012",
+      "offset": 56496,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 13,
+      "decision_id": "period-000013",
+      "offset": 57457,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 14,
+      "decision_id": "period-000014",
+      "offset": 59995,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 15,
+      "decision_id": "period-000015",
+      "offset": 60008,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 16,
+      "decision_id": "period-000016",
+      "offset": 60022,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 17,
+      "decision_id": "period-000017",
+      "offset": 60985,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 18,
+      "decision_id": "period-000018",
+      "offset": 60995,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 19,
+      "decision_id": "period-000019",
+      "offset": 63360,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 20,
+      "decision_id": "period-000000",
+      "offset": 64400,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 21,
+      "decision_id": "period-000001",
+      "offset": 64412,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 22,
+      "decision_id": "period-000002",
+      "offset": 64420,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 23,
+      "decision_id": "period-000003",
+      "offset": 64427,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 24,
+      "decision_id": "period-000004",
+      "offset": 64448,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 25,
+      "decision_id": "period-000005",
+      "offset": 64461,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 26,
+      "decision_id": "period-000006",
+      "offset": 65671,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 27,
+      "decision_id": "period-000007",
+      "offset": 65697,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 28,
+      "decision_id": "period-000008",
+      "offset": 69670,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 29,
+      "decision_id": "period-000009",
+      "offset": 72940,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 30,
+      "decision_id": "period-000010",
+      "offset": 73910,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 31,
+      "decision_id": "period-000011",
+      "offset": 73937,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 32,
+      "decision_id": "period-000012",
+      "offset": 75876,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 33,
+      "decision_id": "period-000013",
+      "offset": 75902,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 34,
+      "decision_id": "period-000014",
+      "offset": 77077,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 35,
+      "decision_id": "period-000015",
+      "offset": 77086,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 36,
+      "decision_id": "period-000016",
+      "offset": 79237,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 37,
+      "decision_id": "period-000017",
+      "offset": 79262,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 38,
+      "decision_id": "period-000018",
+      "offset": 80853,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 39,
+      "decision_id": "period-000019",
+      "offset": 81518,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 40,
+      "decision_id": "period-000020",
+      "offset": 81549,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 41,
+      "decision_id": "period-000021",
+      "offset": 82720,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 42,
+      "decision_id": "period-000022",
+      "offset": 82758,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 43,
+      "decision_id": "period-000023",
+      "offset": 82761,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 44,
+      "decision_id": "period-000024",
+      "offset": 82770,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 45,
+      "decision_id": "period-000025",
+      "offset": 83776,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 46,
+      "decision_id": "period-000026",
+      "offset": 84911,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 47,
+      "decision_id": "period-000027",
+      "offset": 85924,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 48,
+      "decision_id": "period-000028",
+      "offset": 86902,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 49,
+      "decision_id": "period-000029",
+      "offset": 90182,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 50,
+      "decision_id": "period-000030",
+      "offset": 90185,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 51,
+      "decision_id": "period-000031",
+      "offset": 90200,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 52,
+      "decision_id": "period-000032",
+      "offset": 90237,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 53,
+      "decision_id": "period-000033",
+      "offset": 91351,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 54,
+      "decision_id": "period-000034",
+      "offset": 91378,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 55,
+      "decision_id": "period-000035",
+      "offset": 93665,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 56,
+      "decision_id": "period-000036",
+      "offset": 93683,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 57,
+      "decision_id": "period-000037",
+      "offset": 93700,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 58,
+      "decision_id": "period-000038",
+      "offset": 94627,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 59,
+      "decision_id": "period-000039",
+      "offset": 94663,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 60,
+      "decision_id": "period-000040",
+      "offset": 95753,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 61,
+      "decision_id": "period-000041",
+      "offset": 95770,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 62,
+      "decision_id": "period-000042",
+      "offset": 96842,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 63,
+      "decision_id": "period-000043",
+      "offset": 96849,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 64,
+      "decision_id": "period-000044",
+      "offset": 99957,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 65,
+      "decision_id": "period-000045",
+      "offset": 99990,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 66,
+      "decision_id": "period-000046",
+      "offset": 101109,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 67,
+      "decision_id": "period-000047",
+      "offset": 102183,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 68,
+      "decision_id": "period-000048",
+      "offset": 104073,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 69,
+      "decision_id": "period-000049",
+      "offset": 105164,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 70,
+      "decision_id": "period-000000",
+      "offset": 105183,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 71,
+      "decision_id": "period-000001",
+      "offset": 106063,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 72,
+      "decision_id": "period-000002",
+      "offset": 107197,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 73,
+      "decision_id": "period-000003",
+      "offset": 107725,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 74,
+      "decision_id": "period-000004",
+      "offset": 107753,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 75,
+      "decision_id": "period-000005",
+      "offset": 108800,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 76,
+      "decision_id": "period-000006",
+      "offset": 108814,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 77,
+      "decision_id": "period-000007",
+      "offset": 108853,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 78,
+      "decision_id": "period-000008",
+      "offset": 109961,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 79,
+      "decision_id": "period-000009",
+      "offset": 110895,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 80,
+      "decision_id": "period-000010",
+      "offset": 110911,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 81,
+      "decision_id": "period-000011",
+      "offset": 110924,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 82,
+      "decision_id": "period-000012",
+      "offset": 111946,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 83,
+      "decision_id": "period-000013",
+      "offset": 111966,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 84,
+      "decision_id": "period-000014",
+      "offset": 113012,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 85,
+      "decision_id": "period-000015",
+      "offset": 114193,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 87,
+      "decision_id": "period-000017",
+      "offset": 115505,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 88,
+      "decision_id": "period-000018",
+      "offset": 115522,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 89,
+      "decision_id": "period-000019",
+      "offset": 115571,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 90,
+      "decision_id": "period-000020",
+      "offset": 116591,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 91,
+      "decision_id": "period-000021",
+      "offset": 117568,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 92,
+      "decision_id": "period-000022",
+      "offset": 117584,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 93,
+      "decision_id": "period-000023",
+      "offset": 118430,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 94,
+      "decision_id": "period-000024",
+      "offset": 118441,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 95,
+      "decision_id": "period-000025",
+      "offset": 118451,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 96,
+      "decision_id": "period-000026",
+      "offset": 118471,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 97,
+      "decision_id": "period-000027",
+      "offset": 118481,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 98,
+      "decision_id": "period-000028",
+      "offset": 118492,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 99,
+      "decision_id": "period-000029",
+      "offset": 119681,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 100,
+      "decision_id": "period-000030",
+      "offset": 119702,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 101,
+      "decision_id": "period-000031",
+      "offset": 119738,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 102,
+      "decision_id": "period-000032",
+      "offset": 120810,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 103,
+      "decision_id": "period-000033",
+      "offset": 120859,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 104,
+      "decision_id": "period-000034",
+      "offset": 121945,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 105,
+      "decision_id": "period-000035",
+      "offset": 122987,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 106,
+      "decision_id": "period-000036",
+      "offset": 123008,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 107,
+      "decision_id": "period-000037",
+      "offset": 124164,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 108,
+      "decision_id": "period-000038",
+      "offset": 125232,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 109,
+      "decision_id": "period-000039",
+      "offset": 126470,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 110,
+      "decision_id": "period-000040",
+      "offset": 126516,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 111,
+      "decision_id": "period-000041",
+      "offset": 127604,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 112,
+      "decision_id": "period-000042",
+      "offset": 127616,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 113,
+      "decision_id": "period-000043",
+      "offset": 128611,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 114,
+      "decision_id": "period-000044",
+      "offset": 128624,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 115,
+      "decision_id": "period-000045",
+      "offset": 129460,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 116,
+      "decision_id": "period-000046",
+      "offset": 130657,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 117,
+      "decision_id": "period-000047",
+      "offset": 131797,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 118,
+      "decision_id": "period-000048",
+      "offset": 132735,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 119,
+      "decision_id": "period-000049",
+      "offset": 133862,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 120,
+      "decision_id": "period-000000",
+      "offset": 133881,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 121,
+      "decision_id": "period-000001",
+      "offset": 133915,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 122,
+      "decision_id": "period-000002",
+      "offset": 135070,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 123,
+      "decision_id": "period-000003",
+      "offset": 135093,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 124,
+      "decision_id": "period-000004",
+      "offset": 136209,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 125,
+      "decision_id": "period-000005",
+      "offset": 138411,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 126,
+      "decision_id": "period-000006",
+      "offset": 139390,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 127,
+      "decision_id": "period-000007",
+      "offset": 139410,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 128,
+      "decision_id": "period-000008",
+      "offset": 140531,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 129,
+      "decision_id": "period-000009",
+      "offset": 140544,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 130,
+      "decision_id": "period-000010",
+      "offset": 140555,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 131,
+      "decision_id": "period-000011",
+      "offset": 141627,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 133,
+      "decision_id": "period-000013",
+      "offset": 142237,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 134,
+      "decision_id": "period-000014",
+      "offset": 143309,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 135,
+      "decision_id": "period-000015",
+      "offset": 144346,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 136,
+      "decision_id": "period-000016",
+      "offset": 145701,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 137,
+      "decision_id": "period-000017",
+      "offset": 145724,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 138,
+      "decision_id": "period-000018",
+      "offset": 146706,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 139,
+      "decision_id": "period-000019",
+      "offset": 146732,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 140,
+      "decision_id": "period-000020",
+      "offset": 147700,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 141,
+      "decision_id": "period-000021",
+      "offset": 149753,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 142,
+      "decision_id": "period-000022",
+      "offset": 150970,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 143,
+      "decision_id": "period-000023",
+      "offset": 150987,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 144,
+      "decision_id": "period-000024",
+      "offset": 152060,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 145,
+      "decision_id": "period-000025",
+      "offset": 152075,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 146,
+      "decision_id": "period-000026",
+      "offset": 152097,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 147,
+      "decision_id": "period-000027",
+      "offset": 154233,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 148,
+      "decision_id": "period-000028",
+      "offset": 155249,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 149,
+      "decision_id": "period-000029",
+      "offset": 155258,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 150,
+      "decision_id": "period-000030",
+      "offset": 156326,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 151,
+      "decision_id": "period-000031",
+      "offset": 159491,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 152,
+      "decision_id": "period-000032",
+      "offset": 161479,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 153,
+      "decision_id": "period-000033",
+      "offset": 162473,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 154,
+      "decision_id": "period-000034",
+      "offset": 168275,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    }
+  ],
+  "final_quote_left": 1369,
+  "final_quote_right": 1402,
+  "final_non_standard": 74
+}
