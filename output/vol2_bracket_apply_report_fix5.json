@@ -1,0 +1,44 @@
+{
+  "volume": "第2卷",
+  "stage": "Fix 5",
+  "corrected_path": "output\\corrected_第2卷.txt",
+  "modified_corrected_text": true,
+  "answer_text_copied": false,
+  "candidate_count": 72,
+  "applied_count": 72,
+  "manual_review_count": 0,
+  "whitelist_count": 0,
+  "before": {
+    "left_quote": 1369,
+    "right_quote": 1402,
+    "balanced_jp": false,
+    "left_square": 53,
+    "right_square": 19,
+    "curly_left": 1,
+    "curly_right": 1,
+    "empty_dialogues": 0
+  },
+  "after": {
+    "left_quote": 1422,
+    "right_quote": 1421,
+    "balanced_jp": false,
+    "left_square": 0,
+    "right_square": 0,
+    "curly_left": 1,
+    "curly_right": 1,
+    "empty_dialogues": 0
+  },
+  "quote_balance_gap_before": -33,
+  "quote_balance_gap_after": 1,
+  "guard_checks": {
+    "offset_guard": "passed",
+    "only_wrapper_symbols_changed": true,
+    "quote_balance_not_worse": true,
+    "empty_dialogues_unchanged": true
+  },
+  "outputs": {
+    "candidates": "output\\vol2_bracket_candidates_fix5.jsonl",
+    "manual_queue": "output\\vol2_bracket_manual_queue_fix5.json"
+  },
+  "remaining_notes": "Square brackets are fully normalized. Remaining Volume 2 structure work should address quote balance and any curly quote residues."
+}
