@@ -1,0 +1,27 @@
+{
+  "corrected_total": 1560,
+  "corrected_empty": 0,
+  "corrected_nonempty": 1560,
+  "answer_total": 1561,
+  "answer_empty": 0,
+  "answer_nonempty": 1561,
+  "exact_matches": 411,
+  "punct_differences": 6,
+  "content_differences": 1143,
+  "total_compared": 1560,
+  "empty_dialogues": [],
+  "extra_dialogues": [],
+  "alignment_diffs": [
+    {
+      "type": "answer_split",
+      "corrected_idx": 443,
+      "answer_idx": 443,
+      "corrected": "不客气。",
+      "answer": [
+        "呵呵呵呵，谢谢。",
+        "不客气。"
+      ],
+      "similarity": 0.6
+    }
+  ]
+}
