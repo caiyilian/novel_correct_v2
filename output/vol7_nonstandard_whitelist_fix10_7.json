@@ -1,0 +1,9 @@
+{
+  "items": [
+    {
+      "symbol": "《》",
+      "fragment": "刊载于《电击ｈｐ》的短篇及中篇故事",
+      "reason": "book/magazine title marker in afterword, not dialogue wrapper"
+    }
+  ]
+}
