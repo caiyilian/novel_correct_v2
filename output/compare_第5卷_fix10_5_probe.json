@@ -1,0 +1,60 @@
+{
+  "corrected_total": 1455,
+  "corrected_empty": 0,
+  "corrected_nonempty": 1455,
+  "answer_total": 1459,
+  "answer_empty": 0,
+  "answer_nonempty": 1459,
+  "exact_matches": 36,
+  "punct_differences": 2,
+  "content_differences": 1417,
+  "total_compared": 1455,
+  "empty_dialogues": [],
+  "extra_dialogues": [],
+  "alignment_diffs": [
+    {
+      "type": "answer_split",
+      "corrected_idx": 40,
+      "answer_idx": 40,
+      "corrected": "嘻嘻嘻",
+      "answer": [
+        "……",
+        "嘻嘻嘻"
+      ],
+      "similarity": 1.0
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 294,
+      "answer_idx": 295,
+      "corrected": "……怎么了？",
+      "answer": [
+        "……",
+        "……怎么了？"
+      ],
+      "similarity": 1.0
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 486,
+      "answer_idx": 488,
+      "corrected": "那，汝反省好了没？",
+      "answer": [
+        "……",
+        "那，汝反省好了没？"
+      ],
+      "similarity": 1.0
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 593,
+      "answer_idx": 596,
+      "corrected": "咦？",
+      "answer": [
+        "……",
+        "咦？"
+      ],
+      "similarity": 1.0
+    }
+  ]
+}
