@@ -19,6 +19,9 @@ error/
 !output/correction_report*.json
 !output/correction_report*.txt
 !output/batch_report_v2_10.*
+!output/verify_第*.json
+!output/final_report_10_volumes.*
+!output/decisions_第*.jsonl
 
 # 音频文件（与 TTS 项目共享，无关）
 *.wav
