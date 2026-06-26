@@ -1,0 +1,27 @@
+{
+  "corrected_total": 1201,
+  "corrected_empty": 0,
+  "corrected_nonempty": 1201,
+  "answer_total": 1202,
+  "answer_empty": 0,
+  "answer_nonempty": 1202,
+  "exact_matches": 1117,
+  "punct_differences": 8,
+  "content_differences": 76,
+  "total_compared": 1201,
+  "empty_dialogues": [],
+  "extra_dialogues": [],
+  "alignment_diffs": [
+    {
+      "type": "answer_split",
+      "corrected_idx": 1147,
+      "answer_idx": 1147,
+      "corrected": "不、不是的、那个，请带我……",
+      "answer": [
+        "我答应你。",
+        "不、不是的，那个，请带我……"
+      ],
+      "similarity": 0.727
+    }
+  ]
+}
