@@ -1,0 +1,40 @@
+{
+  "volume": "第6卷",
+  "corrected_path": "output\\corrected_第6卷.txt",
+  "answer_path": "data\\answer\\answer_第6卷.txt",
+  "corrected_dialogues": 1201,
+  "answer_dialogues": 1202,
+  "dialogue_gap": 1,
+  "manual_review_count": 1,
+  "queue": [
+    {
+      "case_id": "vol6-fix9-gap-0001",
+      "volume": "第6卷",
+      "decision": "manual_review",
+      "risk_level": "blocked_by_missing_source_text",
+      "answer_dialogue_index": 1147,
+      "answer_dialogue_preview": "什么事啊？如果是要跟我借盘缠，我可帮不上忙。",
+      "source_search": [
+        {
+          "term": "什么事啊",
+          "offset": -1,
+          "context": ""
+        },
+        {
+          "term": "借盘缠",
+          "offset": -1,
+          "context": ""
+        },
+        {
+          "term": "帮不上忙",
+          "offset": -1,
+          "context": ""
+        }
+      ],
+      "nearby_source_anchor": "我、我有事想请求您。",
+      "nearby_source_anchor_offset": 131704,
+      "nearby_source_context": "伦斯装傻地说道，寇尔咬住下唇。 \\n \\n    他没有忘记预测有可能遭到罗伦斯拒绝。 \\n \\n    小孩子总容易以为只要自己拼命求人，对方就一定会答应自己的要求。 \\n \\n    第二关卡过关。 \\n \\n    寇尔摇了摇头说： \\n \\n    「我、我有事想请求您。」 \\n \\n    一旁的赫萝缩了一下身子，或许她是想用帽子遮住脸部吧。 \\n \\n    赫萝会喜欢寇尔，如果不单是企图让他成为罗伦斯的徒弟，那么她应该会不忍心看见寇尔面对有如走过钢索般的测试吧。 \\n \\n    不过，寇尔顺",
+      "reason": "The answer-side dialogue is not present in the corrected OCR text. Adding it would copy answer正文, which is outside this project's scope."
+    }
+  ]
+}
