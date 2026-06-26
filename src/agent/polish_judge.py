@@ -136,6 +136,22 @@ class PolishJudge:
                 candidate_id = "uncertain"
                 reason = f"LLM 返回非 JSON: {response_text[:100]}"
 
+            # Validate: decision 必须是合法值
+            VALID_DECISIONS = {"apply", "keep", "uncertain"}
+            if decision not in VALID_DECISIONS:
+                violations = []
+                violations.append(f"非法decision: {decision}")
+                decision = "uncertain"
+                candidate_id = "uncertain"
+                reason = "; ".join(violations)
+
+            # Validate: candidate_id 必须在 case 的候选列表中
+            if candidate_id not in {c["id"] for c in case.get("candidates", [])}:
+                if decision != "uncertain":
+                    decision = "uncertain"
+                    candidate_id = "uncertain"
+                    reason = f"{reason}; 非法candidate_id: {candidate_id}"
+
             usage = chat_result.usage
             result = {
                 "decision": decision,
