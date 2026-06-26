@@ -1,0 +1,88 @@
+{
+  "volume": "第2卷",
+  "stage": "Fix 4",
+  "action": "promote_stage4d_to_main_product",
+  "source": "output\\corrected_第2卷_stage4d.txt",
+  "target": "output\\corrected_第2卷.txt",
+  "modified_corrected_text": true,
+  "body_text_changed_scope": "promoted existing stage4d product; no answer text copied",
+  "before": {
+    "path": "output\\corrected_第2卷.txt",
+    "chars": 185216,
+    "line_count": 10627,
+    "balanced_jp": false,
+    "empty_dialogues": 0,
+    "counts": {
+      "「": 1334,
+      "」": 1367,
+      "[": 88,
+      "]": 54,
+      "“": 1,
+      "”": 1,
+      "{": 0,
+      "}": 0,
+      "【": 0,
+      "】": 0,
+      "［": 0,
+      "］": 0
+    }
+  },
+  "stage4d": {
+    "path": "output\\corrected_第2卷_stage4d.txt",
+    "chars": 185216,
+    "line_count": 10627,
+    "balanced_jp": false,
+    "empty_dialogues": 0,
+    "counts": {
+      "「": 1369,
+      "」": 1402,
+      "[": 53,
+      "]": 19,
+      "“": 1,
+      "”": 1,
+      "{": 0,
+      "}": 0,
+      "【": 0,
+      "】": 0,
+      "［": 0,
+      "］": 0
+    }
+  },
+  "after": {
+    "path": "output\\corrected_第2卷.txt",
+    "chars": 185216,
+    "line_count": 10627,
+    "balanced_jp": false,
+    "empty_dialogues": 0,
+    "counts": {
+      "「": 1369,
+      "」": 1402,
+      "[": 53,
+      "]": 19,
+      "“": 1,
+      "”": 1,
+      "{": 0,
+      "}": 0,
+      "【": 0,
+      "】": 0,
+      "［": 0,
+      "］": 0
+    }
+  },
+  "improvements": {
+    "left_quote_delta": 35,
+    "right_quote_delta": 35,
+    "left_bracket_delta": -35,
+    "right_bracket_delta": -35
+  },
+  "remaining": {
+    "left_quote": 1369,
+    "right_quote": 1402,
+    "left_bracket": 53,
+    "right_bracket": 19,
+    "curly_left": 1,
+    "curly_right": 1,
+    "quote_balance_gap": -33
+  },
+  "next_stage": "Fix 5 should classify and resolve the remaining [] symbols before quote-balance convergence."
+}
