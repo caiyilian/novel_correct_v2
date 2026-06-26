@@ -121,7 +121,9 @@ def main():
             print(f"Error: decision[{i}] has unexpected value: {dec}", file=sys.stderr)
             return 1
         if dec == "apply" and cid not in ("c1", f"apply_{i}"):
-            print(f"Warning: decision[{i}] apply with unexpected candidate_id: {cid}", file=sys.stderr)
+            print(f"Error: decision[{i}] apply with invalid candidate_id: {cid}. "
+                  f"No safe match.", file=sys.stderr)
+            return 1
         if dec == "apply":
             applies.append((i, c, d))
 
