@@ -1,0 +1,1125 @@
+{
+  "stats": {
+    "total_chars": 146370,
+    "curly_double_left": 1188,
+    "curly_double_right": 1185,
+    "curly_single_left": 15,
+    "curly_single_right": 15,
+    "jp_left": 0,
+    "jp_right": 0,
+    "answer_jp_left": 1215,
+    "answer_jp_right": 1215
+  },
+  "summary": {
+    "reliable_pair_count": 1093,
+    "cross_paragraph_pair_count": 90,
+    "unbalanced_left_count": 5,
+    "unbalanced_right_count": 2,
+    "single_quote_pairs": 15,
+    "total_dialogue_gap": 32,
+    "high_risk_candidates_from_stage2": 20
+  },
+  "candidate_classification": {
+    "rule_convertible": {
+      "count": 1093,
+      "description": "同段内可靠成对，可规则批量转换",
+      "examples": [
+        "用的布料，盖在腿上取暖。 \n \n    “怎么着？” \n \n    用字遣词有些古式语法的同",
+        "；只可惜那尾巴是非卖品。 \n \n    “赶快把尾巴梳理好，然后放进盖腿布底下。” \n \n    身穿长袍、用梳子细心梳理",
+        "嘴唇，露出尖牙不悦地说： \n \n    “不准把咱的尾巴当成怀炉。” \n \n    说着，少女手中的尾巴动了",
+        "把她的尾巴当成怀炉使用。 \n \n    “毕竟你那尾巴的毛发如此浓密整齐，光是放在盖腿布底下，就温暖得像是盖了堆得跟山一样的厚重皮草嘛。” \n \n    恰如罗伦斯的盘算，赫萝得",
+        "的盘算，赫萝得意地用鼻子哼了一声后，一副“真是拿你没辙”的模样把尾巴收进盖腿布底下。 \n \n  "
+      ]
+    },
+    "needs_review": {
+      "cross_paragraph": {
+        "count": 90,
+        "description": "跨段弯引号，需二审确认是否为同一对话延续",
+        "examples": [
+          "了？哎，先来喝一杯吧。” \n \n    “嗯，我早上拜托你收集的情报……喂！倒太多了。 \n \n    咖啡色陶制酒壶里的酒被马克咕噜噜地倒进木杯，尽管罗伦斯出声制止，马克却充耳不闻。 \n \n    马",
+          "酒杯，他就不回答的表情。 \n \n    “真是的。” \n \n    罗伦斯一副受不了马克的表情举起酒杯喝了一口后，发现酒杯里装的是挺不错的葡萄酒。这让他不禁想要吃点咸味十足的肉干下酒。 \n \n    ",
+          "吃点咸味十足的肉干下酒。 \n \n    “那，你刚刚要说什么？不会是要换目的地吧？” \n \n    “是啊，没错。罗姆河的水源地不是有个叫雷诺斯的城镇吗？我记得那里是以木材和皮草出名吧？我想去那里。”",
+          "？不会是要换目的地吧？” \n \n    “是啊，没错。罗姆河的水源地不是有个叫雷诺斯的城镇吗？我记得那里是以木材和皮草出名吧？我想去那里。” \n \n    “什么嘛，你换的地方还差真远。害我白收集了一",
+          "草出名吧？我想去那里。” \n \n    “什么嘛，你换的地方还差真远。害我白收集了一些去纽希拉附近的情报。” \n \n    尽管喝醉，脑子里还是得有某处保持着清醒，否则就称不上是商人。 \n \n    "
+        ]
+      },
+      "unbalanced": {
+        "count": 7,
+        "description": "不成对弯引号，需判断是缺漏还是非对话用途",
+        "examples": [
+          "加快，只能苦笑。 \n \n    竟然会拿“还有工作还没完成”当借口扯了个大谎，罗伦",
+          "克听了罗伦斯说的话，露出厌恶的表情，一副“早知道就不提了”的模样。 \n \n    ",
+          "  “总之，好好加油。” \n \n    “啊，喔。” \n \n    虽然罗伦斯仍然",
+          "会惹来多方批评，所以这样正好有个好借口。” \n \n    的确，狄安娜如此随和，又",
+          "我想应该没问题吧，就破例让您采买黄铁矿。” \n \n    罗伦斯听了，不由地从椅子"
+        ]
+      },
+      "high_risk_from_stage2": {
+        "count": 20,
+        "description": "generate_style_candidates 产生的高风险候选（标点类）"
+      }
+    }
+  },
+  "recommendation": {
+    "stage_3b": "规则转换 1093 个可靠成对弯引号为「」",
+    "stage_3c": "二审 90 跨段 + 7 不成对 + 20 标点高风险",
+    "note": "转换后第 3 卷应有 1188+ `「」`，仍需补齐至答案目标的 1215"
+  },
+  "details": {
+    "reliable_pairs": [
+      {
+        "left_pos": 614,
+        "right_pos": 619,
+        "left_para": 29,
+        "right_para": 29,
+        "context": "用的布料，盖在腿上取暖。 \n \n    “怎么着？” \n \n    用字遣词有些古式语法的同",
+        "length": 5
+      },
+      {
+        "left_pos": 860,
+        "right_pos": 880,
+        "left_para": 41,
+        "right_para": 41,
+        "context": "；只可惜那尾巴是非卖品。 \n \n    “赶快把尾巴梳理好，然后放进盖腿布底下。” \n \n    身穿长袍、用梳子细心梳理",
+        "length": 20
+      },
+      {
+        "left_pos": 1018,
+        "right_pos": 1031,
+        "left_para": 47,
+        "right_para": 47,
+        "context": "嘴唇，露出尖牙不悦地说： \n \n    “不准把咱的尾巴当成怀炉。” \n \n    说着，少女手中的尾巴动了",
+        "length": 13
+      },
+      {
+        "left_pos": 1427,
+        "right_pos": 1475,
+        "left_para": 63,
+        "right_para": 63,
+        "context": "把她的尾巴当成怀炉使用。 \n \n    “毕竟你那尾巴的毛发如此浓密整齐，光是放在盖腿布底下，就温暖得像是盖了堆得跟山一样的厚重皮草嘛。” \n \n    恰如罗伦斯的盘算，赫萝得",
+        "length": 48
+      },
+      {
+        "left_pos": 1509,
+        "right_pos": 1516,
+        "left_para": 65,
+        "right_para": 65,
+        "context": "的盘算，赫萝得意地用鼻子哼了一声后，一副“真是拿你没辙”的模样把尾巴收进盖腿布底下。 \n \n  ",
+        "length": 7
+      },
+      {
+        "left_pos": 1539,
+        "right_pos": 1556,
+        "left_para": 67,
+        "right_para": 67,
+        "context": "样把尾巴收进盖腿布底下。 \n \n    “话说，城镇还没到吗？今天会到呗？” \n \n    “只要沿着这条河往上游走",
+        "length": 17
+      },
+      {
+        "left_pos": 1565,
+        "right_pos": 1585,
+        "left_para": 69,
+        "right_para": 69,
+        "context": "还没到吗？今天会到呗？” \n \n    “只要沿着这条河往上游走，没多久就到了。” \n \n    “总算可以吃热腾腾的饭了",
+        "length": 20
+      },
+      {
+        "left_pos": 1594,
+        "right_pos": 1639,
+        "left_para": 71,
+        "right_para": 71,
+        "context": "上游走，没多久就到了。” \n \n    “总算可以吃热腾腾的饭了，咱可不想在这般寒天里再吃冷稀饭了。不管怎么说，这都太教人厌烦了。” \n \n    就算有自信比赫萝更习惯吃",
+        "length": 45
+      },
+      {
+        "left_pos": 1919,
+        "right_pos": 1955,
+        "left_para": 83,
+        "right_para": 83,
+        "context": "简直跟严刑拷打没两样吧。 \n \n    “嗯，我们要前往的城镇正在举办大市集，应该会有很多吃的，你就好好期待吧。” \n \n    “喔，可是汝啊，汝的荷包",
+        "length": 36
+      },
+      {
+        "left_pos": 1964,
+        "right_pos": 1985,
+        "left_para": 85,
+        "right_para": 85,
+        "context": "吃的，你就好好期待吧。” \n \n    “喔，可是汝啊，汝的荷包受得了多买东西吗？” \n \n    罗伦斯一星期前在教会城市",
+        "length": 21
+      },
+      {
+        "left_pos": 2245,
+        "right_pos": 2273,
+        "left_para": 97,
+        "right_para": 97,
+        "context": "其实本性十分善良的家伙。 \n \n    “如果只是买吃的给你，那还在容许范围内。没什么好担心的。” \n \n    然而，赫萝依然一副有所挂",
+        "length": 28
+      },
+      {
+        "left_pos": 2310,
+        "right_pos": 2314,
+        "left_para": 101,
+        "right_para": 101,
+        "context": "副有所挂心的担心模样说： \n \n    “嗯……” \n \n    “而且，最后在留宾海根还",
+        "length": 4
+      },
+      {
+        "left_pos": 2323,
+        "right_pos": 2362,
+        "left_para": 103,
+        "right_para": 103,
+        "context": "\n \n    “嗯……” \n \n    “而且，最后在留宾海根还是没买到蜂蜜腌渍的桃子给你，你只要想成这是补偿就好了。” \n \n    “是么……可是呐。” \n",
+        "length": 39
+      },
+      {
+        "left_pos": 2371,
+        "right_pos": 2380,
+        "left_para": 105,
+        "right_para": 105,
+        "context": "要想成这是补偿就好了。” \n \n    “是么……可是呐。” \n \n    “怎样？” \n \n   ",
+        "length": 9
+      },
+      {
+        "left_pos": 2389,
+        "right_pos": 2393,
+        "left_para": 107,
+        "right_para": 107,
+        "context": "  “是么……可是呐。” \n \n    “怎样？” \n \n    “虽然咱有一半是担心汝的",
+        "length": 4
+      },
+      {
+        "left_pos": 2402,
+        "right_pos": 2454,
+        "left_para": 109,
+        "right_para": 109,
+        "context": "\n \n    “怎样？” \n \n    “虽然咱有一半是担心汝的荷包，但另一半是替自己担心。如果咱把钱花在吃的上面，会不会就得住差一点的旅馆呢？” \n \n    罗伦斯心想“原来如此”，",
+        "length": 52
+      },
+      {
+        "left_pos": 2468,
+        "right_pos": 2473,
+        "left_para": 111,
+        "right_para": 111,
+        "context": "点的旅馆呢？” \n \n    罗伦斯心想“原来如此”，笑着回答说： \n \n    “我是打算",
+        "length": 5
+      },
+      {
+        "left_pos": 2489,
+        "right_pos": 2524,
+        "left_para": 113,
+        "right_para": 113,
+        "context": "原来如此”，笑着回答说： \n \n    “我是打算投宿有一定水准的旅馆。难道你想说房间里没有暖炉，你就不住吗？” \n \n    “咱是没打算要求那么多。",
+        "length": 35
+      },
+      {
+        "left_pos": 2533,
+        "right_pos": 2570,
+        "left_para": 115,
+        "right_para": 115,
+        "context": "没有暖炉，你就不住吗？” \n \n    “咱是没打算要求那么多。不过呐，咱可不想听到汝以咱买了吃的东西为借口呐……” \n \n    “借口？” \n \n   ",
+        "length": 37
+      },
+      {
+        "left_pos": 2579,
+        "right_pos": 2583,
+        "left_para": 117,
+        "right_para": 117,
+        "context": "了吃的东西为借口呐……” \n \n    “借口？” \n \n    为了拉回稍微偏离路面的马",
+        "length": 4
+      },
+      {
+        "left_pos": 2639,
+        "right_pos": 2678,
+        "left_para": 121,
+        "right_para": 121,
+        "context": "萝便凑近他的耳边轻声说： \n \n    “咱不想听到汝以不够钱为由，选择只有一张床的房间。咱偶尔也想一个人舒服地睡觉。” \n \n    罗伦斯不禁过度使劲地拉扯",
+        "length": 39
+      },
+      {
+        "left_pos": 2795,
+        "right_pos": 2817,
+        "left_para": 129,
+        "right_para": 129,
+        "context": "用冷漠的眼神看向赫萝说： \n \n    “会发出那么少根筋鼾声的人，还好意思这么说。” \n \n    罗伦斯的振作和反击似乎让",
+        "length": 22
+      },
+      {
+        "left_pos": 2910,
+        "right_pos": 2926,
+        "left_para": 135,
+        "right_para": 135,
+        "context": "机会，于是继续展开攻击。 \n \n    “再说呢，你又不是我喜欢的类型。” \n \n    赫萝拥有能够辨别人类是否",
+        "length": 16
+      },
+      {
+        "left_pos": 3017,
+        "right_pos": 3029,
+        "left_para": 143,
+        "right_para": 143,
+        "context": "面带惊讶的表情僵着身子。 \n \n    “你应该知道我没扯谎吧？” \n \n    于是，罗伦斯加以最后一击",
+        "length": 12
+      },
+      {
+        "left_pos": 3358,
+        "right_pos": 3370,
+        "left_para": 165,
+        "right_para": 165,
+        "context": " \n    也就是说…… \n \n    “汝喜欢这样的咱，是呗？” \n \n    罗伦斯的视线不小心对上赫",
+        "length": 12
+      },
+      {
+        "left_pos": 3422,
+        "right_pos": 3466,
+        "left_para": 169,
+        "right_para": 169,
+        "context": "无法控制自己的脸色转红。 \n \n    “大笨驴。越是愚蠢的雄性，就越喜欢软弱的雌性，根本没自觉到真正软弱的是汝等雄性的脑袋瓜。” \n \n    一边露出两边的尖牙，一边",
+        "length": 44
+      },
+      {
+        "left_pos": 3516,
+        "right_pos": 3561,
+        "left_para": 173,
+        "right_para": 173,
+        "context": "瞬间反败为胜，占了上风。 \n \n    “如果汝期待咱扮演成柔弱公主的角色，那么汝也得是个强悍的骑士呐。可是，实际的状况是如何啊？” \n \n    赫萝用手指向罗伦斯，罗伦",
+        "length": 45
+      },
+      {
+        "left_pos": 3697,
+        "right_pos": 3719,
+        "left_para": 181,
+        "right_para": 181,
+        "context": "用食指抵着自己的下巴说： \n \n    “嗯。不过回想起来，汝好像有一次当成了骑士。” \n \n    罗伦斯试着当场打开记忆的",
+        "length": 22
+      },
+      {
+        "left_pos": 3774,
+        "right_pos": 3822,
+        "left_para": 185,
+        "right_para": 185,
+        "context": "过那么男子气概的表现吗？ \n \n    “什么啊，本人都忘了啊。汝不是曾经挡在咱前面保护咱吗？咱们掉进难搞的银币纷争时，在地下水道里啊。” \n \n    “……喔，那个啊。” \n",
+        "length": 48
+      },
+      {
+        "left_pos": 3831,
+        "right_pos": 3840,
+        "left_para": 187,
+        "right_para": 187,
+        "context": "争时，在地下水道里啊。” \n \n    “……喔，那个啊。” \n \n    虽然赫萝勾起了罗伦斯的记",
+        "length": 9
+      },
+      {
+        "left_pos": 3916,
+        "right_pos": 3949,
+        "left_para": 191,
+        "right_para": 191,
+        "context": "立着的身子还不住地摇晃。 \n \n    “又不是拥有强劲腕力才是骑士的表现。不过，那是咱第一次受人保护呐。” \n \n    赫萝有些害羞地笑笑，跟着",
+        "length": 33
+      },
+      {
+        "left_pos": 4062,
+        "right_pos": 4076,
+        "left_para": 197,
+        "right_para": 197,
+        "context": " 然而，罗伦斯无处可逃。 \n \n    “将来汝一样会好好爱护咱呗？” \n \n    眼前的狼像只小猫咪似的，",
+        "length": 14
+      },
+      {
+        "left_pos": 4213,
+        "right_pos": 4219,
+        "left_para": 205,
+        "right_para": 205,
+        "context": "深刻感受到了赫萝的愤怒。 \n \n    “……抱歉。” \n \n    所以，罗伦斯的道歉话语就",
+        "length": 6
+      },
+      {
+        "left_pos": 4286,
+        "right_pos": 4299,
+        "left_para": 209,
+        "right_para": 209,
+        "context": "从喉咙深处发出咯咯笑声。 \n \n    “咱就是喜欢汝这样的个性。” \n \n    如此互相捉弄和互开玩笑的",
+        "length": 13
+      },
+      {
+        "left_pos": 4368,
+        "right_pos": 4397,
+        "left_para": 215,
+        "right_para": 215,
+        "context": "样的距离还是最适合两人。 \n \n    “选择只有一张床的房间是无所谓啦。但是，饭菜要有两份才行。” \n \n    “知道了、知道了。” \n",
+        "length": 29
+      },
+      {
+        "left_pos": 4406,
+        "right_pos": 4415,
+        "left_para": 217,
+        "right_para": 217,
+        "context": "是，饭菜要有两份才行。” \n \n    “知道了、知道了。” \n \n    明明天气不热，罗伦斯却是",
+        "length": 9
+      },
+      {
+        "left_pos": 4478,
+        "right_pos": 4492,
+        "left_para": 221,
+        "right_para": 221,
+        "context": "赫萝听了，再次发出笑声。 \n \n    “那，这附近有什么好吃的吗？” \n \n    “你是说名产吗？虽然说不",
+        "length": 14
+      },
+      {
+        "left_pos": 4501,
+        "right_pos": 4525,
+        "left_para": 223,
+        "right_para": 223,
+        "context": "这附近有什么好吃的吗？” \n \n    “你是说名产吗？虽然说不上是名产，但是这附近……” \n \n    “鱼，对呗？” \n \n ",
+        "length": 24
+      },
+      {
+        "left_pos": 4534,
+        "right_pos": 4540,
+        "left_para": 225,
+        "right_para": 225,
+        "context": "是名产，但是这附近……” \n \n    “鱼，对呗？” \n \n    赫萝说出罗伦斯正准备回答",
+        "length": 6
+      },
+      {
+        "left_pos": 4583,
+        "right_pos": 4660,
+        "left_para": 229,
+        "right_para": 229,
+        "context": "案，这让他感到有些惊讶。 \n \n    “真亏你会知道呢。从这里往西边走，就会遇上湖泊，从那边运来的鱼料理算是名产吧。还有啊，流经那一带的河川里也能够捕获到各式各样的鱼。不过，你是怎么知道的啊？” \n \n    虽然赫萝能够轻松识破人类",
+        "length": 77
+      },
+      {
+        "left_pos": 4715,
+        "right_pos": 4734,
+        "left_para": 233,
+        "right_para": 233,
+        "context": "看穿人们心里在想什么吧。 \n \n    “嗯，从刚刚就有味道顺着风吹来。汝看！” \n \n    赫萝说罢，用右手指向河川",
+        "length": 19
+      },
+      {
+        "left_pos": 4769,
+        "right_pos": 4782,
+        "left_para": 237,
+        "right_para": 237,
+        "context": "右手指向河川的相反方向。 \n \n    “那马车车队是在运送鱼呗。” \n \n    罗伦斯听了，才在第一次察",
+        "length": 13
+      },
+      {
+        "left_pos": 4902,
+        "right_pos": 4938,
+        "left_para": 241,
+        "right_para": 241,
+        "context": "，但应该会在某处会合吧。 \n \n    “听到鱼料理，咱实在想象不出会有什么料理。是像在留宾海根吃的鳗鱼那样吗？” \n \n    “那鳗鱼只是用油炸过而已",
+        "length": 36
+      },
+      {
+        "left_pos": 4947,
+        "right_pos": 5029,
+        "left_para": 243,
+        "right_para": 243,
+        "context": "宾海根吃的鳗鱼那样吗？” \n \n    “那鳗鱼只是用油炸过而已。如果是比较费功夫的鱼料理，会和蔬菜或肉类一起清蒸，或是加上香草一起用火烤，有很多烹调方法。还有一种食材，是等会儿就快抵达的城镇才有的食材。” \n \n    “喔” \n \n    赫",
+        "length": 82
+      },
+      {
+        "left_pos": 5038,
+        "right_pos": 5040,
+        "left_para": 245,
+        "right_para": 245,
+        "context": "抵达的城镇才有的食材。” \n \n    “喔” \n \n    赫萝的眼神散发出耀眼的光",
+        "length": 2
+      },
+      {
+        "left_pos": 5094,
+        "right_pos": 5118,
+        "left_para": 249,
+        "right_para": 249,
+        "context": "代怀炉的尾巴兴奋地甩着。 \n \n    “等到抵达城镇后再告诉你是什么食材，好好期待吧。” \n \n    听到罗伦斯如此捉弄，赫萝",
+        "length": 24
+      },
+      {
+        "left_pos": 5173,
+        "right_pos": 5195,
+        "left_para": 253,
+        "right_para": 253,
+        "context": "的捉弄当然不会惹她生气。 \n \n    “那马车上如果有上等好鱼，就买来当晚餐如何？” \n \n    “我不擅长于分辨鱼的好坏",
+        "length": 22
+      },
+      {
+        "left_pos": 5204,
+        "right_pos": 5234,
+        "left_para": 255,
+        "right_para": 255,
+        "context": "鱼，就买来当晚餐如何？” \n \n    “我不擅长于分辨鱼的好坏。打从以前亏了钱后，我就不敢碰鱼了。” \n \n    “有啥好担心的，有咱的眼",
+        "length": 30
+      },
+      {
+        "left_pos": 5243,
+        "right_pos": 5261,
+        "left_para": 257,
+        "right_para": 257,
+        "context": "钱后，我就不敢碰鱼了。” \n \n    “有啥好担心的，有咱的眼睛和鼻子啊。” \n \n    “你分辨得出鱼的好坏吗？",
+        "length": 18
+      },
+      {
+        "left_pos": 5270,
+        "right_pos": 5282,
+        "left_para": 259,
+        "right_para": 259,
+        "context": "，有咱的眼睛和鼻子啊。” \n \n    “你分辨得出鱼的好坏吗？” \n \n    “不然，要咱也判断看看汝",
+        "length": 12
+      }
+    ],
+    "cross_paragraph_pairs": [
+      {
+        "left_pos": 47339,
+        "right_pos": 47466,
+        "left_para": 2120,
+        "right_para": 2126,
+        "context": "了？哎，先来喝一杯吧。” \n \n    “嗯，我早上拜托你收集的情报……喂！倒太多了。 \n \n    咖啡色陶制酒壶里的酒被马克咕噜噜地倒进木杯，尽管罗伦斯出声制止，马克却充耳不闻。 \n \n    马克一脸若是罗伦斯不伸手拿起满得就快溢出酒来的酒杯，他就不回答的表情。 \n \n    “真是的。” \n \n    罗伦斯一副受不了马克的表",
+        "length": 127
+      },
+      {
+        "left_pos": 47461,
+        "right_pos": 47562,
+        "left_para": 2126,
+        "right_para": 2130,
+        "context": "酒杯，他就不回答的表情。 \n \n    “真是的。” \n \n    罗伦斯一副受不了马克的表情举起酒杯喝了一口后，发现酒杯里装的是挺不错的葡萄酒。这让他不禁想要吃点咸味十足的肉干下酒。 \n \n    “那，你刚刚要说什么？不会是要换目的地吧？” \n \n    “是啊，没错。罗姆河的水",
+        "length": 101
+      },
+      {
+        "left_pos": 47541,
+        "right_pos": 47620,
+        "left_para": 2130,
+        "right_para": 2132,
+        "context": "吃点咸味十足的肉干下酒。 \n \n    “那，你刚刚要说什么？不会是要换目的地吧？” \n \n    “是啊，没错。罗姆河的水源地不是有个叫雷诺斯的城镇吗？我记得那里是以木材和皮草出名吧？我想去那里。” \n \n    “什么嘛，你换的地方还差",
+        "length": 79
+      },
+      {
+        "left_pos": 47571,
+        "right_pos": 47662,
+        "left_para": 2132,
+        "right_para": 2134,
+        "context": "？不会是要换目的地吧？” \n \n    “是啊，没错。罗姆河的水源地不是有个叫雷诺斯的城镇吗？我记得那里是以木材和皮草出名吧？我想去那里。” \n \n    “什么嘛，你换的地方还差真远。害我白收集了一些去纽希拉附近的情报。” \n \n    尽管喝醉，脑子里还是得有",
+        "length": 91
+      },
+      {
+        "left_pos": 47629,
+        "right_pos": 47723,
+        "left_para": 2134,
+        "right_para": 2138,
+        "context": "草出名吧？我想去那里。” \n \n    “什么嘛，你换的地方还差真远。害我白收集了一些去纽希拉附近的情报。” \n \n    尽管喝醉，脑子里还是得有某处保持着清醒，否则就称不上是商人。 \n \n    “抱歉啦，事情有了一点变化。” \n \n    “喔？” \n \n    ",
+        "length": 94
+      },
+      {
+        "left_pos": 47709,
+        "right_pos": 47735,
+        "left_para": 2138,
+        "right_para": 2140,
+        "context": "醒，否则就称不上是商人。 \n \n    “抱歉啦，事情有了一点变化。” \n \n    “喔？” \n \n    马克笑着说道，并像在喝水",
+        "length": 26
+      },
+      {
+        "left_pos": 47732,
+        "right_pos": 47817,
+        "left_para": 2140,
+        "right_para": 2146,
+        "context": "啦，事情有了一点变化。” \n \n    “喔？” \n \n    马克笑着说道，并像在喝水似地喝下酒。 \n \n    然后，马克露出极其愉快的目光看向罗伦斯说： \n \n    “原来你和伙伴感情失和是真有此事啊？” \n \n    停顿了好几秒钟后，罗伦斯",
+        "length": 85
+      },
+      {
+        "left_pos": 47799,
+        "right_pos": 47856,
+        "left_para": 2146,
+        "right_para": 2150,
+        "context": "愉快的目光看向罗伦斯说： \n \n    “原来你和伙伴感情失和是真有此事啊？” \n \n    停顿了好几秒钟后，罗伦斯反问说： \n \n    “你说什么？” \n \n    “哈哈哈哈哈。我可是调查",
+        "length": 57
+      },
+      {
+        "left_pos": 47850,
+        "right_pos": 47929,
+        "left_para": 2150,
+        "right_para": 2152,
+        "context": "几秒钟后，罗伦斯反问说： \n \n    “你说什么？” \n \n    “哈哈哈哈哈。我可是调查得很清楚呢，帅哥。大家都知道你带着容貌姣好的修女下榻在高级旅馆。真是的，所谓逆神之举指的就是你这种行为。” \n \n    尽管卡梅尔森是个规模不小",
+        "length": 79
+      },
+      {
+        "left_pos": 47865,
+        "right_pos": 48187,
+        "left_para": 2152,
+        "right_para": 2160,
+        "context": "\n    “你说什么？” \n \n    “哈哈哈哈哈。我可是调查得很清楚呢，帅哥。大家都知道你带着容貌姣好的修女下榻在高级旅馆。真是的，所谓逆神之举指的就是你这种行为。” \n \n    尽管卡梅尔森是个规模不小的城镇，但终究不及留宾海根。只要向朋友的朋友探听，就几乎能够探听到所有城镇商人的消息。城镇商人的横向关系就是这么深厚。想必是有某人看见了罗伦斯与赫萝，所以谣言才会口耳相传地散了开来。 \n \n    连在市场经营摊贩的马克都知道赫萝的存在，这表示洋行的人一定也知道。想到幸好自己没有与巴托斯一起回洋行，罗伦斯不禁松了口气。 \n \n    然而，罗伦斯不明白马克为何会提到感情失和。 \n \n    “我和伙伴之间不是那种可以当成酒席助兴话题的关系。不过，你说感情失和是什么意思？” \n \n    “嘿嘿嘿，原来帅哥装傻的",
+        "length": 322
+      },
+      {
+        "left_pos": 48147,
+        "right_pos": 48244,
+        "left_para": 2160,
+        "right_para": 2162,
+        "context": "马克为何会提到感情失和。 \n \n    “我和伙伴之间不是那种可以当成酒席助兴话题的关系。不过，你说感情失和是什么意思？” \n \n    “嘿嘿嘿，原来帅哥装傻的功夫也是一流的呢。不过，被人家说感情失和，你内心的动摇终究还是写在脸上。” \n \n    “毕竟我的伙伴确实是个美",
+        "length": 97
+      },
+      {
+        "left_pos": 48196,
+        "right_pos": 48282,
+        "left_para": 2162,
+        "right_para": 2164,
+        "context": "说感情失和是什么意思？” \n \n    “嘿嘿嘿，原来帅哥装傻的功夫也是一流的呢。不过，被人家说感情失和，你内心的动摇终究还是写在脸上。” \n \n    “毕竟我的伙伴确实是个美女。如果感情失和，那我不就亏大了？” \n \n    多亏平时与赫萝的互动，让",
+        "length": 86
+      },
+      {
+        "left_pos": 48253,
+        "right_pos": 48440,
+        "left_para": 2164,
+        "right_para": 2170,
+        "context": "动摇终究还是写在脸上。” \n \n    “毕竟我的伙伴确实是个美女。如果感情失和，那我不就亏大了？” \n \n    多亏平时与赫萝的互动，让罗伦斯能够冷静地做出反应，就连罗伦斯自身都感到有些吃惊。 \n \n    不过罗伦斯心想，如果可以，他宁愿自己的商谈技巧可以提升，而不是这方面的应对。 \n \n    “嗝，没啦，就刚刚才听来的消息。我们公会里的年轻小子带着你的那位伙伴走在街上呢，听说两人看起来感情很好的样子。” \n \n    “喔。你是说阿玛堤……先",
+        "length": 187
+      },
+      {
+        "left_pos": 48385,
+        "right_pos": 48464,
+        "left_para": 2170,
+        "right_para": 2172,
+        "context": "升，而不是这方面的应对。 \n \n    “嗝，没啦，就刚刚才听来的消息。我们公会里的年轻小子带着你的那位伙伴走在街上呢，听说两人看起来感情很好的样子。” \n \n    “喔。你是说阿玛堤……先生啊。” \n \n    虽然阿玛堤比罗伦斯年少，",
+        "length": 79
+      },
+      {
+        "left_pos": 48449,
+        "right_pos": 48553,
+        "left_para": 2172,
+        "right_para": 2176,
+        "context": "看起来感情很好的样子。” \n \n    “喔。你是说阿玛堤……先生啊。” \n \n    虽然阿玛堤比罗伦斯年少，但是罗伦斯心想直呼名字似乎不礼貌，于是加上先生两字。可是话说出口后，却又觉得自己显得有些卑微。 \n \n    “什么嘛，你已经死心了啊？” \n \n    “很遗憾，事情不是你想的",
+        "length": 104
+      },
+      {
+        "left_pos": 48540,
+        "right_pos": 48627,
+        "left_para": 2176,
+        "right_para": 2178,
+        "context": "又觉得自己显得有些卑微。 \n \n    “什么嘛，你已经死心了啊？” \n \n    “很遗憾，事情不是你想的那样。我今天一整天有事没办法陪伙伴，加上阿玛堤先生有空想带我们到街上走走，只不过这两件事恰巧碰在一起罢了。” \n \n    “喔……” \n \n   ",
+        "length": 87
+      },
+      {
+        "left_pos": 48562,
+        "right_pos": 48640,
+        "left_para": 2178,
+        "right_para": 2180,
+        "context": "么嘛，你已经死心了啊？” \n \n    “很遗憾，事情不是你想的那样。我今天一整天有事没办法陪伙伴，加上阿玛堤先生有空想带我们到街上走走，只不过这两件事恰巧碰在一起罢了。” \n \n    “喔……” \n \n    “你有什么不满吗？” \n",
+        "length": 78
+      },
+      {
+        "left_pos": 48636,
+        "right_pos": 48658,
+        "left_para": 2180,
+        "right_para": 2182,
+        "context": "件事恰巧碰在一起罢了。” \n \n    “喔……” \n \n    “你有什么不满吗？” \n \n    罗伦斯以为马克肯定会露出",
+        "length": 22
+      },
+      {
+        "left_pos": 48649,
+        "right_pos": 48766,
+        "left_para": 2182,
+        "right_para": 2186,
+        "context": "\n \n    “喔……” \n \n    “你有什么不满吗？” \n \n    罗伦斯以为马克肯定会露出感到无趣的表情，但是马克却突然露出担忧的神色，这让他感到一阵错愕。 \n \n    “因为我和你一样曾经是旅行商人，所以才给你忠告。阿玛堤那家伙外表看似柔弱，但其实很难应付的。” \n \n    “……你这是什么意思？”",
+        "length": 117
+      },
+      {
+        "left_pos": 48720,
+        "right_pos": 48786,
+        "left_para": 2186,
+        "right_para": 2188,
+        "context": "色，这让他感到一阵错愕。 \n \n    “因为我和你一样曾经是旅行商人，所以才给你忠告。阿玛堤那家伙外表看似柔弱，但其实很难应付的。” \n \n    “……你这是什么意思？” \n \n    “我是说，如果你还是这样",
+        "length": 66
+      }
+    ],
+    "unbalanced_left": [
+      {
+        "pos": 50213,
+        "para": 2246,
+        "context": "加快，只能苦笑。 \n \n    竟然会拿“还有工作还没完成”当借口扯了个大谎，罗伦"
+      },
+      {
+        "pos": 77759,
+        "para": 3433,
+        "context": "克听了罗伦斯说的话，露出厌恶的表情，一副“早知道就不提了”的模样。 \n \n    "
+      },
+      {
+        "pos": 106465,
+        "para": 4872,
+        "context": "  “总之，好好加油。” \n \n    “啊，喔。” \n \n    虽然罗伦斯仍然"
+      },
+      {
+        "pos": 137430,
+        "para": 6595,
+        "context": "，毫无他意地展开笑颜说： \n \n    “抱歉啦。” \n \n    老板发完愣后，"
+      },
+      {
+        "pos": 137665,
+        "para": 6609,
+        "context": "赫萝长袍上的白色羽毛说： \n \n    “和某人不一样，是个成熟的美人吧？” \n "
+      }
+    ],
+    "unbalanced_right": [
+      {
+        "pos": 46499,
+        "para": 2088,
+        "context": "会惹来多方批评，所以这样正好有个好借口。” \n \n    的确，狄安娜如此随和，又"
+      },
+      {
+        "pos": 113097,
+        "para": 5214,
+        "context": "我想应该没问题吧，就破例让您采买黄铁矿。” \n \n    罗伦斯听了，不由地从椅子"
+      }
+    ],
+    "paragraph_analysis": [
+      {
+        "para_index": 29,
+        "para_preview": "    “怎么着？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 41,
+        "para_preview": "    “赶快把尾巴梳理好，然后放进盖腿布底下。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 47,
+        "para_preview": "    “不准把咱的尾巴当成怀炉。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 63,
+        "para_preview": "    “毕竟你那尾巴的毛发如此浓密整齐，光是放在盖腿布底下，就温暖得像是盖了堆得跟山一样的厚重皮草嘛。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 65,
+        "para_preview": "    恰如罗伦斯的盘算，赫萝得意地用鼻子哼了一声后，一副“真是拿你没辙”的模样把尾巴收进盖腿布底下。 ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 67,
+        "para_preview": "    “话说，城镇还没到吗？今天会到呗？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 69,
+        "para_preview": "    “只要沿着这条河往上游走，没多久就到了。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 71,
+        "para_preview": "    “总算可以吃热腾腾的饭了，咱可不想在这般寒天里再吃冷稀饭了。不管怎么说，这都太教人厌烦了。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 83,
+        "para_preview": "    “嗯，我们要前往的城镇正在举办大市集，应该会有很多吃的，你就好好期待吧。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 85,
+        "para_preview": "    “喔，可是汝啊，汝的荷包受得了多买东西吗？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 97,
+        "para_preview": "    “如果只是买吃的给你，那还在容许范围内。没什么好担心的。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 101,
+        "para_preview": "    “嗯……” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 103,
+        "para_preview": "    “而且，最后在留宾海根还是没买到蜂蜜腌渍的桃子给你，你只要想成这是补偿就好了。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 105,
+        "para_preview": "    “是么……可是呐。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 107,
+        "para_preview": "    “怎样？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 109,
+        "para_preview": "    “虽然咱有一半是担心汝的荷包，但另一半是替自己担心。如果咱把钱花在吃的上面，会不会就得住差一点的旅馆呢？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 111,
+        "para_preview": "    罗伦斯心想“原来如此”，笑着回答说： ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 113,
+        "para_preview": "    “我是打算投宿有一定水准的旅馆。难道你想说房间里没有暖炉，你就不住吗？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 115,
+        "para_preview": "    “咱是没打算要求那么多。不过呐，咱可不想听到汝以咱买了吃的东西为借口呐……” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 117,
+        "para_preview": "    “借口？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 121,
+        "para_preview": "    “咱不想听到汝以不够钱为由，选择只有一张床的房间。咱偶尔也想一个人舒服地睡觉。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 129,
+        "para_preview": "    “会发出那么少根筋鼾声的人，还好意思这么说。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 135,
+        "para_preview": "    “再说呢，你又不是我喜欢的类型。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 143,
+        "para_preview": "    “你应该知道我没扯谎吧？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 165,
+        "para_preview": "    “汝喜欢这样的咱，是呗？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 169,
+        "para_preview": "    “大笨驴。越是愚蠢的雄性，就越喜欢软弱的雌性，根本没自觉到真正软弱的是汝等雄性的脑袋瓜。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 173,
+        "para_preview": "    “如果汝期待咱扮演成柔弱公主的角色，那么汝也得是个强悍的骑士呐。可是，实际的状况是如何啊？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 181,
+        "para_preview": "    “嗯。不过回想起来，汝好像有一次当成了骑士。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 185,
+        "para_preview": "    “什么啊，本人都忘了啊。汝不是曾经挡在咱前面保护咱吗？咱们掉进难搞的银币纷争时，在地下水道里啊。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 187,
+        "para_preview": "    “……喔，那个啊。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 191,
+        "para_preview": "    “又不是拥有强劲腕力才是骑士的表现。不过，那是咱第一次受人保护呐。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 197,
+        "para_preview": "    “将来汝一样会好好爱护咱呗？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 205,
+        "para_preview": "    “……抱歉。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 209,
+        "para_preview": "    “咱就是喜欢汝这样的个性。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 215,
+        "para_preview": "    “选择只有一张床的房间是无所谓啦。但是，饭菜要有两份才行。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 217,
+        "para_preview": "    “知道了、知道了。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 221,
+        "para_preview": "    “那，这附近有什么好吃的吗？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 223,
+        "para_preview": "    “你是说名产吗？虽然说不上是名产，但是这附近……” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 225,
+        "para_preview": "    “鱼，对呗？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 229,
+        "para_preview": "    “真亏你会知道呢。从这里往西边走，就会遇上湖泊，从那边运来的鱼料理算是名产吧。还有啊，流经那一带的河川里也能够捕获到各式各样的鱼。不过，你是怎么知道的啊？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 233,
+        "para_preview": "    “嗯，从刚刚就有味道顺着风吹来。汝看！” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 237,
+        "para_preview": "    “那马车车队是在运送鱼呗。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 241,
+        "para_preview": "    “听到鱼料理，咱实在想象不出会有什么料理。是像在留宾海根吃的鳗鱼那样吗？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 243,
+        "para_preview": "    “那鳗鱼只是用油炸过而已。如果是比较费功夫的鱼料理，会和蔬菜或肉类一起清蒸，或是加上香草一起用火烤，有很多烹调方法。还有一种食材，是等会儿就快抵达的城镇才有的食材。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 245,
+        "para_preview": "    “喔” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 249,
+        "para_preview": "    “等到抵达城镇后再告诉你是什么食材，好好期待吧。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 253,
+        "para_preview": "    “那马车上如果有上等好鱼，就买来当晚餐如何？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 255,
+        "para_preview": "    “我不擅长于分辨鱼的好坏。打从以前亏了钱后，我就不敢碰鱼了。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 257,
+        "para_preview": "    “有啥好担心的，有咱的眼睛和鼻子啊。” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      },
+      {
+        "para_index": 259,
+        "para_preview": "    “你分辨得出鱼的好坏吗？” ",
+        "left": 1,
+        "right": 1,
+        "pairs": 1,
+        "surplus": 0,
+        "surplus_side": "none"
+      }
+    ]
+  }
+}
