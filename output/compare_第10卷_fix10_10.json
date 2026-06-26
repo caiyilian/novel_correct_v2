@@ -1,0 +1,38 @@
+{
+  "corrected_total": 1462,
+  "corrected_empty": 0,
+  "corrected_nonempty": 1462,
+  "answer_total": 1462,
+  "answer_empty": 0,
+  "answer_nonempty": 1462,
+  "exact_matches": 1282,
+  "punct_differences": 0,
+  "content_differences": 180,
+  "total_compared": 1462,
+  "empty_dialogues": [],
+  "extra_dialogues": [],
+  "alignment_diffs": [
+    {
+      "type": "answer_split",
+      "corrected_idx": 0,
+      "answer_idx": 0,
+      "corrected": "似乎",
+      "answer": [
+        "狼骨",
+        "似乎"
+      ],
+      "similarity": 0.5
+    },
+    {
+      "type": "corrected_split",
+      "corrected_idx": 35,
+      "answer_idx": 36,
+      "corrected": [
+        "狼骨",
+        "不过，先前的那场骚动后，汝多少收到了一些礼金呗？这样也算是赚了钱呗？"
+      ],
+      "answer": "不过，先前的那场骚动后，汝多少收到了一些礼金呗？这样也算是赚了钱呗？",
+      "similarity": 0.933
+    }
+  ]
+}
