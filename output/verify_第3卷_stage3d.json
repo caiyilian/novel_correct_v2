@@ -1,0 +1,21 @@
+{
+  "stage": "3d",
+  "volume": "第3卷",
+  "target_jp": 1215,
+  "current_jp": {
+    "left": 1183,
+    "right": 1183,
+    "balanced": true
+  },
+  "gap": 32,
+  "remaining_curly": {
+    "left": 5,
+    "right": 2
+  },
+  "remaining_non_standard": 9,
+  "target_met": false,
+  "conclusion": "NOT_YET_CONVERGED — need Stage 3d-2 to locate 32 missing segments",
+  "comparison": null,
+  "match_rate": 0.9748,
+  "detected_errors": 981
+}
