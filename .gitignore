@@ -14,6 +14,11 @@ output/
 logs/
 error/
 
+# 但保留关键输出文件用于评审
+!output/corrected_第1卷.txt
+!output/correction_report.json
+!output/correction_report.txt
+
 # 音频文件（与 TTS 项目共享，无关）
 *.wav
 *.mp3
