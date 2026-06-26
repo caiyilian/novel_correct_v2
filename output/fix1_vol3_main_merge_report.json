@@ -1,0 +1,57 @@
+{
+  "stage": "Fix 1",
+  "source": "output\\corrected_第3卷_stage3c.txt",
+  "target": "output\\corrected_第3卷.txt",
+  "before": {
+    "jp_left": 0,
+    "jp_right": 0,
+    "curly_left": 1188,
+    "curly_right": 1185,
+    "empty_dialogues": 0
+  },
+  "after": {
+    "jp_left": 1183,
+    "jp_right": 1183,
+    "curly_left": 5,
+    "curly_right": 2,
+    "empty_dialogues": 0,
+    "answer_target_left": 1215,
+    "answer_target_right": 1215,
+    "gap_left": 32,
+    "gap_right": 32
+  },
+  "compare_summary": {
+    "corrected_total": 1183,
+    "corrected_empty": 0,
+    "corrected_nonempty": 1183,
+    "answer_total": 1215,
+    "answer_nonempty": 1215,
+    "exact_matches": 317,
+    "punct_differences": 7,
+    "content_differences": 859,
+    "total_compared": 1183
+  },
+  "verify_summary": {
+    "match_rate": 0.9748,
+    "quote_balance": {
+      "corrected_balanced": true
+    },
+    "corrected_symbols": {
+      "left_japanese_quote": 1183,
+      "right_japanese_quote": 1183,
+      "non_standard_total": 9,
+      "non_standard_by_symbol": {
+        "“": 5,
+        "”": 2,
+        "{": 1,
+        "}": 1
+      }
+    }
+  },
+  "acceptance": {
+    "not_zero_zero": true,
+    "at_least_stage3_level": true,
+    "quote_balanced": true,
+    "empty_dialogues_zero": true
+  }
+}
