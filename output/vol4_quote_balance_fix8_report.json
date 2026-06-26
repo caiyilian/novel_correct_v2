@@ -1,0 +1,60 @@
+{
+  "volume": "第4卷",
+  "stage": "Fix 8",
+  "corrected_path": "output\\corrected_第4卷.txt",
+  "modified_corrected_text": true,
+  "answer_text_copied": false,
+  "applied_count": 3,
+  "before": {
+    "left_quote": 1560,
+    "right_quote": 1557,
+    "balanced_jp": false,
+    "empty_dialogues": 0,
+    "left_square": 0,
+    "right_square": 0
+  },
+  "after": {
+    "left_quote": 1560,
+    "right_quote": 1560,
+    "balanced_jp": true,
+    "empty_dialogues": 0,
+    "left_square": 0,
+    "right_square": 0
+  },
+  "applied": [
+    {
+      "case_id": "vol4-fix8-balance-0001",
+      "offset": 28845,
+      "original": "一",
+      "replacement": "」",
+      "reason": "unmatched opening Japanese quote closed by OCR one-character marker",
+      "context_before": "件事。」 \\n \\n    就算到了现在，在传教最前线仍然耳闻得到这类公开要求改变信仰与交易的话题。 \\n \\n    「就在那时候，大约在三十年……还是四十年前吧，法兰兹先生来到了村里。一 \\n \\n    罗伦斯逐渐掌握到了有关特列欧的话题。 \\n \\n    「原来如此。可是，现在是由一位年轻的艾莉莎小姐在掌理教会，对吧？」 \\n \\n    「嗯，是这样没错……」 \\n \\n",
+      "context_after": "件事。」 \\n \\n    就算到了现在，在传教最前线仍然耳闻得到这类公开要求改变信仰与交易的话题。 \\n \\n    「就在那时候，大约在三十年……还是四十年前吧，法兰兹先生来到了村里。」 \\n \\n    罗伦斯逐渐掌握到了有关特列欧的话题。 \\n \\n    「原来如此。可是，现在是由一位年轻的艾莉莎小姐在掌理教会，对吧？」 \\n \\n    「嗯，是这样没错……」 \\n \\n"
+    },
+    {
+      "case_id": "vol4-fix8-balance-0002",
+      "offset": 105674,
+      "original": "一",
+      "replacement": "」",
+      "reason": "unmatched opening Japanese quote closed by OCR one-character marker",
+      "context_before": "  罗伦斯的脑中，一下子就浮现这两人如何分享少量面包的画面，同时胸口也感到一阵苦涩。 \\n \\n    罗伦斯一绕到礼拜堂的正面入口，搬了张椅子在入口坐镇的依玛便一副仿佛在说「什么事？一的模样站这身子。 \\n \\n    「艾莉莎小姐晕倒了。」 \\n \\n    「又来了啊？是贫血吧？那孩子太爱逞强了。」 \\n \\n    依玛推开罗伦斯在走廊上跑去，没多久后她抱着艾莉莎回来",
+      "context_after": "  罗伦斯的脑中，一下子就浮现这两人如何分享少量面包的画面，同时胸口也感到一阵苦涩。 \\n \\n    罗伦斯一绕到礼拜堂的正面入口，搬了张椅子在入口坐镇的依玛便一副仿佛在说「什么事？」的模样站这身子。 \\n \\n    「艾莉莎小姐晕倒了。」 \\n \\n    「又来了啊？是贫血吧？那孩子太爱逞强了。」 \\n \\n    依玛推开罗伦斯在走廊上跑去，没多久后她抱着艾莉莎回来"
+    },
+    {
+      "case_id": "vol4-fix8-balance-0003",
+      "offset": 134150,
+      "original": "一",
+      "replacement": "」",
+      "reason": "unmatched opening Japanese quote closed by OCR one-character marker",
+      "context_before": "\\n \\n    而且想要执行这项任务，就必须信任赫萝。 \\n \\n    艾凡的目光投向赫萝说： \\n \\n    「哪有什么问题。如果我中毒了，在大家发觉我是被毒死之前，先杀了我不就得了信一 \\n \\n    艾凡的指尖微微颤抖着。 \\n \\n    仅管知道艾凡是在艾莉莎面前逞强才这么说，但赫萝并不讨厌这样的举动。 \\n \\n    『只是轻轻一口吞下去而已，一点儿都不痛。』 ",
+      "context_after": "\\n \\n    而且想要执行这项任务，就必须信任赫萝。 \\n \\n    艾凡的目光投向赫萝说： \\n \\n    「哪有什么问题。如果我中毒了，在大家发觉我是被毒死之前，先杀了我不就得了信」 \\n \\n    艾凡的指尖微微颤抖着。 \\n \\n    仅管知道艾凡是在艾莉莎面前逞强才这么说，但赫萝并不讨厌这样的举动。 \\n \\n    『只是轻轻一口吞下去而已，一点儿都不痛。』 "
+    }
+  ],
+  "remaining_unmatched_left": [],
+  "guard_checks": {
+    "offset_guard": "passed",
+    "quote_balance_fixed": true,
+    "square_brackets_still_zero": true,
+    "empty_dialogues_unchanged": true
+  }
+}

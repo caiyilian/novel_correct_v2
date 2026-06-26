@@ -1,0 +1,57 @@
+{
+  "volume": "第4卷",
+  "stage": "Fix 8",
+  "corrected_path": "output\\corrected_第4卷.txt",
+  "modified_corrected_text": true,
+  "answer_text_copied": false,
+  "applied_count": 2,
+  "whitelist_count": 2,
+  "before": {
+    "left_quote": 1560,
+    "right_quote": 1560,
+    "balanced_jp": true,
+    "empty_dialogues": 0,
+    "left_square": 0,
+    "right_square": 0,
+    "book_left": 1,
+    "book_right": 2
+  },
+  "after": {
+    "left_quote": 1561,
+    "right_quote": 1561,
+    "balanced_jp": true,
+    "empty_dialogues": 0,
+    "left_square": 0,
+    "right_square": 0,
+    "book_left": 1,
+    "book_right": 2
+  },
+  "applied": [
+    {
+      "case_id": "vol4-fix8-gap-0001",
+      "offset": 44969,
+      "original": "÷",
+      "replacement": "」",
+      "reason": "OCR division sign used as right dialogue boundary",
+      "context_before": "把汝赚的钱，还有咱花费的金额一笔一笔地算给咱听呗？」 \\n \\n    被说到痛处的罗伦斯不禁别开了视线。 \\n \\n    「光是咱自己跟那小鸟女娃买的矿石，应该就赚了很多钱呗。而且……÷ \\n \\n    「我知道了，我知道了啦。」 \\n \\n    赫萝拥有能够识破谎言的耳朵，这点比任何征税官都更加恶劣。 \\n \\n    要是做了无谓的挣扎，也只会使得伤口越来越大而已。 ",
+      "context_after": "把汝赚的钱，还有咱花费的金额一笔一笔地算给咱听呗？」 \\n \\n    被说到痛处的罗伦斯不禁别开了视线。 \\n \\n    「光是咱自己跟那小鸟女娃买的矿石，应该就赚了很多钱呗。而且……」 \\n \\n    「我知道了，我知道了啦。」 \\n \\n    赫萝拥有能够识破谎言的耳朵，这点比任何征税官都更加恶劣。 \\n \\n    要是做了无谓的挣扎，也只会使得伤口越来越大而已。 "
+    },
+    {
+      "case_id": "vol4-fix8-gap-0002",
+      "offset": 88054,
+      "original": "：",
+      "replacement": "「",
+      "reason": "fullwidth colon before a spoken name was an OCR left-boundary residue",
+      "context_before": "\\n \\n    虽然男子们的态度反应他们的不讲理，但罗伦斯心想，幸好村长塞姆是站在这一边的。 \\n \\n    如果连塞姆都成了敌人，那罗伦斯就只能依赖赫萝采取最后手段。 \\n \\n    ：艾莉莎。」 \\n \\n    在村民纷纷离去之中，塞姆一边倚着拐杖，一边走近艾莉莎说道： \\n \\n    「我知道你很苦，不过你先忍耐一下吧。」 \\n \\n    看见艾莉莎默默地点头后，塞",
+      "context_after": "\\n \\n    虽然男子们的态度反应他们的不讲理，但罗伦斯心想，幸好村长塞姆是站在这一边的。 \\n \\n    如果连塞姆都成了敌人，那罗伦斯就只能依赖赫萝采取最后手段。 \\n \\n    「艾莉莎。」 \\n \\n    在村民纷纷离去之中，塞姆一边倚着拐杖，一边走近艾莉莎说道： \\n \\n    「我知道你很苦，不过你先忍耐一下吧。」 \\n \\n    看见艾莉莎默默地点头后，塞"
+    }
+  ],
+  "whitelist": "output\\vol4_nonstandard_whitelist_fix8.json",
+  "guard_checks": {
+    "offset_guard": "passed",
+    "quote_target_reached": true,
+    "quote_balance_fixed": true,
+    "square_brackets_still_zero": true,
+    "empty_dialogues_unchanged": true
+  }
+}
