@@ -1,0 +1,26 @@
+{
+  "volume": "第3卷",
+  "corrected_path": "output\\corrected_第3卷.txt",
+  "answer_path": "data\\answer\\answer_第3卷.txt",
+  "current_dialogues": 1183,
+  "target_dialogues": 1215,
+  "dialogue_gap": 32,
+  "current_quote_left": 1183,
+  "current_quote_right": 1183,
+  "remaining_curly_left": 5,
+  "remaining_curly_right": 2,
+  "remaining_brace_left": 1,
+  "remaining_brace_right": 1,
+  "candidate_count": 41,
+  "candidate_type_counts": {
+    "answer_extra_tail": 32,
+    "remaining_curly_quote": 7,
+    "remaining_brace_symbol": 2
+  },
+  "risk_counts": {
+    "high": 39,
+    "uncertain": 2
+  },
+  "modified_corrected_text": false,
+  "next_stage": "Fix 3 should inspect these candidates, apply low-risk source-text wrappers, and send high-risk cases to constrained Ollama/人工裁决."
+}
