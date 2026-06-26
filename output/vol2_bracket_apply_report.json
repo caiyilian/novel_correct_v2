@@ -1,0 +1,15 @@
+{
+  "stage": "4b",
+  "volume": "第2卷",
+  "applied": 35,
+  "result_jp": {
+    "left": 1369,
+    "right": 1402,
+    "balanced": false
+  },
+  "remaining_brackets": {
+    "left": 53,
+    "right": 19
+  },
+  "remaining_detail": "53 left + 19 right brackets remain (unpaired or non-dialogue)"
+}
