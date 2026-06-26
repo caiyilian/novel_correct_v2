@@ -1,0 +1,43 @@
+{
+  "volume": "第6卷",
+  "stage": "Fix 9",
+  "corrected_path": "output\\corrected_第6卷.txt",
+  "modified_corrected_text": true,
+  "answer_text_copied": false,
+  "applied_count": 1,
+  "whitelist_count": 1,
+  "before": {
+    "left_quote": 1201,
+    "right_quote": 1200,
+    "balanced_jp": false,
+    "empty_dialogues": 0,
+    "book_left": 2,
+    "book_right": 2
+  },
+  "after": {
+    "left_quote": 1201,
+    "right_quote": 1201,
+    "balanced_jp": true,
+    "empty_dialogues": 0,
+    "book_left": 2,
+    "book_right": 2
+  },
+  "applied": [
+    {
+      "case_id": "vol6-fix9-balance-0001",
+      "offset": 67885,
+      "original": "木箱还是只能保持这样吧。 \n \n    「那么，赶紧动手吧。」",
+      "replacement": "木箱还是只能保持这样吧。」 \n \n    「那么，赶紧动手吧。」",
+      "reason": "missing right Japanese quote before next dialogue",
+      "context_before": "着说道。 \\n \\n    罗伦斯只能有一个感想：拉古萨说话太有技巧了。 \\n \\n    因为他这么说，罗伦斯就绝对无法拒绝。 \\n \\n    「不过，说要卸货，也不过只有麦子和豆子而已。木箱还是只能保持这样吧。 \\n \\n    「那么，赶紧动手吧。」 \\n \\n    罗伦斯一边回头看向船上的装载货物，一边说道。这时，拉古萨开口说道： \\n \\n    「啊，对了！我刚刚偷听",
+      "context_after": "着说道。 \\n \\n    罗伦斯只能有一个感想：拉古萨说话太有技巧了。 \\n \\n    因为他这么说，罗伦斯就绝对无法拒绝。 \\n \\n    「不过，说要卸货，也不过只有麦子和豆子而已。木箱还是只能保持这样吧。」 \\n \\n    「那么，赶紧动手吧。」 \\n \\n    罗伦斯一边回头看向船上的装载货物，一边说道。这时，拉古萨开口说道： \\n \\n    「啊，对了！我刚刚偷"
+    }
+  ],
+  "whitelist": "output\\vol6_nonstandard_whitelist_fix9.json",
+  "guard_checks": {
+    "exact_source_snippet_unique": true,
+    "quote_balance_fixed": true,
+    "empty_dialogues_unchanged": true
+  },
+  "remaining_note": "Volume 6 is balanced after this fix; remaining count target should be checked by compare/verify."
+}
