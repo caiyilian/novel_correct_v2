@@ -1,0 +1,36 @@
+{
+  "target": "output\\corrected_第9卷.txt",
+  "before": {
+    "left": 995,
+    "right": 995,
+    "balanced": true,
+    "empty": 0
+  },
+  "after": {
+    "left": 997,
+    "right": 997,
+    "balanced": true,
+    "empty": 0
+  },
+  "applied": [
+    {
+      "case_id": "vol9_gap_001_title",
+      "offset": 43,
+      "before": "对立的城镇",
+      "after": "「对立的城镇」",
+      "reason": "answer target wraps the volume subtitle phrase; source has the phrase in the opening title line"
+    },
+    {
+      "case_id": "vol9_gap_002_term",
+      "offset": 6234,
+      "before": "亵渎狼骨的仪式",
+      "after": "亵渎「狼骨」的仪式",
+      "reason": "answer target wraps the term wolf bone; source has the same term in existing narration"
+    }
+  ],
+  "notes": [
+    "Only existing OCR text was wrapped.",
+    "No answer body text was copied into the corrected file.",
+    "The two added wrappers correspond to answer-side title/term structure rather than dialogue speech."
+  ]
+}
