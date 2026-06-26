@@ -1,0 +1,56 @@
+{
+  "volume": "第2卷",
+  "stage": "Fix 6",
+  "corrected_path": "output\\corrected_第2卷.txt",
+  "modified_corrected_text": true,
+  "answer_text_copied": false,
+  "applied": [
+    {
+      "case_id": "vol2-fix6-balance-0001",
+      "offset": 7127,
+      "original": "』",
+      "replacement": "」",
+      "reason": "mixed opening 「 with closing 』 caused one unmatched left Japanese quote",
+      "context_before": "独特氛围的这个城镇，似乎也只值得这么一句形容。 \\n \\n    「这里没有卖食物的摊贩嘛。」 \\n \\n    「汝这话听来好像咱只知道吃似的。」 \\n \\n    「不然要顺便听听布道吗?』 \\n \\n    正好前方有人群聚集，旅行布道士正单手拿著圣经布道。 \\n \\n    听众当中似乎不只居民，也有几名平常只顾祈祷生意兴隆的商人。 \\n \\n    看到罗伦斯指向那些人，赫",
+      "context_after": "独特氛围的这个城镇，似乎也只值得这么一句形容。 \\n \\n    「这里没有卖食物的摊贩嘛。」 \\n \\n    「汝这话听来好像咱只知道吃似的。」 \\n \\n    「不然要顺便听听布道吗?」 \\n \\n    正好前方有人群聚集，旅行布道士正单手拿著圣经布道。 \\n \\n    听众当中似乎不只居民，也有几名平常只顾祈祷生意兴隆的商人。 \\n \\n    看到罗伦斯指向那些人，赫"
+    }
+  ],
+  "whitelist": "output\\vol2_nonstandard_whitelist_fix6.json",
+  "whitelist_count": 2,
+  "before": {
+    "left_quote": 1422,
+    "right_quote": 1421,
+    "balanced_jp": false,
+    "empty_dialogues": 0,
+    "left_square": 0,
+    "right_square": 0,
+    "curly_left": 1,
+    "curly_right": 1
+  },
+  "after": {
+    "left_quote": 1422,
+    "right_quote": 1422,
+    "balanced_jp": true,
+    "empty_dialogues": 0,
+    "left_square": 0,
+    "right_square": 0,
+    "curly_left": 1,
+    "curly_right": 1
+  },
+  "before_unmatched": {
+    "unmatched_left": [
+      7115
+    ],
+    "unmatched_right": []
+  },
+  "after_unmatched": {
+    "unmatched_left": [],
+    "unmatched_right": []
+  },
+  "guard_checks": {
+    "offset_guard": "passed",
+    "quote_balance_fixed": true,
+    "square_brackets_still_zero": true,
+    "empty_dialogues_unchanged": true
+  }
+}
