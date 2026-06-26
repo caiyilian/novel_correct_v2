@@ -1,0 +1,229 @@
+{
+  "input": "output/corrected_第3卷_stage3b.txt",
+  "output": "output/corrected_第3卷_stage3c.txt",
+  "total_candidates": 27,
+  "to_apply": 24,
+  "applied": 18,
+  "failed": 6,
+  "operations": [
+    {
+      "candidate_index": 0,
+      "decision_id": "period-000000",
+      "offset": 8653,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 1,
+      "decision_id": "period-000001",
+      "offset": 8689,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 2,
+      "decision_id": "period-000002",
+      "offset": 21547,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 3,
+      "decision_id": "period-000003",
+      "offset": 26651,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 4,
+      "decision_id": "period-000004",
+      "offset": 26884,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 5,
+      "decision_id": "period-000005",
+      "offset": 33206,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 6,
+      "decision_id": "period-000006",
+      "offset": 34465,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 7,
+      "decision_id": "period-000007",
+      "offset": 36764,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 8,
+      "decision_id": "period-000008",
+      "offset": 36776,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 9,
+      "decision_id": "period-000009",
+      "offset": 42007,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 10,
+      "decision_id": "period-000010",
+      "offset": 42020,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 11,
+      "decision_id": "period-000011",
+      "offset": 42216,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 12,
+      "decision_id": "period-000012",
+      "offset": 42237,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 13,
+      "decision_id": "period-000013",
+      "offset": 43728,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 15,
+      "decision_id": "period-000015",
+      "offset": 55525,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 17,
+      "decision_id": "period-000017",
+      "offset": 91551,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 18,
+      "decision_id": "period-000018",
+      "offset": 107267,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 19,
+      "decision_id": "period-000019",
+      "offset": 119910,
+      "original": ".",
+      "candidate": "。",
+      "status": "applied",
+      "reason": ""
+    },
+    {
+      "candidate_index": 20,
+      "decision_id": "curly_quote-000020",
+      "offset": 47339,
+      "original": "“",
+      "candidate": "「",
+      "status": "rolled_back",
+      "reason": "quote_balance: 1184 vs 1183"
+    },
+    {
+      "candidate_index": 22,
+      "decision_id": "curly_quote-000022",
+      "offset": 103306,
+      "original": "“",
+      "candidate": "「",
+      "status": "rolled_back",
+      "reason": "quote_balance: 1184 vs 1183"
+    },
+    {
+      "candidate_index": 23,
+      "decision_id": "curly_quote-000023",
+      "offset": 137319,
+      "original": "“",
+      "candidate": "「",
+      "status": "rolled_back",
+      "reason": "quote_balance: 1184 vs 1183"
+    },
+    {
+      "candidate_index": 24,
+      "decision_id": "curly_quote-000024",
+      "offset": 137322,
+      "original": "“",
+      "candidate": "「",
+      "status": "rolled_back",
+      "reason": "quote_balance: 1184 vs 1183"
+    },
+    {
+      "candidate_index": 25,
+      "decision_id": "curly_quote-000025",
+      "offset": 46499,
+      "original": "”",
+      "candidate": "」",
+      "status": "rolled_back",
+      "reason": "quote_balance: 1183 vs 1184"
+    },
+    {
+      "candidate_index": 26,
+      "decision_id": "curly_quote-000026",
+      "offset": 113097,
+      "original": "”",
+      "candidate": "」",
+      "status": "rolled_back",
+      "reason": "quote_balance: 1183 vs 1184"
+    }
+  ],
+  "final_quote_left": 1183,
+  "final_quote_right": 1183,
+  "final_non_standard": 9
+}
