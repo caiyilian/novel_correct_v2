@@ -6,11 +6,15 @@
 
 用法:
     python tools/compare_dialogues.py output/corrected_第1卷.txt data/answer_第1卷.txt
+    python tools/compare_dialogues.py output/corrected_第1卷.txt data/answer_第1卷.txt --json output/compare_第1卷.json
 """
 
-import sys
+import argparse
+import json
 import re
-from typing import List
+import sys
+from pathlib import Path
+from typing import List, Optional
 
 
 def load_text(path: str) -> str:
@@ -37,9 +41,11 @@ def strip_punct(s: str) -> str:
     return re.sub(r"[？?!！·.。：:、，,～~…—‥\s\"\'\\n\\r]", "", s)
 
 
-def report(corrected_path: str, answer_path: str):
-    corr = extract_dialogues(load_text(corrected_path))
-    ans = extract_dialogues(load_text(answer_path))
+def report(corrected_path: str, answer_path: str, json_path: Optional[str] = None) -> dict:
+    corr_text = load_text(corrected_path)
+    ans_text = load_text(answer_path)
+    corr = extract_dialogues(corr_text)
+    ans = extract_dialogues(ans_text)
 
     empty_c = sum(1 for d in corr if len(d[1:-1]) == 0)
     empty_a = sum(1 for d in ans if len(d[1:-1]) == 0)
@@ -60,7 +66,7 @@ def report(corrected_path: str, answer_path: str):
     # 逐组对比前 min(len(corr), len(ans)) 段
     n = min(len(corr), len(ans))
     exact = content_ok = diff = 0
-    samples: list[tuple[int, str, str]] = []
+    samples: List[tuple[int, str, str]] = []
 
     for i in range(n):
         c_text = corr[i][1:-1]
@@ -99,7 +105,31 @@ def report(corrected_path: str, answer_path: str):
         for i in range(len(corr), len(ans)):
             print(f"  [{i+1}] {ans[i]}")
 
-    return {
+    # 构建 JSON 数据
+    # 空对话位置
+    empty_positions: List[dict] = []
+    for d in corr:
+        if len(d[1:-1]) == 0:
+            # 查找在文本中的位置
+            idx_in_text = corr_text.find(d)
+            line_no = corr_text[:idx_in_text].count("\n") + 1 if idx_in_text >= 0 else 0
+            ctx_start = max(0, idx_in_text - 20)
+            ctx_end = min(len(corr_text), idx_in_text + len(d) + 20)
+            context = corr_text[ctx_start:ctx_end].replace("\n", "\\n")
+            empty_positions.append({
+                "dialogue": d,
+                "line": line_no,
+                "offset": idx_in_text,
+                "context": context,
+            })
+
+    # 多出的对话
+    extra_dialogues: List[str] = []
+    if len(corr) > len(ans):
+        for i in range(len(ans), len(corr)):
+            extra_dialogues.append(corr[i])
+
+    data = {
         "corrected_total": len(corr),
         "corrected_empty": empty_c,
         "corrected_nonempty": nonempty_c,
@@ -109,11 +139,25 @@ def report(corrected_path: str, answer_path: str):
         "exact_matches": exact,
         "punct_differences": content_ok,
         "content_differences": diff,
+        "total_compared": n,
+        "empty_dialogues": empty_positions,
+        "extra_dialogues": extra_dialogues,
     }
+
+    if json_path:
+        Path(json_path).parent.mkdir(parents=True, exist_ok=True)
+        with open(json_path, "w", encoding="utf-8") as f:
+            json.dump(data, f, ensure_ascii=False, indent=2)
+        print(f"\nJSON saved: {json_path}")
+
+    return data
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print(__doc__)
-        sys.exit(1)
-    report(sys.argv[1], sys.argv[2])
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("corrected", help="corrected file path")
+    parser.add_argument("answer", help="answer file path")
+    parser.add_argument("--json", default="", help="output JSON path")
+    args = parser.parse_args()
+
+    report(args.corrected, args.answer, json_path=args.json or None)
