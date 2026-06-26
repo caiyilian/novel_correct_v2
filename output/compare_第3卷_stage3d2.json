@@ -1,0 +1,246 @@
+{
+  "corrected_total": 1183,
+  "corrected_empty": 0,
+  "corrected_nonempty": 1183,
+  "answer_total": 1215,
+  "answer_empty": 0,
+  "answer_nonempty": 1215,
+  "exact_matches": 317,
+  "punct_differences": 7,
+  "content_differences": 859,
+  "total_compared": 1183,
+  "empty_dialogues": [],
+  "extra_dialogues": [],
+  "alignment_diffs": [
+    {
+      "type": "corrected_split",
+      "corrected_idx": 126,
+      "answer_idx": 126,
+      "corrected": [
+        "咕噜",
+        "汝果然不知道在哪里。咱多多少少也猜到了，一直担心不知道汝什么时候才会开口问。"
+      ],
+      "answer": "汝果然不知道在哪里。咱多多少少也猜到了，一直担心不知道汝什么时候才会开口问。",
+      "similarity": 0.935
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 187,
+      "answer_idx": 186,
+      "corrected": "卢米欧尼的行情怎样？以崔尼银币来算。",
+      "answer": [
+        "十卢米欧尼半我就跟你买。",
+        "卢米欧尼的行情怎样？以崔尼银币来算。"
+      ],
+      "similarity": 0.682
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 414,
+      "answer_idx": 414,
+      "corrected": "怎么了？哎，先来喝一杯吧。",
+      "answer": [
+        "唷，帅哥。",
+        "怎么了？哎，先来喝一杯吧。"
+      ],
+      "similarity": 0.769
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 416,
+      "answer_idx": 417,
+      "corrected": "那，你刚刚要说什么？不会是要换目的地吧？",
+      "answer": [
+        "真是的。",
+        "那，你刚刚要说什么？不会是要换目的地吧？"
+      ],
+      "similarity": 0.938
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 485,
+      "answer_idx": 487,
+      "corrected": "很抱歉一大早就来叨扰，主人要我来传话。",
+      "answer": [
+        "？",
+        "很抱歉一大早就来叨扰，主人要我来传话。"
+      ],
+      "similarity": 1.0
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 534,
+      "answer_idx": 537,
+      "corrected": "当然，你本来就是自由之身，你可以照自己的心意去做。",
+      "answer": [
+        "喔？",
+        "当然，你本来就是自由之身，你可以照自己的心意去做。"
+      ],
+      "similarity": 0.952
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 586,
+      "answer_idx": 590,
+      "corrected": "真希望你用这是一场水面下的竞赛来形容。反正对方一定也派了人监视我的一举一动。",
+      "answer": [
+        "真阴险。",
+        "真希望你用这是一场水面下的竞赛来形容。反正对方一定也派了人动视我的一举一动。"
+      ],
+      "similarity": 0.939
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 655,
+      "answer_idx": 660,
+      "corrected": "很接近，但不是。那是完全和宝石扯不上关系的东西。",
+      "answer": [
+        "宝石买卖吗？",
+        "很接近，但不是。那是完全和宝石扯不上关系的东西。"
+      ],
+      "similarity": 0.864
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 656,
+      "answer_idx": 662,
+      "corrected": "喔？你已经听到消息了啊？",
+      "answer": [
+        "黄铁矿？",
+        "喔？你已经听到消息了啊？"
+      ],
+      "similarity": 0.769
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 1037,
+      "answer_idx": 1044,
+      "corrected": "早安。",
+      "answer": [
+        "……",
+        "啊，早安。"
+      ],
+      "similarity": 0.667
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1191,
+      "answer": "咦？"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1192,
+      "answer": "那女娃竟敢一副自己很了解的模样说……只要考验一下汝是否有决心就行了。"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1193,
+      "answer": "加油"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1194,
+      "answer": "真受不了"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1195,
+      "answer": "汝的蠢问题也一字不漏地传进了咱的耳朵。"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1196,
+      "answer": "啊！"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1197,
+      "answer": "听说有很多人类和神明成为一对的传说呐？"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1198,
+      "answer": "既然汝有这样的打算，咱是无所谓。不过……"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1199,
+      "answer": "汝要温柔点，好呗？"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1200,
+      "answer": "不知怎地，和那女娃说完话后，就觉得心情快活不起来。"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1201,
+      "answer": "汝有没有发现那女娃不是人类？"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1202,
+      "answer": "怎么可能"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1203,
+      "answer": "房间里不是掉落很多羽毛吗？那些是女娃的羽毛。"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1204,
+      "answer": "……是这样吗？"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1205,
+      "answer": "女娃的真实模样是只体型大过汝的鸟。她爱上了旅行修道士，并历经漫长岁月同心协力盖了一所教会。但女娃不管经过多少年都不会变老，所以修道士起了疑心。汝应该知道在那之后会是什么状况呗？"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1206,
+      "answer": "咱想回到故乡，哪怕……它已经不存在了。"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1207,
+      "answer": "嗯。"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1208,
+      "answer": "呵呵呵，人类的举动还真大胆呐。"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1209,
+      "answer": "嗯，很壮观。"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1210,
+      "answer": "咱们也去呗？"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1211,
+      "answer": "好……啊？"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1212,
+      "answer": "咱呐，就算要像那玩偶的火焰般热情也无所谓，汝呢？"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1213,
+      "answer": "趁着喝醉酒，应该勉强办得到吧。"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 1214,
+      "answer": "汝也喝醉的话，那谁来照顾咱呐？汝这个大笨驴！"
+    }
+  ]
+}
