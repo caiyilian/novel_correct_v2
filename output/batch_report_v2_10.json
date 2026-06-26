@@ -58,6 +58,7 @@
           "non_standard_by_symbol": {}
         }
       },
+      "verify_saved": "output\\verify_第2卷.json",
       "answer_quotes": {
         "left": 1425,
         "right": 1425,
@@ -113,13 +114,14 @@
           "non_standard_by_symbol": {}
         }
       },
+      "verify_saved": "output\\verify_第3卷.json",
       "answer_quotes": {
         "left": 1215,
         "right": 1215,
         "balanced": true
       },
       "detected_errors": 981,
-      "elapsed_seconds": 15.3
+      "elapsed_seconds": 15.0
     },
     {
       "volume": "第4卷",
@@ -166,13 +168,14 @@
           "non_standard_by_symbol": {}
         }
       },
+      "verify_saved": "output\\verify_第4卷.json",
       "answer_quotes": {
         "left": 1561,
         "right": 1561,
         "balanced": true
       },
       "detected_errors": 28,
-      "elapsed_seconds": 14.6
+      "elapsed_seconds": 14.4
     },
     {
       "volume": "第5卷",
@@ -226,13 +229,14 @@
           "non_standard_by_symbol": {}
         }
       },
+      "verify_saved": "output\\verify_第5卷.json",
       "answer_quotes": {
         "left": 1459,
         "right": 1459,
         "balanced": true
       },
       "detected_errors": 20,
-      "elapsed_seconds": 13.9
+      "elapsed_seconds": 13.7
     },
     {
       "volume": "第6卷",
@@ -282,13 +286,14 @@
           }
         }
       },
+      "verify_saved": "output\\verify_第6卷.json",
       "answer_quotes": {
         "left": 1202,
         "right": 1202,
         "balanced": true
       },
       "detected_errors": 23,
-      "elapsed_seconds": 10.1
+      "elapsed_seconds": 9.4
     },
     {
       "volume": "第7卷",
@@ -348,13 +353,14 @@
           }
         }
       },
+      "verify_saved": "output\\verify_第7卷.json",
       "answer_quotes": {
         "left": 1176,
         "right": 1176,
         "balanced": true
       },
       "detected_errors": 12,
-      "elapsed_seconds": 11.1
+      "elapsed_seconds": 10.6
     },
     {
       "volume": "第8卷",
@@ -408,13 +414,14 @@
           "non_standard_by_symbol": {}
         }
       },
+      "verify_saved": "output\\verify_第8卷.json",
       "answer_quotes": {
         "left": 930,
         "right": 930,
         "balanced": true
       },
       "detected_errors": 20,
-      "elapsed_seconds": 8.2
+      "elapsed_seconds": 8.1
     },
     {
       "volume": "第9卷",
@@ -458,13 +465,14 @@
           "non_standard_by_symbol": {}
         }
       },
+      "verify_saved": "output\\verify_第9卷.json",
       "answer_quotes": {
         "left": 997,
         "right": 997,
         "balanced": true
       },
       "detected_errors": 20,
-      "elapsed_seconds": 10.0
+      "elapsed_seconds": 9.9
     },
     {
       "volume": "第10卷",
@@ -518,13 +526,14 @@
           "non_standard_by_symbol": {}
         }
       },
+      "verify_saved": "output\\verify_第10卷.json",
       "answer_quotes": {
         "left": 1462,
         "right": 1462,
         "balanced": true
       },
       "detected_errors": 20,
-      "elapsed_seconds": 11.8
+      "elapsed_seconds": 11.7
     }
   ],
   "totals": {

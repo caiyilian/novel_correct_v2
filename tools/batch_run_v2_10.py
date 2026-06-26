@@ -397,6 +397,30 @@ def main():
     print(f"  Done. All results in output/")
     print(f"{'=' * 65}\n")
 
+    # Stage 2 validation: verify low-risk processing did not worsen state
+    stage2_ok = True
+    for v in all_results:
+        bal = v.get("clean_balance", {})
+        if bal and not bal.get("balanced", True):
+            # Unbalanced volumes should not have gotten worse
+            orig = v.get("original_quotes", {})
+            if orig and abs(orig.get("left",0)-orig.get("right",0)) > abs(bal.get("left",0)-bal.get("right",0)):
+                print(f"  [WARN] {v['volume']} imbalance widened!")
+                stage2_ok = False
+    if t["detected_errors"] > 1263:
+        print(f"  [WARN] Total detected errors ({t['detected_errors']}) > baseline (1263)")
+        stage2_ok = False
+    if t["low_risk_applied"] < 1260:
+        print(f"  [WARN] Low-risk applied ({t['low_risk_applied']}) < expected (~1267)")
+        stage2_ok = False
+    if t["empty_removed"] != 0:
+        print(f"  [WARN] Empty removed ({t['empty_removed']}) != 0")
+        stage2_ok = False
+    if stage2_ok:
+        print(f"\n  [Stage 2 OK] Low-risk preprocessing passed all checks.")
+    else:
+        print(f"\n  [Stage 2 WARN] Some checks failed — review above.")
+
     return summary
 
 
