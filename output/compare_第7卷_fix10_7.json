@@ -1,0 +1,60 @@
+{
+  "corrected_total": 1172,
+  "corrected_empty": 0,
+  "corrected_nonempty": 1172,
+  "answer_total": 1176,
+  "answer_empty": 0,
+  "answer_nonempty": 1176,
+  "exact_matches": 0,
+  "punct_differences": 2,
+  "content_differences": 1170,
+  "total_compared": 1172,
+  "empty_dialogues": [],
+  "extra_dialogues": [],
+  "alignment_diffs": [
+    {
+      "type": "answer_split",
+      "corrected_idx": 69,
+      "answer_idx": 69,
+      "corrected": "艾里亚丝！",
+      "answer": [
+        "？",
+        "啊，艾里亚丝！"
+      ],
+      "similarity": 0.8
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 173,
+      "answer_idx": 174,
+      "corrected": "在这里休息！",
+      "answer": [
+        "啊，好的。",
+        "你在这里休息。"
+      ],
+      "similarity": 0.556
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 598,
+      "answer_idx": 600,
+      "corrected": "抱、抱歉什么？",
+      "answer": [
+        "咦？",
+        "抱歉。"
+      ],
+      "similarity": 0.5
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 599,
+      "answer_idx": 602,
+      "corrected": "咱可能没办法救汝等。",
+      "answer": [
+        "抱、抱歉什么？",
+        "咱可能没办法救汝等。"
+      ],
+      "similarity": 0.692
+    }
+  ]
+}
