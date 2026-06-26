@@ -1,0 +1,199 @@
+{
+  "corrected_total": 1422,
+  "corrected_empty": 0,
+  "corrected_nonempty": 1422,
+  "answer_total": 1425,
+  "answer_empty": 0,
+  "answer_nonempty": 1425,
+  "exact_matches": 55,
+  "punct_differences": 34,
+  "content_differences": 1333,
+  "total_compared": 1422,
+  "empty_dialogues": [],
+  "extra_dialogues": [],
+  "alignment_diffs": [
+    {
+      "type": "answer_split",
+      "corrected_idx": 103,
+      "answer_idx": 103,
+      "corrected": "这样的话，我们需要纸和墨水。请等一下。",
+      "answer": [
+        "那么，是不是可以秤胡椒的重量了呢？",
+        "这样的话，我们需要纸和墨水。请等一下。"
+      ],
+      "similarity": 0.552
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 138,
+      "answer_idx": 139,
+      "corrected": "那么，咱喝的究竟是水，亦或葡萄酒呢?",
+      "answer": [
+        "！",
+        "那么，咱喝的究竟是水，亦或葡萄酒呢？"
+      ],
+      "similarity": 1.0
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 181,
+      "answer_idx": 183,
+      "corrected": "可别小看咱呐。难道汝以为咱没瞧见汝满面喜色，强硬地与老板交涉吗?咱的度量、头脑 \n \n    还有眼睛都很好，当然咱的耳朵也不赖。咱怎可能没听到汝怎么跟老板交涉呐。",
+      "answer": [
+        "你有什么凭证——",
+        "可别小看咱呐。难道汝以为咱没瞧见汝满面喜色，强硬地与老板交涉吗？咱的度量、头脑还有眼睛都很好，当然咱的耳朵也不赖。咱怎可能没听到汝怎么跟老板交涉呐。"
+      ],
+      "similarity": 0.929
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 283,
+      "answer_idx": 286,
+      "corrected": "应该是没啥问题呗。就算真的有狼群出现，只要给一些肉干就行了。咱们狼并不会做无谓 \n \n    的争斗。",
+      "answer": [
+        "啾——",
+        "应该是没啥问题呗。就算真的有狼群出现，只要给一些肉干就行了。咱们狼并不会做无谓的争斗。"
+      ],
+      "similarity": 0.973
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 295,
+      "answer_idx": 299,
+      "corrected": "……汝在捉弄咱是呗?",
+      "answer": [
+        "嗯？",
+        "……汝在捉弄咱是呗？"
+      ],
+      "similarity": 0.875
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 355,
+      "answer_idx": 360,
+      "corrected": "咱比较可爱。",
+      "answer": [
+        "嗯？嗯——",
+        "咱比较可爱。"
+      ],
+      "similarity": 0.833
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 371,
+      "answer_idx": 377,
+      "corrected": "汝真的要雇用那个人呐?",
+      "answer": [
+        "嗯？",
+        "汝真的要雇用那个人呐？"
+      ],
+      "similarity": 0.909
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 740,
+      "answer_idx": 747,
+      "corrected": "洋行就像我们旅行商人的故乡。你应该知道带女人到故乡去，代表著什么意思吧?",
+      "answer": [
+        "你要是回答得不好，我会再踩下去",
+        "洋行就像我们旅行商人的故乡。你应该知道带女人到故乡去，代表着什么意思吧？"
+      ],
+      "similarity": 0.7
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 786,
+      "answer_idx": 794,
+      "corrected": "照雷玛里欧商行的家伙所说，你的债务偿还期限是两天后。雷玛里欧商行也因为投资兵备 \n \n    而失败，应该正火烧屁股急著呢，想必他们会毫不犹豫地立刻前来讨债吧。也就是说，到了后 \n \n    天，你失败的事情就会曝光，而我也不得不拘禁你。从这里可以得到什么结论呢?",
+      "answer": [
+        "我明白。",
+        "照雷玛里欧商行的家伙所说，你的债务偿还期限是两天后。雷玛里欧商行也因为投资兵备而失败，应该正火烧屁股急着呢，想必他们会毫不犹豫地立刻前来讨债吧。也就是说，到了后天，你失败的事情就会曝光，而我也不得不拘禁你。从这里可以得到什么结论呢？"
+      ],
+      "similarity": 0.963
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 892,
+      "answer_idx": 901,
+      "corrected": "啊哈哈哈哈，真是的，咱们到底在做什么啊?",
+      "answer": [
+        "给我抱紧点",
+        "啊哈哈哈哈，真是的，咱们到底在做什么啊？"
+      ],
+      "similarity": 0.722
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 1097,
+      "answer_idx": 1107,
+      "corrected": "没有什么比搞不清楚自己身份的狗更教人生气的了.",
+      "answer": [
+        "怎么可能。",
+        "没有什么比搞不清楚自己身分的狗更教人生气了。"
+      ],
+      "similarity": 0.833
+    },
+    {
+      "type": "answer_split",
+      "corrected_idx": 1233,
+      "answer_idx": 1244,
+      "corrected": "汝啊，咱知道汝也有很多话想说。但是，可以让咱先说吗?",
+      "answer": [
+        "呵呵呵呵呵。汝这家伙也真是奇怪，把咱的衣服当成宝一样。",
+        "汝啊，咱知道汝也有很多话想说。但是，可以让咱先说吗？"
+      ],
+      "similarity": 0.543
+    },
+    {
+      "type": "corrected_split",
+      "corrected_idx": 1308,
+      "answer_idx": 1320,
+      "corrected": [
+        "咦?",
+        "那么，诺儿菝，我们回到刚刚的话题吧。"
+      ],
+      "answer": "那么，诺儿菈，我们回到刚刚的话题吧。",
+      "similarity": 0.867
+    },
+    {
+      "type": "corrected_extra",
+      "corrected_idx": 1414,
+      "corrected": "汝啊。"
+    },
+    {
+      "type": "corrected_extra",
+      "corrected_idx": 1415,
+      "corrected": "汝叫名字看看。"
+    },
+    {
+      "type": "corrected_extra",
+      "corrected_idx": 1416,
+      "corrected": "那个"
+    },
+    {
+      "type": "corrected_extra",
+      "corrected_idx": 1417,
+      "corrected": "哈啾!"
+    },
+    {
+      "type": "corrected_extra",
+      "corrected_idx": 1418,
+      "corrected": "赫萝。"
+    },
+    {
+      "type": "corrected_extra",
+      "corrected_idx": 1419,
+      "corrected": "果然还是赫萝比较好叫。"
+    },
+    {
+      "type": "corrected_extra",
+      "corrected_idx": 1420,
+      "corrected": "……大笨驴。"
+    },
+    {
+      "type": "corrected_extra",
+      "corrected_idx": 1421,
+      "corrected": "后记"
+    }
+  ]
+}
