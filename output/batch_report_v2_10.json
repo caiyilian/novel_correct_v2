@@ -1,0 +1,549 @@
+{
+  "total_volumes": 9,
+  "volumes": [
+    {
+      "volume": "第2卷",
+      "vol_num": 2,
+      "original_chars": 185216,
+      "empty_removed": 0,
+      "clean_balance": {
+        "left": 1334,
+        "right": 1367,
+        "balanced": false
+      },
+      "original_quotes": {
+        "left": 1334,
+        "right": 1367,
+        "balanced": false
+      },
+      "candidates": {
+        "total": 802,
+        "low_risk": 647,
+        "high_risk": 155
+      },
+      "low_risk_applied": 647,
+      "comparison": {
+        "corrected_total": 1334,
+        "corrected_empty": 0,
+        "answer_total": 1425,
+        "answer_empty": 0,
+        "exact_matches": 29,
+        "punct_differences": 0,
+        "content_differences": 1305,
+        "total_compared": 1334,
+        "exact_pct": 2.2
+      },
+      "verification": {
+        "match_rate": 0.9775,
+        "matching_chars": 139921,
+        "total_chars": 143149,
+        "diff_snippets": 2536
+      },
+      "symbols": {
+        "corrected": {
+          "left_japanese_quote": 1334,
+          "right_japanese_quote": 1367,
+          "non_standard_total": 144,
+          "non_standard_by_symbol": {
+            "[": 88,
+            "]": 54,
+            "“": 1,
+            "”": 1
+          }
+        },
+        "answer": {
+          "left_japanese_quote": 1425,
+          "right_japanese_quote": 1425,
+          "non_standard_total": 0,
+          "non_standard_by_symbol": {}
+        }
+      },
+      "answer_quotes": {
+        "left": 1425,
+        "right": 1425,
+        "balanced": true
+      },
+      "detected_errors": 139,
+      "elapsed_seconds": 18.2
+    },
+    {
+      "volume": "第3卷",
+      "vol_num": 3,
+      "original_chars": 146370,
+      "empty_removed": 0,
+      "clean_balance": {
+        "left": 0,
+        "right": 0,
+        "balanced": true
+      },
+      "original_quotes": {
+        "left": 0,
+        "right": 0,
+        "balanced": true
+      },
+      "candidates": {
+        "total": 21,
+        "low_risk": 1,
+        "high_risk": 20
+      },
+      "low_risk_applied": 1,
+      "comparison_error": "division by zero",
+      "verification": {
+        "match_rate": 0.955,
+        "matching_chars": 114573,
+        "total_chars": 119976,
+        "diff_snippets": 2407
+      },
+      "symbols": {
+        "corrected": {
+          "left_japanese_quote": 0,
+          "right_japanese_quote": 0,
+          "non_standard_total": 2375,
+          "non_standard_by_symbol": {
+            "“": 1188,
+            "”": 1185,
+            "{": 1,
+            "}": 1
+          }
+        },
+        "answer": {
+          "left_japanese_quote": 1215,
+          "right_japanese_quote": 1215,
+          "non_standard_total": 0,
+          "non_standard_by_symbol": {}
+        }
+      },
+      "answer_quotes": {
+        "left": 1215,
+        "right": 1215,
+        "balanced": true
+      },
+      "detected_errors": 981,
+      "elapsed_seconds": 15.3
+    },
+    {
+      "volume": "第4卷",
+      "vol_num": 4,
+      "original_chars": 152149,
+      "empty_removed": 0,
+      "clean_balance": {
+        "left": 1560,
+        "right": 1557,
+        "balanced": false
+      },
+      "original_quotes": {
+        "left": 1560,
+        "right": 1557,
+        "balanced": false
+      },
+      "candidates": {
+        "total": 616,
+        "low_risk": 616,
+        "high_risk": 0
+      },
+      "low_risk_applied": 616,
+      "comparison_error": "'gbk' codec can't encode character '\\u2022' in position 17: illegal multibyte sequence",
+      "verification": {
+        "match_rate": 0.9914,
+        "matching_chars": 119623,
+        "total_chars": 120657,
+        "diff_snippets": 445
+      },
+      "symbols": {
+        "corrected": {
+          "left_japanese_quote": 1560,
+          "right_japanese_quote": 1557,
+          "non_standard_total": 3,
+          "non_standard_by_symbol": {
+            "》": 2,
+            "《": 1
+          }
+        },
+        "answer": {
+          "left_japanese_quote": 1561,
+          "right_japanese_quote": 1561,
+          "non_standard_total": 0,
+          "non_standard_by_symbol": {}
+        }
+      },
+      "answer_quotes": {
+        "left": 1561,
+        "right": 1561,
+        "balanced": true
+      },
+      "detected_errors": 28,
+      "elapsed_seconds": 14.6
+    },
+    {
+      "volume": "第5卷",
+      "vol_num": 5,
+      "original_chars": 157505,
+      "empty_removed": 0,
+      "clean_balance": {
+        "left": 1455,
+        "right": 1455,
+        "balanced": true
+      },
+      "original_quotes": {
+        "left": 1455,
+        "right": 1455,
+        "balanced": true
+      },
+      "candidates": {
+        "total": 0,
+        "low_risk": 0,
+        "high_risk": 0
+      },
+      "low_risk_applied": 0,
+      "comparison": {
+        "corrected_total": 1455,
+        "corrected_empty": 0,
+        "answer_total": 1459,
+        "answer_empty": 0,
+        "exact_matches": 36,
+        "punct_differences": 2,
+        "content_differences": 1417,
+        "total_compared": 1455,
+        "exact_pct": 2.5
+      },
+      "verification": {
+        "match_rate": 0.9844,
+        "matching_chars": 124590,
+        "total_chars": 126569,
+        "diff_snippets": 867
+      },
+      "symbols": {
+        "corrected": {
+          "left_japanese_quote": 1455,
+          "right_japanese_quote": 1455,
+          "non_standard_total": 0,
+          "non_standard_by_symbol": {}
+        },
+        "answer": {
+          "left_japanese_quote": 1459,
+          "right_japanese_quote": 1459,
+          "non_standard_total": 0,
+          "non_standard_by_symbol": {}
+        }
+      },
+      "answer_quotes": {
+        "left": 1459,
+        "right": 1459,
+        "balanced": true
+      },
+      "detected_errors": 20,
+      "elapsed_seconds": 13.9
+    },
+    {
+      "volume": "第6卷",
+      "vol_num": 6,
+      "original_chars": 137973,
+      "empty_removed": 0,
+      "clean_balance": {
+        "left": 1201,
+        "right": 1200,
+        "balanced": false
+      },
+      "original_quotes": {
+        "left": 1201,
+        "right": 1200,
+        "balanced": false
+      },
+      "candidates": {
+        "total": 0,
+        "low_risk": 0,
+        "high_risk": 0
+      },
+      "low_risk_applied": 0,
+      "comparison_error": "'gbk' codec can't encode character '\\ufeff' in position 21: illegal multibyte sequence",
+      "verification": {
+        "match_rate": 0.9938,
+        "matching_chars": 109118,
+        "total_chars": 109803,
+        "diff_snippets": 129
+      },
+      "symbols": {
+        "corrected": {
+          "left_japanese_quote": 1201,
+          "right_japanese_quote": 1200,
+          "non_standard_total": 4,
+          "non_standard_by_symbol": {
+            "《": 2,
+            "》": 2
+          }
+        },
+        "answer": {
+          "left_japanese_quote": 1202,
+          "right_japanese_quote": 1202,
+          "non_standard_total": 4,
+          "non_standard_by_symbol": {
+            "《": 2,
+            "》": 2
+          }
+        }
+      },
+      "answer_quotes": {
+        "left": 1202,
+        "right": 1202,
+        "balanced": true
+      },
+      "detected_errors": 23,
+      "elapsed_seconds": 10.1
+    },
+    {
+      "volume": "第7卷",
+      "vol_num": 7,
+      "original_chars": 123929,
+      "empty_removed": 0,
+      "clean_balance": {
+        "left": 1171,
+        "right": 1171,
+        "balanced": true
+      },
+      "original_quotes": {
+        "left": 1171,
+        "right": 1171,
+        "balanced": true
+      },
+      "candidates": {
+        "total": 1,
+        "low_risk": 0,
+        "high_risk": 1
+      },
+      "low_risk_applied": 0,
+      "comparison": {
+        "corrected_total": 1171,
+        "corrected_empty": 0,
+        "answer_total": 1176,
+        "answer_empty": 0,
+        "exact_matches": 0,
+        "punct_differences": 1,
+        "content_differences": 1170,
+        "total_compared": 1171,
+        "exact_pct": 0.0
+      },
+      "verification": {
+        "match_rate": 0.984,
+        "matching_chars": 95598,
+        "total_chars": 97156,
+        "diff_snippets": 894
+      },
+      "symbols": {
+        "corrected": {
+          "left_japanese_quote": 1171,
+          "right_japanese_quote": 1171,
+          "non_standard_total": 2,
+          "non_standard_by_symbol": {
+            "《": 1,
+            "》": 1
+          }
+        },
+        "answer": {
+          "left_japanese_quote": 1176,
+          "right_japanese_quote": 1176,
+          "non_standard_total": 4,
+          "non_standard_by_symbol": {
+            "《": 2,
+            "》": 2
+          }
+        }
+      },
+      "answer_quotes": {
+        "left": 1176,
+        "right": 1176,
+        "balanced": true
+      },
+      "detected_errors": 12,
+      "elapsed_seconds": 11.1
+    },
+    {
+      "volume": "第8卷",
+      "vol_num": 8,
+      "original_chars": 110209,
+      "empty_removed": 0,
+      "clean_balance": {
+        "left": 929,
+        "right": 929,
+        "balanced": true
+      },
+      "original_quotes": {
+        "left": 929,
+        "right": 929,
+        "balanced": true
+      },
+      "candidates": {
+        "total": 0,
+        "low_risk": 0,
+        "high_risk": 0
+      },
+      "low_risk_applied": 0,
+      "comparison": {
+        "corrected_total": 929,
+        "corrected_empty": 0,
+        "answer_total": 930,
+        "answer_empty": 0,
+        "exact_matches": 0,
+        "punct_differences": 1,
+        "content_differences": 928,
+        "total_compared": 929,
+        "exact_pct": 0.0
+      },
+      "verification": {
+        "match_rate": 0.9871,
+        "matching_chars": 86976,
+        "total_chars": 88116,
+        "diff_snippets": 641
+      },
+      "symbols": {
+        "corrected": {
+          "left_japanese_quote": 929,
+          "right_japanese_quote": 929,
+          "non_standard_total": 0,
+          "non_standard_by_symbol": {}
+        },
+        "answer": {
+          "left_japanese_quote": 930,
+          "right_japanese_quote": 930,
+          "non_standard_total": 0,
+          "non_standard_by_symbol": {}
+        }
+      },
+      "answer_quotes": {
+        "left": 930,
+        "right": 930,
+        "balanced": true
+      },
+      "detected_errors": 20,
+      "elapsed_seconds": 8.2
+    },
+    {
+      "volume": "第9卷",
+      "vol_num": 9,
+      "original_chars": 127389,
+      "empty_removed": 0,
+      "clean_balance": {
+        "left": 995,
+        "right": 995,
+        "balanced": true
+      },
+      "original_quotes": {
+        "left": 995,
+        "right": 995,
+        "balanced": true
+      },
+      "candidates": {
+        "total": 2,
+        "low_risk": 2,
+        "high_risk": 0
+      },
+      "low_risk_applied": 2,
+      "comparison_error": "'gbk' codec can't encode character '\\u2022' in position 68: illegal multibyte sequence",
+      "verification": {
+        "match_rate": 0.985,
+        "matching_chars": 99157,
+        "total_chars": 100665,
+        "diff_snippets": 831
+      },
+      "symbols": {
+        "corrected": {
+          "left_japanese_quote": 995,
+          "right_japanese_quote": 995,
+          "non_standard_total": 0,
+          "non_standard_by_symbol": {}
+        },
+        "answer": {
+          "left_japanese_quote": 997,
+          "right_japanese_quote": 997,
+          "non_standard_total": 0,
+          "non_standard_by_symbol": {}
+        }
+      },
+      "answer_quotes": {
+        "left": 997,
+        "right": 997,
+        "balanced": true
+      },
+      "detected_errors": 20,
+      "elapsed_seconds": 10.0
+    },
+    {
+      "volume": "第10卷",
+      "vol_num": 10,
+      "original_chars": 160006,
+      "empty_removed": 0,
+      "clean_balance": {
+        "left": 1461,
+        "right": 1461,
+        "balanced": true
+      },
+      "original_quotes": {
+        "left": 1461,
+        "right": 1461,
+        "balanced": true
+      },
+      "candidates": {
+        "total": 1,
+        "low_risk": 1,
+        "high_risk": 0
+      },
+      "low_risk_applied": 1,
+      "comparison": {
+        "corrected_total": 1461,
+        "corrected_empty": 0,
+        "answer_total": 1462,
+        "answer_empty": 0,
+        "exact_matches": 2,
+        "punct_differences": 0,
+        "content_differences": 1459,
+        "total_compared": 1461,
+        "exact_pct": 0.1
+      },
+      "verification": {
+        "match_rate": 0.9876,
+        "matching_chars": 125560,
+        "total_chars": 127140,
+        "diff_snippets": 951
+      },
+      "symbols": {
+        "corrected": {
+          "left_japanese_quote": 1461,
+          "right_japanese_quote": 1461,
+          "non_standard_total": 0,
+          "non_standard_by_symbol": {}
+        },
+        "answer": {
+          "left_japanese_quote": 1462,
+          "right_japanese_quote": 1462,
+          "non_standard_total": 0,
+          "non_standard_by_symbol": {}
+        }
+      },
+      "answer_quotes": {
+        "left": 1462,
+        "right": 1462,
+        "balanced": true
+      },
+      "detected_errors": 20,
+      "elapsed_seconds": 11.8
+    }
+  ],
+  "totals": {
+    "original_quotes": {
+      "left": 10106,
+      "right": 10135
+    },
+    "answer_quotes": {
+      "left": 11427,
+      "right": 11427
+    },
+    "exact_matches": 67,
+    "punct_differences": 4,
+    "content_differences": 6279,
+    "total_compared": 6350,
+    "detected_errors": 1263,
+    "empty_removed": 0,
+    "low_risk_applied": 1267,
+    "high_risk_candidates": 176
+  },
+  "exact_match_pct": 1.1
+}
