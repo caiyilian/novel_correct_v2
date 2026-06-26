@@ -1,0 +1,146 @@
+{
+  "status": "APPLIED",
+  "rollback_condition": "balanced",
+  "original": {
+    "curly_left": 1188,
+    "curly_right": 1185,
+    "jp_left": 0,
+    "jp_right": 0
+  },
+  "result": {
+    "jp_left": 1183,
+    "jp_right": 1183,
+    "remaining_curly_left": 5,
+    "remaining_curly_right": 2,
+    "balanced": true,
+    "content_unchanged": true
+  },
+  "pairs_converted": 1183,
+  "conversion_sample": [
+    {
+      "para_index": 29,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 9,
+      "context": "    “怎么着？” "
+    },
+    {
+      "para_index": 41,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 24,
+      "context": "    “赶快把尾巴梳理好，然后放进盖腿布底下。” "
+    },
+    {
+      "para_index": 47,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 17,
+      "context": "    “不准把咱的尾巴当成怀炉。” "
+    },
+    {
+      "para_index": 63,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 52,
+      "context": "    “毕竟你那尾巴的毛发如此浓密整齐，光是放在盖腿布底下，就温暖得像是盖了堆得跟山一样的厚重皮草嘛。” "
+    },
+    {
+      "para_index": 65,
+      "left_pos_in_para": 29,
+      "right_pos_in_para": 36,
+      "context": "的盘算，赫萝得意地用鼻子哼了一声后，一副“真是拿你没辙”的模样把尾巴收进盖腿布底下。 "
+    },
+    {
+      "para_index": 67,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 21,
+      "context": "    “话说，城镇还没到吗？今天会到呗？” "
+    },
+    {
+      "para_index": 69,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 24,
+      "context": "    “只要沿着这条河往上游走，没多久就到了。” "
+    },
+    {
+      "para_index": 71,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 49,
+      "context": "    “总算可以吃热腾腾的饭了，咱可不想在这般寒天里再吃冷稀饭了。不管怎么说，这都太教人厌烦了。” "
+    },
+    {
+      "para_index": 83,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 40,
+      "context": "    “嗯，我们要前往的城镇正在举办大市集，应该会有很多吃的，你就好好期待吧。” "
+    },
+    {
+      "para_index": 85,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 25,
+      "context": "    “喔，可是汝啊，汝的荷包受得了多买东西吗？” "
+    },
+    {
+      "para_index": 97,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 32,
+      "context": "    “如果只是买吃的给你，那还在容许范围内。没什么好担心的。” "
+    },
+    {
+      "para_index": 101,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 8,
+      "context": "    “嗯……” "
+    },
+    {
+      "para_index": 103,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 43,
+      "context": "    “而且，最后在留宾海根还是没买到蜂蜜腌渍的桃子给你，你只要想成这是补偿就好了。” "
+    },
+    {
+      "para_index": 105,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 13,
+      "context": "    “是么……可是呐。” "
+    },
+    {
+      "para_index": 107,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 8,
+      "context": "    “怎样？” "
+    },
+    {
+      "para_index": 109,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 56,
+      "context": "    “虽然咱有一半是担心汝的荷包，但另一半是替自己担心。如果咱把钱花在吃的上面，会不会就得住差一点的旅馆呢？” "
+    },
+    {
+      "para_index": 111,
+      "left_pos_in_para": 9,
+      "right_pos_in_para": 14,
+      "context": "    罗伦斯心想“原来如此”，笑着回答说： "
+    },
+    {
+      "para_index": 113,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 39,
+      "context": "    “我是打算投宿有一定水准的旅馆。难道你想说房间里没有暖炉，你就不住吗？” "
+    },
+    {
+      "para_index": 115,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 41,
+      "context": "    “咱是没打算要求那么多。不过呐，咱可不想听到汝以咱买了吃的东西为借口呐……” "
+    },
+    {
+      "para_index": 117,
+      "left_pos_in_para": 4,
+      "right_pos_in_para": 8,
+      "context": "    “借口？” "
+    }
+  ],
+  "remaining_for_stage3c": {
+    "cross_paragraph_or_unbalanced_curly": 7,
+    "high_risk_style_candidates": 20,
+    "details": "5 left + 2 right curly remain + 20 style candidates"
+  }
+}
