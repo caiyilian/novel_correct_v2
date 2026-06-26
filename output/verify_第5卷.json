@@ -1,0 +1,479 @@
+{
+  "corrected_path": "output\\corrected_第5卷.txt",
+  "answer_path": "data\\answer\\answer_第5卷.txt",
+  "corrected": {
+    "chars": 157505,
+    "lines": 7822,
+    "chars_no_whitespace": 126174
+  },
+  "answer": {
+    "chars": 130555,
+    "lines": 3981,
+    "chars_no_whitespace": 126569
+  },
+  "symbol_stats": {
+    "corrected": {
+      "left_japanese_quote": 1455,
+      "right_japanese_quote": 1455,
+      "non_standard_total": 0,
+      "non_standard_by_symbol": {}
+    },
+    "answer": {
+      "left_japanese_quote": 1459,
+      "right_japanese_quote": 1459,
+      "non_standard_total": 0,
+      "non_standard_by_symbol": {}
+    },
+    "comparison": {
+      "left_japanese_quote": {
+        "corrected": 1455,
+        "answer": 1459,
+        "diff": -4,
+        "match": false
+      },
+      "right_japanese_quote": {
+        "corrected": 1455,
+        "answer": 1459,
+        "diff": -4,
+        "match": false
+      },
+      "non_standard_total": {
+        "corrected": 0,
+        "answer": 0,
+        "diff": 0,
+        "match": true
+      }
+    }
+  },
+  "quote_balance": {
+    "corrected_balanced": true
+  },
+  "matching": {
+    "matching_chars_no_whitespace": 124590,
+    "total_answer_chars_no_whitespace": 126569,
+    "match_rate": 0.9844
+  },
+  "diff_snippets_count": 867,
+  "diff_snippets": [
+    {
+      "tag": "replace",
+      "corrected": "★☆★☆★☆轻小说",
+      "answer": "封面标题Merchantmeatsspicywolf.狼与辛香料ⅤAuthor支仓冻砂IsunaHasekuraIllusation",
+      "corrected_len": 9,
+      "answer_len": 66
+    },
+    {
+      "tag": "replace",
+      "corrected": "库(W",
+      "answer": "仓十JyuuAyakura制作信息制作信息──────────────作者：支仓冻砂插画：文仓十图源：linpop录入：会灰的鸟弹天使动漫：w",
+      "corrected_len": 3,
+      "answer_len": 71
+    },
+    {
+      "tag": "replace",
+      "corrected": "W",
+      "answer": "tsdm39.net仅供个人学习交流，禁做商业用途下载后请在24小时内删除，TSDM不负担任何责任请尊重翻译、扫图、录入、校对的辛勤劳动，转载请保留信息──────────────简介简介旅行商人罗伦斯与狼神赫萝平安无事地离开特列欧村后，来到直接留下关于赫萝传说的城镇雷诺斯。尽管赫萝希望两人能够悠哉地寻找她的故乡——约伊兹的线索，却未能阻挡罗伦斯对生意的好奇心。这时，一名在民宿结识的商人告诉罗伦斯",
+      "corrected_len": 1,
+      "answer_len": 290
+    },
+    {
+      "tag": "replace",
+      "corrected": "Ku8.com)☆★☆★☆★第五卷",
+      "answer": "ts───",
+      "corrected_len": 17,
+      "answer_len": 5
+    },
+    {
+      "tag": "replace",
+      "corrected": "台版转自轻之国度扫图Ozzie录入临风且吟校对传说的英雄",
+      "answer": "──────第一幕──────第二幕──────第三幕──────第四幕──────终幕───序幕序幕序幕",
+      "corrected_len": 28,
+      "answer_len": 53
+    },
+    {
+      "tag": "replace",
+      "corrected": "·",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "时",
+      "answer": "是",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "五卷",
+      "answer": "一幕第一幕",
+      "corrected_len": 2,
+      "answer_len": 5
+    },
+    {
+      "tag": "delete",
+      "corrected": "锅",
+      "answer": "",
+      "corrected_len": 1,
+      "answer_len": 0
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "掉的东西",
+      "corrected_len": 0,
+      "answer_len": 4
+    },
+    {
+      "tag": "replace",
+      "corrected": "。",
+      "answer": "；",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "吧",
+      "answer": "呗",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "眯",
+      "answer": "瞇",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "眯",
+      "answer": "瞇",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "吧",
+      "answer": "呗",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "吧",
+      "answer": "呗",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "——",
+      "answer": "～",
+      "corrected_len": 2,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "」「……",
+      "corrected_len": 0,
+      "answer_len": 4
+    },
+    {
+      "tag": "replace",
+      "corrected": "要",
+      "answer": "耍",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "。",
+      "answer": "；",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "试着和",
+      "answer": "我会先算算荷包里还剩多少",
+      "corrected_len": 3,
+      "answer_len": 12
+    },
+    {
+      "tag": "delete",
+      "corrected": "包商量一下吧",
+      "answer": "",
+      "corrected_len": 6,
+      "answer_len": 0
+    },
+    {
+      "tag": "replace",
+      "corrected": "覆",
+      "answer": "复",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "着",
+      "answer": "著",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "、",
+      "answer": "，",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "、",
+      "answer": "，",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "：",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "放货",
+      "corrected_len": 0,
+      "answer_len": 2
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "其",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "·",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "藉",
+      "answer": "借",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "。",
+      "answer": "；",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "彷",
+      "answer": "仿",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "段",
+      "answer": "部位",
+      "corrected_len": 1,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "晾",
+      "answer": "晒",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "份",
+      "answer": "分",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "彷",
+      "answer": "仿",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "晾",
+      "answer": "晒",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "人",
+      "answer": "入",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "问",
+      "answer": "间",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "藉",
+      "answer": "借",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "delete",
+      "corrected": "刃",
+      "answer": "",
+      "corrected_len": 1,
+      "answer_len": 0
+    },
+    {
+      "tag": "replace",
+      "corrected": "眯",
+      "answer": "瞇",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "了",
+      "answer": "来",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "，",
+      "answer": "～",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "便",
+      "answer": "凉",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "。",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "delete",
+      "corrected": "。",
+      "answer": "",
+      "corrected_len": 1,
+      "answer_len": 0
+    },
+    {
+      "tag": "replace",
+      "corrected": "定",
+      "answer": "走",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "频频转过头来，",
+      "answer": "左一次右一次地",
+      "corrected_len": 7,
+      "answer_len": 7
+    },
+    {
+      "tag": "replace",
+      "corrected": "藉",
+      "answer": "借",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "下",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "用力了啦",
+      "answer": "猛了",
+      "corrected_len": 4,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "捉",
+      "answer": "扣",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "捂",
+      "answer": "摀",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "。",
+      "answer": "，",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "捂",
+      "answer": "摀",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "彷",
+      "answer": "仿",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "黎格",
+      "answer": "里戈",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "份",
+      "answer": "分",
+      "corrected_len": 1,
+      "answer_len": 1
+    }
+  ]
+}
