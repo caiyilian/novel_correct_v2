@@ -1,0 +1,484 @@
+{
+  "corrected_path": "output\\corrected_第3卷.txt",
+  "answer_path": "data\\answer\\answer_第3卷.txt",
+  "corrected": {
+    "chars": 146370,
+    "lines": 7080,
+    "chars_no_whitespace": 118008
+  },
+  "answer": {
+    "chars": 123669,
+    "lines": 3689,
+    "chars_no_whitespace": 119976
+  },
+  "symbol_stats": {
+    "corrected": {
+      "left_japanese_quote": 0,
+      "right_japanese_quote": 0,
+      "non_standard_total": 2375,
+      "non_standard_by_symbol": {
+        "“": 1188,
+        "”": 1185,
+        "{": 1,
+        "}": 1
+      }
+    },
+    "answer": {
+      "left_japanese_quote": 1215,
+      "right_japanese_quote": 1215,
+      "non_standard_total": 0,
+      "non_standard_by_symbol": {}
+    },
+    "comparison": {
+      "left_japanese_quote": {
+        "corrected": 0,
+        "answer": 1215,
+        "diff": -1215,
+        "match": false
+      },
+      "right_japanese_quote": {
+        "corrected": 0,
+        "answer": 1215,
+        "diff": -1215,
+        "match": false
+      },
+      "non_standard_total": {
+        "corrected": 2375,
+        "answer": 0,
+        "diff": 2375,
+        "match": false
+      }
+    }
+  },
+  "quote_balance": {
+    "corrected_balanced": true
+  },
+  "matching": {
+    "matching_chars_no_whitespace": 114573,
+    "total_answer_chars_no_whitespace": 119976,
+    "match_rate": 0.955
+  },
+  "diff_snippets_count": 2407,
+  "diff_snippets": [
+    {
+      "tag": "replace",
+      "corrected": "★☆★☆★☆轻小说",
+      "answer": "封面标题Merchantmeatsspicywolf.狼与辛香料ⅠⅠⅠAuthor支仓冻砂IsunaHasekuraIllusation",
+      "corrected_len": 9,
+      "answer_len": 68
+    },
+    {
+      "tag": "replace",
+      "corrected": "库(W",
+      "answer": "仓十JyuuAyakura制作信息制作信息──────────────作者：支仓冻砂插画：文仓十图源：linpop录入：会灰的鸟弹天使动漫：w",
+      "corrected_len": 3,
+      "answer_len": 71
+    },
+    {
+      "tag": "replace",
+      "corrected": "W",
+      "answer": "tsdm39.n",
+      "corrected_len": 1,
+      "answer_len": 8
+    },
+    {
+      "tag": "replace",
+      "corrected": "nKu8.com)☆★☆★☆★第三卷第一幕台版转自轻之国度",
+      "answer": "t仅供个人学习交流，禁做商业用途下载后请在24小时内删除，TSDM不负担任何责任请尊重翻译、扫图、",
+      "corrected_len": 29,
+      "answer_len": 49
+    },
+    {
+      "tag": "replace",
+      "corrected": "：临风且吟",
+      "answer": "、校对的辛勤劳动，转载请保留信息──────────────简介简介旅行商人罗伦斯与狼神赫萝",
+      "corrected_len": 5,
+      "answer_len": 46
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "一方面为了行商，一方面也为了收集赫萝的故乡——约伊兹的情报。于是来到了因冬季大市集与祭典而热闹非凡的城镇——卡梅尔森，并在这里遇上了年轻鱼商阿玛堤。阿玛堤似乎对赫萝一见钟情而积极地接近赫萝。另一方面，罗伦斯与赫萝之间起了微妙的情感变化，以致误会频生。两人之间的误会也导致罗伦斯与阿玛堤的生意一步步演变成大骚动——插图插图插图插图插图目录Contents───第一幕──────第二幕──────第三幕",
+      "corrected_len": 0,
+      "answer_len": 251
+    },
+    {
+      "tag": "replace",
+      "corrected": "至",
+      "answer": "致",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "慕",
+      "answer": "煞",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "着",
+      "answer": "著",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "，",
+      "answer": "；",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "眯",
+      "answer": "瞇",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "；",
+      "answer": "，",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "辙”",
+      "answer": "辄」",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”“",
+      "answer": "」「",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "”“",
+      "answer": "」「",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”“",
+      "answer": "」「",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "，",
+      "answer": "～",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”“",
+      "answer": "」「",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "”“",
+      "answer": "」「",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "”“",
+      "answer": "」「",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "”“",
+      "answer": "」「",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”“",
+      "answer": "」「",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "”“",
+      "answer": "」「",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "﻿",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "令",
+      "answer": "教",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "己",
+      "answer": "已",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "”",
+      "answer": "」",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "“",
+      "answer": "「",
+      "corrected_len": 1,
+      "answer_len": 1
+    }
+  ]
+}

@@ -1,0 +1,482 @@
+{
+  "corrected_path": "output\\corrected_第4卷.txt",
+  "answer_path": "data\\answer\\answer_第4卷.txt",
+  "corrected": {
+    "chars": 152149,
+    "lines": 7935,
+    "chars_no_whitespace": 120302
+  },
+  "answer": {
+    "chars": 124699,
+    "lines": 4038,
+    "chars_no_whitespace": 120657
+  },
+  "symbol_stats": {
+    "corrected": {
+      "left_japanese_quote": 1560,
+      "right_japanese_quote": 1557,
+      "non_standard_total": 3,
+      "non_standard_by_symbol": {
+        "》": 2,
+        "《": 1
+      }
+    },
+    "answer": {
+      "left_japanese_quote": 1561,
+      "right_japanese_quote": 1561,
+      "non_standard_total": 0,
+      "non_standard_by_symbol": {}
+    },
+    "comparison": {
+      "left_japanese_quote": {
+        "corrected": 1560,
+        "answer": 1561,
+        "diff": -1,
+        "match": false
+      },
+      "right_japanese_quote": {
+        "corrected": 1557,
+        "answer": 1561,
+        "diff": -4,
+        "match": false
+      },
+      "non_standard_total": {
+        "corrected": 3,
+        "answer": 0,
+        "diff": 3,
+        "match": false
+      }
+    }
+  },
+  "quote_balance": {
+    "corrected_balanced": false
+  },
+  "matching": {
+    "matching_chars_no_whitespace": 119623,
+    "total_answer_chars_no_whitespace": 120657,
+    "match_rate": 0.9914
+  },
+  "diff_snippets_count": 445,
+  "diff_snippets": [
+    {
+      "tag": "replace",
+      "corrected": "★☆★☆★☆轻小说",
+      "answer": "封面标题Merchantmeatsspicywolf.狼与辛香料ⅠⅤAuthor支仓冻砂IsunaHasekuraIllusation",
+      "corrected_len": 9,
+      "answer_len": 67
+    },
+    {
+      "tag": "replace",
+      "corrected": "库(W",
+      "answer": "仓十JyuuAyakura制作信息制作信息──────────────作者：支仓冻砂插画：文仓十图源：linpop录入：会灰的鸟弹天使动漫：w",
+      "corrected_len": 3,
+      "answer_len": 71
+    },
+    {
+      "tag": "replace",
+      "corrected": "W",
+      "answer": "tsdm39.net仅供个人学习交流，禁做商业用途下载后请在24小时内删除，TSDM不负担任何责任请尊重翻译、扫图、录入、校对的辛勤劳动，转载请保留信息──────────────简介简介旅行商人罗伦斯为了寻找狼神赫萝的故乡约伊兹，目前正往北方前进着。两人靠着在异教徒城镇卡梅尔森得到的情报，来到乡间村落特列欧。据说特列欧有一位专门在收集异教众神传说的修道士。而想要得知他的下落，就得询问住在教会里的",
+      "corrected_len": 1,
+      "answer_len": 306
+    },
+    {
+      "tag": "replace",
+      "corrected": "Ku8.com)☆★☆★☆★",
+      "answer": "ts───第一幕──────第二幕──────第三幕──────",
+      "corrected_len": 14,
+      "answer_len": 32
+    },
+    {
+      "tag": "replace",
+      "corrected": "卷",
+      "answer": "幕──────",
+      "corrected_len": 1,
+      "answer_len": 7
+    },
+    {
+      "tag": "replace",
+      "corrected": "一",
+      "answer": "五",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "台版转自轻之国度扫图：Ozzie录入：临风且吟校对：临风且吟",
+      "answer": "──────第六幕──────终幕───第一幕第一幕第一幕",
+      "corrected_len": 30,
+      "answer_len": 29
+    },
+    {
+      "tag": "replace",
+      "corrected": "·",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "delete",
+      "corrected": "陷入",
+      "answer": "",
+      "corrected_len": 2,
+      "answer_len": 0
+    },
+    {
+      "tag": "replace",
+      "corrected": "船",
+      "answer": "般",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "藉",
+      "answer": "借",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "：",
+      "answer": "；",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "二而",
+      "answer": "一带",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "：",
+      "answer": "；",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "delete",
+      "corrected": "一",
+      "answer": "",
+      "corrected_len": 1,
+      "answer_len": 0
+    },
+    {
+      "tag": "replace",
+      "corrected": "二芳",
+      "answer": "一旁",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "旱",
+      "answer": "是",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "栘",
+      "answer": "移",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "．",
+      "answer": "。",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "面",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "delete",
+      "corrected": "面",
+      "answer": "",
+      "corrected_len": 1,
+      "answer_len": 0
+    },
+    {
+      "tag": "replace",
+      "corrected": "梢",
+      "answer": "稍",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "覆",
+      "answer": "复",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "：",
+      "answer": "；",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "雪",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "，",
+      "answer": "～",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "素",
+      "answer": "索",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "·",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "·",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "问",
+      "answer": "间",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "：",
+      "answer": "；",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "．",
+      "answer": "。",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "眯",
+      "answer": "瞇",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "栘",
+      "answer": "移",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "栘",
+      "answer": "移",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "·",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "乡",
+      "answer": "多",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "．",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "。",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "直一",
+      "answer": "真",
+      "corrected_len": 2,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "住",
+      "answer": "呗",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "delete",
+      "corrected": "～",
+      "answer": "",
+      "corrected_len": 1,
+      "answer_len": 0
+    },
+    {
+      "tag": "replace",
+      "corrected": "眯",
+      "answer": "瞇",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "蒙",
+      "answer": "朦",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "众",
+      "answer": "聚",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "问",
+      "answer": "间",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "·",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "delete",
+      "corrected": "～",
+      "answer": "",
+      "corrected_len": 1,
+      "answer_len": 0
+    },
+    {
+      "tag": "replace",
+      "corrected": "·",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "．",
+      "answer": "。",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "而",
+      "answer": "面",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "问",
+      "answer": "间",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "摺",
+      "answer": "折",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "栘",
+      "answer": "移",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "定",
+      "answer": "走",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "这",
+      "answer": "逗",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "定",
+      "answer": "走",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "莅",
+      "answer": "菈",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "眯",
+      "answer": "瞇",
+      "corrected_len": 1,
+      "answer_len": 1
+    }
+  ]
+}
