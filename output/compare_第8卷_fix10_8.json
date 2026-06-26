@@ -1,0 +1,38 @@
+{
+  "corrected_total": 930,
+  "corrected_empty": 0,
+  "corrected_nonempty": 930,
+  "answer_total": 930,
+  "answer_empty": 0,
+  "answer_nonempty": 930,
+  "exact_matches": 597,
+  "punct_differences": 0,
+  "content_differences": 333,
+  "total_compared": 930,
+  "empty_dialogues": [],
+  "extra_dialogues": [],
+  "alignment_diffs": [
+    {
+      "type": "answer_split",
+      "corrected_idx": 1,
+      "answer_idx": 1,
+      "corrected": "骑快马来的？",
+      "answer": [
+        "晚安。",
+        "骑快马来的？"
+      ],
+      "similarity": 0.714
+    },
+    {
+      "type": "corrected_split",
+      "corrected_idx": 254,
+      "answer_idx": 255,
+      "corrected": [
+        "狼神脚骨",
+        "原来是这么回事啊，已经很久没有人对这个话题感兴趣了，而且还特地透过伊弗．波伦的介绍前来打听……我想，您应该是认真的吧。"
+      ],
+      "answer": "原来是这么回事啊，已经很久没有人对这个话题感兴趣了，而且还特地透过伊弗•波伦的介绍前来打听……我想，您应该是认真的吧。",
+      "similarity": 0.906
+    }
+  ]
+}

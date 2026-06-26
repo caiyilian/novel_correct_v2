@@ -1,0 +1,27 @@
+{
+  "corrected_total": 929,
+  "corrected_empty": 0,
+  "corrected_nonempty": 929,
+  "answer_total": 930,
+  "answer_empty": 0,
+  "answer_nonempty": 930,
+  "exact_matches": 0,
+  "punct_differences": 1,
+  "content_differences": 928,
+  "total_compared": 929,
+  "empty_dialogues": [],
+  "extra_dialogues": [],
+  "alignment_diffs": [
+    {
+      "type": "answer_split",
+      "corrected_idx": 1,
+      "answer_idx": 1,
+      "corrected": "骑快马来的？",
+      "answer": [
+        "晚安。",
+        "骑快马来的？"
+      ],
+      "similarity": 0.714
+    }
+  ]
+}
