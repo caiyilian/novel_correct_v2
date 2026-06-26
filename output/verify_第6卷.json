@@ -1,0 +1,485 @@
+{
+  "corrected_path": "output\\corrected_第6卷.txt",
+  "answer_path": "data\\answer\\answer_第6卷.txt",
+  "corrected": {
+    "chars": 137973,
+    "lines": 7133,
+    "chars_no_whitespace": 109399
+  },
+  "answer": {
+    "chars": 113458,
+    "lines": 3651,
+    "chars_no_whitespace": 109803
+  },
+  "symbol_stats": {
+    "corrected": {
+      "left_japanese_quote": 1201,
+      "right_japanese_quote": 1200,
+      "non_standard_total": 4,
+      "non_standard_by_symbol": {
+        "《": 2,
+        "》": 2
+      }
+    },
+    "answer": {
+      "left_japanese_quote": 1202,
+      "right_japanese_quote": 1202,
+      "non_standard_total": 4,
+      "non_standard_by_symbol": {
+        "《": 2,
+        "》": 2
+      }
+    },
+    "comparison": {
+      "left_japanese_quote": {
+        "corrected": 1201,
+        "answer": 1202,
+        "diff": -1,
+        "match": false
+      },
+      "right_japanese_quote": {
+        "corrected": 1200,
+        "answer": 1202,
+        "diff": -2,
+        "match": false
+      },
+      "non_standard_total": {
+        "corrected": 4,
+        "answer": 4,
+        "diff": 0,
+        "match": true
+      }
+    }
+  },
+  "quote_balance": {
+    "corrected_balanced": false
+  },
+  "matching": {
+    "matching_chars_no_whitespace": 109118,
+    "total_answer_chars_no_whitespace": 109803,
+    "match_rate": 0.9938
+  },
+  "diff_snippets_count": 129,
+  "diff_snippets": [
+    {
+      "tag": "replace",
+      "corrected": "★☆★☆★☆轻小说",
+      "answer": "封面标题Merchantmeatsspicywolf.狼与辛香料ⅥAuthor支仓冻砂IsunaHasekuraIllusation",
+      "corrected_len": 9,
+      "answer_len": 66
+    },
+    {
+      "tag": "replace",
+      "corrected": "库(W",
+      "answer": "仓十JyuuAyakura制作信息制作信息──────────────作者：支仓冻砂插画：文仓十图源：linpop录入：会灰的鸟弹天使动漫：w",
+      "corrected_len": 3,
+      "answer_len": 71
+    },
+    {
+      "tag": "replace",
+      "corrected": "W",
+      "answer": "tsdm39.net仅供个人学习交流，禁做商业用途下载后请在24小时内删除，TSDM不负担任何责任请尊重翻译、扫图、录入、校对的辛勤劳动，转载请保留信息──────────────简介简介虽然赫萝提出要结束旅行，但罗伦斯说服了她，并决定继续两人之旅，直到抵达约伊兹。为了追上伊弗，两人从雷诺斯港口乘船南下罗姆河。当船只在途中停靠某关卡时，撞见一名牵扯上麻烦事的少年，而罗伦斯意外地帮了该名少年寇尔一把",
+      "corrected_len": 1,
+      "answer_len": 306
+    },
+    {
+      "tag": "replace",
+      "corrected": "Ku8.com)☆★☆★☆★",
+      "answer": "ts───序幕──────",
+      "corrected_len": 14,
+      "answer_len": 13
+    },
+    {
+      "tag": "replace",
+      "corrected": "六卷",
+      "answer": "一幕──────第二幕──────第三幕──────第四幕──────第五幕──────终幕───插图",
+      "corrected_len": 2,
+      "answer_len": 51
+    },
+    {
+      "tag": "replace",
+      "corrected": "章台版转自轻之国度图源：草木皆眠录入：莫斯科冷雨夜，no2body修图：菜鸟的no2body",
+      "answer": "幕序幕序幕",
+      "corrected_len": 46,
+      "answer_len": 5
+    },
+    {
+      "tag": "delete",
+      "corrected": "！",
+      "answer": "",
+      "corrected_len": 1,
+      "answer_len": 0
+    },
+    {
+      "tag": "replace",
+      "corrected": "象",
+      "answer": "像",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "画",
+      "answer": "划",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "画",
+      "answer": "划",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "它",
+      "answer": "牠",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "画",
+      "answer": "划",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "……",
+      "corrected_len": 0,
+      "answer_len": 2
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "——",
+      "corrected_len": 0,
+      "answer_len": 2
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "，",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "……",
+      "corrected_len": 0,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "六卷",
+      "answer": "一幕第一幕",
+      "corrected_len": 2,
+      "answer_len": 5
+    },
+    {
+      "tag": "replace",
+      "corrected": "多",
+      "answer": "朵",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "delete",
+      "corrected": "帮",
+      "answer": "",
+      "corrected_len": 1,
+      "answer_len": 0
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "益",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "·",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "象",
+      "answer": "像",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "﻿",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "利",
+      "answer": "俐",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "飮",
+      "answer": "饮",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "眯",
+      "answer": "瞇",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "象",
+      "answer": "像",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "delete",
+      "corrected": "！",
+      "answer": "",
+      "corrected_len": 1,
+      "answer_len": 0
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "﻿",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "剌",
+      "answer": "刺",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "佑",
+      "answer": "祐",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "delete",
+      "corrected": "有",
+      "answer": "",
+      "corrected_len": 1,
+      "answer_len": 0
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "﻿",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "·",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "·",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "﻿",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "﻿",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "六卷",
+      "answer": "二幕第二幕",
+      "corrected_len": 2,
+      "answer_len": 5
+    },
+    {
+      "tag": "replace",
+      "corrected": "·",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "……",
+      "corrected_len": 0,
+      "answer_len": 2
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "﻿",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "﻿",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "剌",
+      "answer": "刺",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "·",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "眯",
+      "answer": "瞇",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "继",
+      "answer": "蜡",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "﻿",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "﻿",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "剌",
+      "answer": "刺",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "渥",
+      "answer": "潺",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "象",
+      "answer": "像",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "动",
+      "answer": "性",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "眯",
+      "answer": "瞇",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "捂",
+      "answer": "摀",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "剌",
+      "answer": "刺",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "象",
+      "answer": "像",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "六卷",
+      "answer": "三幕第三幕",
+      "corrected_len": 2,
+      "answer_len": 5
+    },
+    {
+      "tag": "insert",
+      "corrected": "",
+      "answer": "觉",
+      "corrected_len": 0,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "象",
+      "answer": "像",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "黒",
+      "answer": "黑",
+      "corrected_len": 1,
+      "answer_len": 1
+    }
+  ]
+}
