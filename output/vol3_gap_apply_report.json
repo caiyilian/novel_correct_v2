@@ -1,0 +1,47 @@
+{
+  "volume": "第3卷",
+  "corrected_path": "output\\corrected_第3卷.txt",
+  "candidates_path": "output\\vol3_remaining_gap_candidates.jsonl",
+  "modified_corrected_text": false,
+  "answer_text_copied": false,
+  "candidate_count": 41,
+  "applied_count": 0,
+  "manual_review_count": 41,
+  "skipped_count": 0,
+  "manual_review_type_counts": {
+    "answer_extra_tail": 32,
+    "remaining_curly_quote": 7,
+    "remaining_brace_symbol": 2
+  },
+  "manual_review_reason_counts": {
+    "preview_already_inside_existing_dialogue_sequence_misalignment": 30,
+    "source_preview_not_found_in_corrected_text": 2,
+    "remaining_curly_quote_is_unbalanced_or_nonlocal_boundary": 7,
+    "brace_symbol_looks_like_note_or_non_dialogue_requires_whitelist_review": 2
+  },
+  "before": {
+    "left": 1183,
+    "right": 1183,
+    "balanced": true,
+    "empty_dialogues": 0,
+    "curly_left": 5,
+    "curly_right": 2,
+    "brace_left": 1,
+    "brace_right": 1
+  },
+  "after": {
+    "left": 1183,
+    "right": 1183,
+    "balanced": true,
+    "empty_dialogues": 0,
+    "curly_left": 5,
+    "curly_right": 2,
+    "brace_left": 1,
+    "brace_right": 1
+  },
+  "applied": [],
+  "skipped": [],
+  "manual_review_queue": "output\\vol3_manual_review_queue.json",
+  "manual_review_markdown": "output\\vol3_manual_review_queue.md",
+  "stage_result": "No low-risk automatic wrapper patch was found. Remaining cases are sequence-misaligned, nonlocal curly quote boundaries, or non-dialogue symbol candidates and require manual/Ollama micro-case review."
+}
