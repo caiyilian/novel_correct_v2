@@ -105,14 +105,24 @@ def main():
     decisions = load_jsonl(args.decisions)
 
     if len(candidates) != len(decisions):
-        print(f"Warning: candidates ({len(candidates)}) != decisions ({len(decisions)})", file=sys.stderr)
+        print(f"Error: candidates ({len(candidates)}) != decisions ({len(decisions)}). "
+              f"Cannot safely match by position.", file=sys.stderr)
+        return 1
 
     original_text = load_text(args.answer) if args.answer else ""
 
     # Build apply list: decisions with "apply" matched to candidates by index
     applies: List[Tuple[int, dict, dict]] = []  # (index_in_candidates, candidate, decision)
+    VALID_DECISIONS = {"apply", "keep", "uncertain"}
     for i, (c, d) in enumerate(zip(candidates, decisions)):
-        if d.get("decision") == "apply":
+        dec = d.get("decision", "")
+        cid = d.get("candidate_id", "")
+        if dec not in VALID_DECISIONS:
+            print(f"Error: decision[{i}] has unexpected value: {dec}", file=sys.stderr)
+            return 1
+        if dec == "apply" and cid not in ("c1", f"apply_{i}"):
+            print(f"Warning: decision[{i}] apply with unexpected candidate_id: {cid}", file=sys.stderr)
+        if dec == "apply":
             applies.append((i, c, d))
 
     print(f"{'='*60}")
