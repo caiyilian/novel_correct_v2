@@ -1,0 +1,479 @@
+{
+  "corrected_path": "output\\corrected_第9卷.txt",
+  "answer_path": "data\\answer\\answer_第9卷.txt",
+  "corrected": {
+    "chars": 127389,
+    "lines": 6760,
+    "chars_no_whitespace": 100283
+  },
+  "answer": {
+    "chars": 104136,
+    "lines": 3467,
+    "chars_no_whitespace": 100665
+  },
+  "symbol_stats": {
+    "corrected": {
+      "left_japanese_quote": 995,
+      "right_japanese_quote": 995,
+      "non_standard_total": 0,
+      "non_standard_by_symbol": {}
+    },
+    "answer": {
+      "left_japanese_quote": 997,
+      "right_japanese_quote": 997,
+      "non_standard_total": 0,
+      "non_standard_by_symbol": {}
+    },
+    "comparison": {
+      "left_japanese_quote": {
+        "corrected": 995,
+        "answer": 997,
+        "diff": -2,
+        "match": false
+      },
+      "right_japanese_quote": {
+        "corrected": 995,
+        "answer": 997,
+        "diff": -2,
+        "match": false
+      },
+      "non_standard_total": {
+        "corrected": 0,
+        "answer": 0,
+        "diff": 0,
+        "match": true
+      }
+    }
+  },
+  "quote_balance": {
+    "corrected_balanced": true
+  },
+  "matching": {
+    "matching_chars_no_whitespace": 99157,
+    "total_answer_chars_no_whitespace": 100665,
+    "match_rate": 0.985
+  },
+  "diff_snippets_count": 831,
+  "diff_snippets": [
+    {
+      "tag": "replace",
+      "corrected": "★☆★☆★☆轻小说",
+      "answer": "封面标题Merchantmeatsspicywolf.狼与辛香料Ⅸ对立的城镇〈下〉Author支仓冻砂IsunaHasekuraIllusation",
+      "corrected_len": 9,
+      "answer_len": 74
+    },
+    {
+      "tag": "replace",
+      "corrected": "库(W",
+      "answer": "仓十JyuuAyakura制作信息制作信息──────────────作者：支仓冻砂插画：文仓十图源：linpop录入：会灰的鸟弹天使动漫：w",
+      "corrected_len": 3,
+      "answer_len": 71
+    },
+    {
+      "tag": "replace",
+      "corrected": "W",
+      "answer": "tsdm39.net仅供个人学习交流，禁做商业用途下载后请在24小时内删除，TSDM不负担任何责任请尊重翻译、扫图、录入、校对的辛勤劳动，转载请保留信息──────────────简介简介凯尔贝南、北两地因互争土地而对立，而传说中的海兽一角鲸却在此时卸货于这个城镇的港口。一角鲸的价值之高，甚至可能逆转凯尔贝的权力关系；凯尔贝也因为它的出现掀起一阵骚动。为了收集「狼骨」情报而来到凯尔贝的罗伦斯等人，",
+      "corrected_len": 1,
+      "answer_len": 346
+    },
+    {
+      "tag": "replace",
+      "corrected": "Ku8.com)☆★☆★☆★",
+      "answer": "ts───间幕──────第四幕──────第五幕──────第六幕──────第七幕──────第八幕──────",
+      "corrected_len": 14,
+      "answer_len": 58
+    },
+    {
+      "tag": "replace",
+      "corrected": "卷对立的城镇下",
+      "answer": "幕──────终幕───插图间",
+      "corrected_len": 7,
+      "answer_len": 15
+    },
+    {
+      "tag": "replace",
+      "corrected": "台版转自轻之国度图源：草木皆眠录入：no2body",
+      "answer": "幕间幕",
+      "corrected_len": 25,
+      "answer_len": 3
+    },
+    {
+      "tag": "replace",
+      "corrected": "──",
+      "answer": "——",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "九卷对立的城镇下",
+      "answer": "四幕第四幕",
+      "corrected_len": 8,
+      "answer_len": 5
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "──",
+      "answer": "——",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "．",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "──",
+      "answer": "——",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "．",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "．",
+      "answer": "•",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "藉",
+      "answer": "借",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "──",
+      "answer": "——",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "──",
+      "answer": "——",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "藉藉",
+      "answer": "借",
+      "corrected_len": 2,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "吶",
+      "answer": "呐",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "吶",
+      "answer": "呐",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "吶",
+      "answer": "呐",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "──",
+      "answer": "——",
+      "corrected_len": 2,
+      "answer_len": 2
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "它",
+      "answer": "牠",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "它",
+      "answer": "牠",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "它",
+      "answer": "牠",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "著",
+      "answer": "着",
+      "corrected_len": 1,
+      "answer_len": 1
+    },
+    {
+      "tag": "replace",
+      "corrected": "它",
+      "answer": "牠",
+      "corrected_len": 1,
+      "answer_len": 1
+    }
+  ]
+}
