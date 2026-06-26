@@ -1,0 +1,12 @@
+{
+  "stage": "4c",
+  "volume": "第2卷",
+  "status": "review_needed",
+  "remaining_brackets": {
+    "left": 53,
+    "right": 19,
+    "total": 72
+  },
+  "action": "All unpaired brackets deferred to Stage 8 manual review. Cannot auto-convert without breaking quote balance.",
+  "recommendation": "72 unpaired brackets to Stage 8a manual review queue"
+}
