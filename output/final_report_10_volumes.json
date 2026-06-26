@@ -65,7 +65,7 @@
         "balanced": true
       },
       "detected_errors": 139,
-      "elapsed_seconds": 18.0
+      "elapsed_seconds": 18.2
     },
     {
       "volume": "第3卷",
@@ -121,7 +121,7 @@
         "balanced": true
       },
       "detected_errors": 981,
-      "elapsed_seconds": 14.9
+      "elapsed_seconds": 15.0
     },
     {
       "volume": "第4卷",
@@ -236,7 +236,7 @@
         "balanced": true
       },
       "detected_errors": 20,
-      "elapsed_seconds": 13.6
+      "elapsed_seconds": 13.7
     },
     {
       "volume": "第6卷",
@@ -421,7 +421,7 @@
         "balanced": true
       },
       "detected_errors": 20,
-      "elapsed_seconds": 8.0
+      "elapsed_seconds": 8.1
     },
     {
       "volume": "第9卷",
@@ -472,7 +472,7 @@
         "balanced": true
       },
       "detected_errors": 20,
-      "elapsed_seconds": 10.0
+      "elapsed_seconds": 9.9
     },
     {
       "volume": "第10卷",
@@ -533,7 +533,7 @@
         "balanced": true
       },
       "detected_errors": 20,
-      "elapsed_seconds": 12.3
+      "elapsed_seconds": 11.7
     }
   ],
   "totals": {
