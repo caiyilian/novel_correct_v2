@@ -5,8 +5,8 @@
 输出统计：总对话数、空对话数、内容匹配率、差异样本。
 
 用法:
-    python tools/compare_dialogues.py output/corrected_第1卷.txt data/answer_第1卷.txt
-    python tools/compare_dialogues.py output/corrected_第1卷.txt data/answer_第1卷.txt --json output/compare_第1卷.json
+    python tools/compare_dialogues.py output/corrected_第1卷.txt data/answer/answer_第1卷.txt
+    python tools/compare_dialogues.py output/corrected_第1卷.txt data/answer/answer_第1卷.txt --json output/compare_第1卷.json
 """
 
 import argparse
