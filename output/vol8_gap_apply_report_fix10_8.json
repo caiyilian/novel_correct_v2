@@ -1,0 +1,37 @@
+{
+  "volume": "第8卷",
+  "stage": "Fix 10-8",
+  "corrected_path": "output\\corrected_第8卷.txt",
+  "modified_corrected_text": true,
+  "answer_text_copied": false,
+  "applied_count": 1,
+  "before": {
+    "left_quote": 929,
+    "right_quote": 929,
+    "balanced_jp": true,
+    "empty_dialogues": 0
+  },
+  "after": {
+    "left_quote": 930,
+    "right_quote": 930,
+    "balanced_jp": true,
+    "empty_dialogues": 0
+  },
+  "applied": [
+    {
+      "case_id": "vol8-fix10-gap-0001",
+      "offset": 33563,
+      "original": "狼神脚骨",
+      "replacement": "「狼神脚骨」",
+      "reason": "answer structure treats this source phrase as an independently wrapped segment",
+      "context_before": "这样啊，是秘密啊……那么，您来找我是为了……」 \\n \\n    珍商行的主人让视线追著纸上的文字跑边说道。 \\n \\n    接著，罗伦斯的眼睛清楚地捕捉到他抽动脸颊的模样。 \\n \\n    纸上写著有关寻找狼神脚骨的内容，如果是个正经的商人看到，肯定会边笑边拿起葡萄酒畅谈一番。 \\n \\n    然而，珍商行的主人一副忆起某事而发笑的模样抖著肩膀，并小心翼翼地卷起亲笔信，重新绑上马毛。 \\n \\n    「原来",
+      "context_after": "这样啊，是秘密啊……那么，您来找我是为了……」 \\n \\n    珍商行的主人让视线追著纸上的文字跑边说道。 \\n \\n    接著，罗伦斯的眼睛清楚地捕捉到他抽动脸颊的模样。 \\n \\n    纸上写著有关寻找「狼神脚骨」的内容，如果是个正经的商人看到，肯定会边笑边拿起葡萄酒畅谈一番。 \\n \\n    然而，珍商行的主人一副忆起某事而发笑的模样抖著肩膀，并小心翼翼地卷起亲笔信，重新绑上马毛。 \\n \\n    「"
+    }
+  ],
+  "guard_checks": {
+    "source_text_unique": true,
+    "quote_target_reached": true,
+    "quote_balance_fixed": true,
+    "empty_dialogues_unchanged": true
+  }
+}
