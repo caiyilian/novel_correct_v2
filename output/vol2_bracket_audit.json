@@ -1,0 +1,618 @@
+{
+  "stats": {
+    "total_chars": 185216,
+    "jp_left": 1334,
+    "jp_right": 1367,
+    "jp_balanced": false,
+    "bracket_left": 88,
+    "bracket_right": 54,
+    "ans_jp_left": 1425,
+    "ans_jp_right": 1425,
+    "gap": 91
+  },
+  "summary": {
+    "total_pairs": 36,
+    "unpaired_left": 52,
+    "unpaired_right": 18,
+    "imbalance_positions": 10372,
+    "high_risk_period_candidates": 155
+  },
+  "classification": {
+    "dialogue_wrapper": 34,
+    "numbering": 0,
+    "uncertain": 2
+  },
+  "imbalance_details": [
+    {
+      "para_index": 251,
+      "cum_left": 35,
+      "cum_right": 36,
+      "diff": -1,
+      "para_preview": "    [这样还算便宜呗。」 "
+    },
+    {
+      "para_index": 252,
+      "cum_left": 35,
+      "cum_right": 36,
+      "diff": -1,
+      "para_preview": " "
+    },
+    {
+      "para_index": 253,
+      "cum_left": 35,
+      "cum_right": 36,
+      "diff": -1,
+      "para_preview": "    赫萝如果真愿意保证旅途平安，一点儿羊肉的确算是便宜。不管怎么说，赫萝的真实模样是只巨大的狼。只要她认真起来，就算被恶劣如凶狠盗贼的佣兵团包围，应该也能平"
+    },
+    {
+      "para_index": 254,
+      "cum_left": 35,
+      "cum_right": 36,
+      "diff": -1,
+      "para_preview": " "
+    },
+    {
+      "para_index": 255,
+      "cum_left": 35,
+      "cum_right": 36,
+      "diff": -1,
+      "para_preview": "    不过，罗伦斯故意摆出装傻的表情面向赫萝。 "
+    },
+    {
+      "para_index": 256,
+      "cum_left": 35,
+      "cum_right": 36,
+      "diff": -1,
+      "para_preview": " "
+    },
+    {
+      "para_index": 257,
+      "cum_left": 35,
+      "cum_right": 36,
+      "diff": -1,
+      "para_preview": "    难得赫萝被食物蒙蔽了机灵，怎能放弃捉弄她的机会呢? "
+    },
+    {
+      "para_index": 258,
+      "cum_left": 35,
+      "cum_right": 36,
+      "diff": -1,
+      "para_preview": " "
+    },
+    {
+      "para_index": 259,
+      "cum_left": 36,
+      "cum_right": 37,
+      "diff": -1,
+      "para_preview": "    「喔，你真是有钱呢。如果这么有钱，不如还钱给我吧?」 "
+    },
+    {
+      "para_index": 260,
+      "cum_left": 36,
+      "cum_right": 37,
+      "diff": -1,
+      "para_preview": " "
+    },
+    {
+      "para_index": 261,
+      "cum_left": 36,
+      "cum_right": 37,
+      "diff": -1,
+      "para_preview": "    然而，对手可是自称贤狼的赫萝。她似乎立刻就察觉到罗伦斯的企图，赫萝突然露出严肃的表情，瞪著罗伦斯说： "
+    },
+    {
+      "para_index": 262,
+      "cum_left": 36,
+      "cum_right": 37,
+      "diff": -1,
+      "para_preview": " "
+    },
+    {
+      "para_index": 263,
+      "cum_left": 37,
+      "cum_right": 38,
+      "diff": -1,
+      "para_preview": "    「咱不会再上同样的当了。」 "
+    },
+    {
+      "para_index": 264,
+      "cum_left": 37,
+      "cum_right": 38,
+      "diff": -1,
+      "para_preview": " "
+    },
+    {
+      "para_index": 265,
+      "cum_left": 37,
+      "cum_right": 38,
+      "diff": -1,
+      "para_preview": "    上次的苹果事件似乎让她学乖了。罗伦斯轻轻咋了一下舌头，摆出同样严肃的表情说： "
+    },
+    {
+      "para_index": 266,
+      "cum_left": 37,
+      "cum_right": 38,
+      "diff": -1,
+      "para_preview": " "
+    },
+    {
+      "para_index": 267,
+      "cum_left": 38,
+      "cum_right": 39,
+      "diff": -1,
+      "para_preview": "    「既然这样，一开始老实说想吃肉干不就得了?那样还比较可爱呢。」 "
+    },
+    {
+      "para_index": 268,
+      "cum_left": 38,
+      "cum_right": 39,
+      "diff": -1,
+      "para_preview": " "
+    },
+    {
+      "para_index": 269,
+      "cum_left": 39,
+      "cum_right": 40,
+      "diff": -1,
+      "para_preview": "    「咱如果装可爱求汝买，汝会买给咱吗?」 "
+    },
+    {
+      "para_index": 270,
+      "cum_left": 39,
+      "cum_right": 40,
+      "diff": -1,
+      "para_preview": " "
+    },
+    {
+      "para_index": 271,
+      "cum_left": 39,
+      "cum_right": 40,
+      "diff": -1,
+      "para_preview": "    光听到这样的话，就已经让人觉得不可爱了。因为队伍往前进，于是罗伦斯一边驾驶马车前 "
+    },
+    {
+      "para_index": 272,
+      "cum_left": 39,
+      "cum_right": 40,
+      "diff": -1,
+      "para_preview": " "
+    },
+    {
+      "para_index": 273,
+      "cum_left": 39,
+      "cum_right": 40,
+      "diff": -1,
+      "para_preview": "    进，一边斩钉截铁地说： "
+    },
+    {
+      "para_index": 274,
+      "cum_left": 39,
+      "cum_right": 40,
+      "diff": -1,
+      "para_preview": " "
+    },
+    {
+      "para_index": 275,
+      "cum_left": 40,
+      "cum_right": 41,
+      "diff": -1,
+      "para_preview": "    「怎么可能买给你。你应该学习牛或羊，反刍昨天吃下的食物。」 "
+    },
+    {
+      "para_index": 276,
+      "cum_left": 40,
+      "cum_right": 41,
+      "diff": -1,
+      "para_preview": " "
+    },
+    {
+      "para_index": 277,
+      "cum_left": 40,
+      "cum_right": 41,
+      "diff": -1,
+      "para_preview": "    罗伦斯自觉刚刚的话说得漂亮，不禁笑了出来，但赫萝却因愤怒瞬间失去了表情，她沉默地坐在驾座上用力踩了罗伦斯一脚。 "
+    },
+    {
+      "para_index": 278,
+      "cum_left": 40,
+      "cum_right": 41,
+      "diff": -1,
+      "para_preview": " "
+    },
+    {
+      "para_index": 279,
+      "cum_left": 40,
+      "cum_right": 41,
+      "diff": -1,
+      "para_preview": "    踏平泥地而形成的道路，旁边是随便堆起砌好的粗糙石块，再铺上稻草的简陋房子。 "
+    },
+    {
+      "para_index": 280,
+      "cum_left": 40,
+      "cum_right": 41,
+      "diff": -1,
+      "para_preview": " "
+    }
+  ],
+  "details": {
+    "pairs": [
+      {
+        "left_pos": 14705,
+        "right_pos": 14718,
+        "length": 13,
+        "content": "[这证明书看来不是伪造的.]",
+        "context": "书。 \n \n    想必是真实存在的国家吧。 \n \n    [这证明书看来不是伪造的.] \n \n    城里的商人都看过数量庞大的汇兑通知书、光票（",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 46044,
+        "right_pos": 46052,
+        "length": 8,
+        "content": "[不会，那，那个]",
+        "context": "。 \n \n    「下好意思，让你久等了。」 \n \n    [不会，那，那个] \n \n    「到留宾海根四十崔耶如何呢?如果真遭到狼袭击",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 50081,
+        "right_pos": 50104,
+        "length": 23,
+        "content": "[只是谣传有狼群出没的地方，才没有牧羊人是吗？]",
+        "context": "\n    「毕竟安全的地方到处都有牧羊人。」 \n \n    [只是谣传有狼群出没的地方，才没有牧羊人是吗？] \n \n    「是的。」 \n \n    「谁叫狼很麻烦…好",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 55379,
+        "right_pos": 55416,
+        "length": 37,
+        "content": "[哎，这也有可能吧，如果一下子就被人爱上，就少了许多慢慢被人爱上的乐趣了.]",
+        "context": "经在某处听过吟游 \n \n    诗人说的话： \n \n    [哎，这也有可能吧，如果一下子就被人爱上，就少了许多慢慢被人爱上的乐趣了.] \n \n    虽然罗伦斯当初听到吟游诗人说的话时，抱持著半",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 62189,
+        "right_pos": 62208,
+        "length": 19,
+        "content": "[那么，下一个，就刚刚被骂的商人好了！]",
+        "context": "很抱歉。」 \n \n    赫萝在一旁嗤嗤笑。 \n \n    [那么，下一个，就刚刚被骂的商人好了！] \n \n    因为等待检查的人并没有排成队伍，所以检查的人",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 65680,
+        "right_pos": 65701,
+        "length": 21,
+        "content": "[这城市不仅酒好喝又热闹，很不错呐.是呗？]",
+        "context": "是错，让罗伦斯不禁摇 \n \n    了摇头. \n \n    [这城市不仅酒好喝又热闹，很不错呐.是呗？] \n \n    「正因为这城镇很热闹，所以更不能掉以轻心。你",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 77053,
+        "right_pos": 77061,
+        "length": 8,
+        "content": "[有人在里面啊？]",
+        "context": "看来，对於别人的午餐，她没打算只分一些来吃。 \n \n    [有人在里面啊？] \n \n    [恩咕口是可是.气氛有点剑拔弩张.至少不是愉",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 77070,
+        "right_pos": 77097,
+        "length": 27,
+        "content": "[恩咕口是可是.气氛有点剑拔弩张.至少不是愉快的气氛.]",
+        "context": "一些来吃。 \n \n    [有人在里面啊？] \n \n    [恩咕口是可是.气氛有点剑拔弩张.至少不是愉快的气氛.] \n \n    被赫萝这么一说，再加上看见卸货场的冷清模样，",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 78204,
+        "right_pos": 78249,
+        "length": 45,
+        "content": "[快别这么说，请等一下，老板您看来是颇有名望的商人，岂能让您空手而归呢?那未免也太失礼了.]",
+        "context": "。 \n \n    所以，卸货工就这样上钩了。 \n \n    [快别这么说，请等一下，老板您看来是颇有名望的商人，岂能让您空手而归呢?那未免也太失礼了.] \n \n    如果就这么不予理会，恐怕对罗伦斯的批评会传遍",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 85879,
+        "right_pos": 85897,
+        "length": 18,
+        "content": "[那，我去一下洋行，你就在旅馆等……]",
+        "context": "久，他看过太多人陷入窘境，最后直接消失踪影。 \n \n    [那，我去一下洋行，你就在旅馆等……] \n \n    罗伦斯的话还没说完，就被赫萝踩了一脚. \n ",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 86872,
+        "right_pos": 86875,
+        "length": 3,
+        "content": "[恩.]",
+        "context": "温驯地点点头。 \n \n    「那，走吧。」 \n \n    [恩.] \n \n    两人快步踏了出去，走向拥挤的人潮之中. \n ",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 89018,
+        "right_pos": 89037,
+        "length": 19,
+        "content": "[因为生意上的合作关系，我们一起行商.]",
+        "context": "赫萝的当下，就会把她连同罗伦斯一起轰出去吧。 \n \n    [因为生意上的合作关系，我们一起行商.] \n \n    [恩？生意？] \n \n    叶克柏似乎以为",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 89046,
+        "right_pos": 89052,
+        "length": 6,
+        "content": "[恩？生意？]",
+        "context": "  [因为生意上的合作关系，我们一起行商.] \n \n    [恩？生意？] \n \n    叶克柏似乎以为罗伦斯在开玩笑，他带著笑容，首",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 96110,
+        "right_pos": 96145,
+        "length": 35,
+        "content": "[好久不见。市场都关门了，还来打扰您，真的很抱歉。有件事情恳请您帮忙。]",
+        "context": " \n \n    「好久不见啊，罗伦斯先生。」 \n \n    [好久不见。市场都关门了，还来打扰您，真的很抱歉。有件事情恳请您帮忙。] \n \n    在拜访第一家、第二家商行时，罗伦斯还有余力假",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 102161,
+        "right_pos": 102168,
+        "length": 7,
+        "content": "[还不快上来.]",
+        "context": "双眉紧蹙的赫萝露出像月光般冷漠的眼神看向他。 \n \n    [还不快上来.] \n \n    赫萝话一说完.便离开木窗旁边，这时，旅馆老板",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 103055,
+        "right_pos": 103064,
+        "length": 9,
+        "content": "[汝说留盘缠给咱？]",
+        "context": "  然后，泪水随著眨眼的瞬间滑落，进而决堤。 \n \n    [汝说留盘缠给咱？] \n \n    [啊恩] \n \n    「何、何必这样……」",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 103073,
+        "right_pos": 103076,
+        "length": 3,
+        "content": "[啊恩]",
+        "context": "而决堤。 \n \n    [汝说留盘缠给咱？] \n \n    [啊恩] \n \n    「何、何必这样……」 \n \n    赫萝像是",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 104082,
+        "right_pos": 104086,
+        "length": 4,
+        "content": "[烂好人]",
+        "context": "萝轻声说，视线跟着往下移，泪水也低落在地面. \n \n    [烂好人] \n \n    叩!椅子放下的声响传来的同时，也传来了赫萝的",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 106033,
+        "right_pos": 106038,
+        "length": 5,
+        "content": "[大笨驴！]",
+        "context": "的心 \n \n    窝挥出准头，并丢出话语： \n \n    [大笨驴！] \n \n    赫萝这一拳比罗伦斯预期的来的还重.他的身体因",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 109977,
+        "right_pos": 109987,
+        "length": 10,
+        "content": "[是啊，我希望你陪.]",
+        "context": "\n    罗伦斯想起预演的事.不慌不忙的说： \n \n    [是啊，我希望你陪.] \n \n    「太冷了，咱不要。」 \n \n    赫萝立刻",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 110849,
+        "right_pos": 110878,
+        "length": 29,
+        "content": "[那，汝想了—整晚的结论是啥?」 \n \n    [行的通.]",
+        "context": "用手梳开尽管刚起床，却依然柔顺如绸缎的长发· \n \n    [那，汝想了—整晚的结论是啥?」 \n \n    [行的通.] \n \n    赫萝刚梳理完头发.正准备开始梳理她真正重视的",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 113021,
+        "right_pos": 113031,
+        "length": 10,
+        "content": "[请在这里捎等一下.]",
+        "context": "尽脑汁思考著如何调度 \n \n    资金吧. \n \n    [请在这里捎等一下.] \n \n    男子将罗伦斯两人带到位在三楼的房间，这里平时",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 114219,
+        "right_pos": 114222,
+        "length": 3,
+        "content": "[恩.]",
+        "context": "边的嘴角.露处尖牙，那是值得倚赖的无敌笑容. \n \n    [恩.] \n \n    所以罗伦斯简短地回答，因为他知道信赖与简短的",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 120788,
+        "right_pos": 120821,
+        "length": 33,
+        "content": "[不过，商人和军刀一样，如果太直就失去用处了.因为一下子就会折断.]",
+        "context": "表情笑着别开脸，赫萝看了，也忍不住笑了出来。 \n \n    [不过，商人和军刀一样，如果太直就失去用处了.因为一下子就会折断.] \n \n    罗伦斯对着自己嘀咕完后，便像寻找正好响起的钟",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 121954,
+        "right_pos": 121966,
+        "length": 12,
+        "content": "[其实是有工作想委托你.]",
+        "context": "   因此，罗伦斯毫不客气的利用了她的期待. \n \n    [其实是有工作想委托你.] \n \n    诺儿拉的眼睛突然一亮，脸上散发出光芒。 \n ",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 122996,
+        "right_pos": 123033,
+        "length": 37,
+        "content": "[不过，这工作伴随着危险.而这是成功完成任务的酬劳，如果失败，就没有酬劳.]",
+        "context": "人来说，二十卢米欧尼就是这么让人吃惊的金额. \n \n    [不过，这工作伴随着危险.而这是成功完成任务的酬劳，如果失败，就没有酬劳.] \n \n    在告诉对方离奇的事情时，只要用手指抵著桌面画",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 124125,
+        "right_pos": 124150,
+        "length": 25,
+        "content": "[其实，你应该希望尽量不要和这里的教会扯上关系吧.]",
+        "context": "够了。 \n \n    牧羊女的内心清楚可见。 \n \n    [其实，你应该希望尽量不要和这里的教会扯上关系吧.] \n \n    这是在套话. \n \n    虽然因为套话套得",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 125073,
+        "right_pos": 125200,
+        "length": 127,
+        "content": "[这计画是走私黄金。」 \n \n    虽然诺儿拉稍微瞪大了眼睛，但是她立即恢复了平静的表情。她的反应说出惊讶的程度，不 \n \n    过是被稍微强劲的风吹过一样。 \n \n    诺儿拉似乎也开始动脑思考，她终於开口说： \n \n    [可是我能做什么呢？]",
+        "context": "\n \n    罗伦斯缓缓道出应该告知的事情。 \n \n    [这计画是走私黄金。」 \n \n    虽然诺儿拉稍微瞪大了眼睛，但是她立即恢复了平静的表情。她的反应说出惊讶的程度，不 \n \n    过是被稍微强劲的风吹过一样。 \n \n    诺儿拉似乎也开始动脑思考，她终於开口说： \n \n    [可是我能做什么呢？] \n \n    很好的问题，看来诺儿拉优秀的不止有牧羊能力而",
+        "classification": "uncertain"
+      },
+      {
+        "left_pos": 127547,
+        "right_pos": 127573,
+        "length": 26,
+        "content": "[汝有听过羊被咬住喉咙，发出的那种难以形容的惨叫吗？]",
+        "context": "罗伦斯看向赫箩，赫箩则是保持视线落在啤酒上。 \n \n    [汝有听过羊被咬住喉咙，发出的那种难以形容的惨叫吗？] \n \n    赫箩的话语来的突然，罗伦斯听了，倒抽了一口气",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 128539,
+        "right_pos": 128583,
+        "length": 44,
+        "content": "[不过，只能努力做出能够让大家都笑出来的结果了。」 \n \n    [这个想法很适当，可是]",
+        "context": "的心声果然 \n \n    还是被赫萝听见了。 \n \n    [不过，只能努力做出能够让大家都笑出来的结果了。」 \n \n    [这个想法很适当，可是] \n \n    赫箩说到一半停了下来，于是罗论斯看向她.于是",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 129500,
+        "right_pos": 129523,
+        "length": 23,
+        "content": "[那么，我们出发吧，生意就像放在厨房里的活鱼.]",
+        "context": "提出质问，应该是觉悟到自己只要善尽本分就好。 \n \n    [那么，我们出发吧，生意就像放在厨房里的活鱼.] \n \n    意思是马上就会发臭，罗伦斯听到被雷玛里欧商行",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 132744,
+        "right_pos": 132768,
+        "length": 24,
+        "content": "[没有什么比搞不清楚自己身份的狗更教人生气的了.]",
+        "context": "怎么可能”结果被赫萝斜眼一瞪，不禁有些慑住. \n \n    [没有什么比搞不清楚自己身份的狗更教人生气的了.] \n \n    赫萝别开脸说道。 \n \n    或许狗与狼就",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 136186,
+        "right_pos": 136242,
+        "length": 56,
+        "content": "[这里的狼每次都是这样，很少听到它们发出的长嚎.也不会表现出要攻击的模样，就只是一 \n \n    直注视着这里.]",
+        "context": "  或许里贝特的想法是「动物最了解动物」吧。 \n \n    [这里的狼每次都是这样，很少听到它们发出的长嚎.也不会表现出要攻击的模样，就只是一 \n \n    直注视着这里.] \n \n    诺儿拉的口吻像在形容从坟墓里爬出来的尸体似的",
+        "classification": "uncertain"
+      },
+      {
+        "left_pos": 140500,
+        "right_pos": 140509,
+        "length": 9,
+        "content": "[这也是原因之一.]",
+        "context": "    「因为咱一下子就察觉到狼的关系吗?」 \n \n    [这也是原因之一.] \n \n    诺儿拉说到这里，先停了下来.她看向主人即使在",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 153125,
+        "right_pos": 153138,
+        "length": 13,
+        "content": "[……玛里欧商行背叛了吗.]",
+        "context": "    从罗伦斯脸颊滑落的水滴并不仅是雨水。 \n \n    [……玛里欧商行背叛了吗.] \n \n    罗伦斯勉强说道，他的声音差点被肩关节发出的嘎",
+        "classification": "dialogue_wrapper"
+      },
+      {
+        "left_pos": 160443,
+        "right_pos": 160480,
+        "length": 37,
+        "content": "[只要你不要求我拿诺儿拉的性命来答谢你，我愿意尽最大的能力来回应你的要求.]",
+        "context": "罗伦斯说： \n \n    「……怎么答谢?」 \n \n    [只要你不要求我拿诺儿拉的性命来答谢你，我愿意尽最大的能力来回应你的要求.] \n \n    罗伦斯因为担心赫萝真的会这么要求他，於是先设",
+        "classification": "dialogue_wrapper"
+      }
+    ],
+    "unpaired_left": [
+      {
+        "pos": 6077,
+        "context": "\n    「你的嘴还真挑啊，价钱会很高的。」 \n \n    [这样还算便宜呗。」 \n \n    赫萝如果真愿意保证旅途平安"
+      },
+      {
+        "pos": 7068,
+        "context": "特氛围的这个城镇，似乎也只值得这么一句形容。 \n \n    [这里没有卖食物的摊贩嘛。」 \n \n    「汝这话听来好像咱"
+      },
+      {
+        "pos": 12480,
+        "context": "\n \n    罗伦斯安心地对著老板露出笑容。 \n \n    [那么，是不是可以称胡椒的重量了呢?』 \n \n    罗伦斯当"
+      },
+      {
+        "pos": 12531,
+        "context": " \n    罗伦斯当然没理由拒绝老板的提议。 \n \n    [这样的话，我们需要纸和墨水。请等一下。」 \n \n    老板"
+      },
+      {
+        "pos": 12895,
+        "context": "脸回答，罗伦斯心想赫萝应该真的只是口渴而已。 \n \n    [请等一下啊。」 \n \n    老板把笔记兼用的合约用纸、墨水"
+      },
+      {
+        "pos": 14159,
+        "context": "是四十五颗砝码重。这些胡椒的产地是哪里呢?」 \n \n    [这些是从利登王国的拉玛帕达进口的胡椒，这是负责进口的米隆商发"
+      },
+      {
+        "pos": 15226,
+        "context": "崔吉斯的庇佑，一路旅途平安，生意也还不错。」 \n \n    [这么说来，您的交易货币是以崔尼银币为主罗?」 \n \n    "
+      },
+      {
+        "pos": 20419,
+        "context": "萝的惊人食欲让罗伦斯忍不住摇摇头，叹了口气。 \n \n    [咯……好吃。」 \n \n    吃了一口上等羊肉，再喝上一口高"
+      },
+      {
+        "pos": 23315,
+        "context": "\n    「你是什么……」 \n \n    罗伦斯还来不及说出[意思」两字，赫萝就紧接著说： \n \n    「不过，只要还钱"
+      },
+      {
+        "pos": 28274,
+        "context": "为晕车而呕吐在货物上，那可是不堪入目的惨状。 \n \n    [今天也是好天气呐。」 \n \n    「是啊。」 \n \n   "
+      }
+    ],
+    "unpaired_right": [
+      {
+        "pos": 18702,
+        "context": "熟识的商行吧。如果我把商品卖给对方，就可以让我们抵销借贷了.] \n \n    罗伦斯想表达的是他带著向拉多培隆商行借钱买来"
+      },
+      {
+        "pos": 20783,
+        "context": "罗伦斯摇头叹息的原因之一. \n \n    「咱差不多想睡了.] \n \n    也难怪罗伦斯听到如此自暴自弃的发言后，根本懒"
+      },
+      {
+        "pos": 44148,
+        "context": "。不管咱怎样，咱是在问汝雇用那 \n \n    个人没问题吗?] \n \n    冷不防被捅了一刀应该就是这种感觉吧。 \n \n"
+      },
+      {
+        "pos": 69010,
+        "context": "。我的儿子啊，回来得好。」 \n \n    「别在叫我儿子了.] \n \n    「你这什么话，在罗恩商业公会的人都是我的儿女"
+      },
+      {
+        "pos": 101085,
+        "context": " \n \n    以钱滚钱，越滚越多，所以，我决定把钱交给你.] \n \n    面向道路的木窗外传来醉汉的歌声. \n \n  "
+      },
+      {
+        "pos": 108824,
+        "context": "城镇的城墙呐.但是，在汝陷入窘境的情况下.咱也不能太奢求了.] \n \n    罗伦斯当然一下子就知道赫萝指的人选是谁了. "
+      },
+      {
+        "pos": 114375,
+        "context": "斯·雷玛里欧就站在门前。 \n \n    「有什么重要的事吗?] \n \n    计画的第一步就此踏出。   \n\n  第二卷 "
+      },
+      {
+        "pos": 125445,
+        "context": "金藏在羊只的肚子里，在不被发现之下，偷偷把大量黄金带进城里。] \n \n    诺儿拉瞪大了眼睛，一副仿佛就快说出「不会吧」"
+      },
+      {
+        "pos": 134765,
+        "context": "释赫萝的眼神，或许她是在说「别听那姑娘的话，乖乖待在咱的背后]。 \n \n    赫萝似乎对诺儿拉抱有很强的敌对意识，如果违"
+      },
+      {
+        "pos": 170300,
+        "context": "    看到咱拿出诚意来之后，对方还懂得应该避免无谓的纷争。] \n \n    虽然诺儿拉露出半信半疑的眼神听著赫萝说话，但"
+      }
+    ]
+  },
+  "recommendation": {
+    "rule_convertible": 34,
+    "needs_review": 72,
+    "note": "Pairs: 36 total. Rule: ~34 dialog wrappers. Uncertain: ~2. Unpaired: 70. Plus 155 period high-risk from Stage 2."
+  }
+}
