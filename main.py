@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
 import sys
 import time
 from pathlib import Path
@@ -54,6 +55,8 @@ def parse_args() -> argparse.Namespace:
                         help="干跑模式：检测 + 打印每个错误，不调 LLM")
     parser.add_argument("--report", action="store_true",
                         help="只查看上次纠错报告，不运行")
+    parser.add_argument("--report-json", type=str, default="",
+                        help="将质量报告输出为 JSON 文件（需配合 --report 使用）")
     parser.add_argument("--model", type=str, default="",
                         help="模型名（覆盖 ip_config 中的配置）")
     parser.add_argument("--max-retries", type=int, default=3,
@@ -286,8 +289,20 @@ def run_pipeline(
         f"across {len(token_tracker.records)} calls"
     )
 
-    # 保存纠错后的小说全文
+    # 保存 per-novel 报告副本
     novel_name = Path(novel_path).stem
+    for suffix in [".json", ".txt"]:
+        src = Path("output") / f"correction_report{suffix}"
+        dst = Path("output") / f"correction_report_{novel_name}{suffix}"
+        if src.exists():
+            shutil.copy2(str(src), str(dst))
+
+    token_src = Path("output") / "token_usage.json"
+    token_dst = Path("output") / f"token_usage_{novel_name}.json"
+    if token_src.exists():
+        shutil.copy2(str(token_src), str(token_dst))
+
+    # 保存纠错后的小说全文
     corrected_path = Path("output") / f"corrected_{novel_name}.txt"
     text.save(corrected_path)
     print(f"  Corrected novel saved to {corrected_path}")
@@ -324,7 +339,7 @@ def _load_json_safe(path: Path) -> Optional[dict]:
     return None
 
 
-def show_report(novel_path: str):
+def show_report(novel_path: str) -> dict:
     """
     查看增强版纠错质量报告。
 
@@ -404,10 +419,12 @@ def show_report(novel_path: str):
         print(f"  (corrected file not found: {corrected_path})")
         print(f"  Run the pipeline first to generate corrected output.")
 
-    # --- Section 3: Token Usage (from output/token_usage.json) ---
+    # --- Section 3: Token Usage (from per-novel or global) ---
     print(f"\n  III. Token Usage")
     print(f"  {'-' * 56}")
-    token_report = _load_json_safe(Path("output") / "token_usage.json")
+    token_report = _load_json_safe(Path("output") / f"token_usage_{novel_name}.json")
+    if not token_report:
+        token_report = _load_json_safe(Path("output") / "token_usage.json")
     if token_report:
         total_tokens = token_report.get("total_tokens", 0)
         n_records = token_report.get("total_records", 0)
@@ -431,10 +448,12 @@ def show_report(novel_path: str):
     else:
         print(f"  (no token usage data in output/token_usage.json)")
 
-    # --- Section 4: Correction Report Summary (from output/) ---
+    # --- Section 4: Correction Report Summary (from per-novel or global) ---
     print(f"\n  IV. Correction Report")
     print(f"  {'-' * 56}")
-    corr_report = _load_json_safe(Path("output") / "correction_report.json")
+    corr_report = _load_json_safe(Path("output") / f"correction_report_{novel_name}.json")
+    if not corr_report:
+        corr_report = _load_json_safe(Path("output") / "correction_report.json")
     if corr_report:
         s = corr_report.get("summary", {})
         print(f"  Final: {s.get('fixed',0)} fixed, {s.get('skipped',0)} skipped, "
@@ -458,6 +477,22 @@ def show_report(novel_path: str):
 
     print(f"\n{'=' * 60}\n")
 
+    # 收集结构化数据用于 --report-json
+    report_data: dict = {
+        "novel": novel_name,
+        "summary": summary,
+        "hard_indicators": {
+            "quote_balanced": balanced if corrected_path.exists() else None,
+            "left_quotes": left_count if corrected_path.exists() else None,
+            "right_quotes": right_count if corrected_path.exists() else None,
+            "non_standard_count": non_std_count if corrected_path.exists() else None,
+            "consecutive_found": consecutive_found if corrected_path.exists() else None,
+        },
+        "token_usage": token_report,
+        "correction_report": corr_report,
+    }
+    return report_data
+
 
 # ── 入口 ──────────────────────────────────────────────
 
@@ -466,7 +501,13 @@ if __name__ == "__main__":
 
     if args.report:
         if args.novel:
-            show_report(args.novel)
+            report_data = show_report(args.novel)
+            if args.report_json:
+                out_path = Path(args.report_json)
+                out_path.parent.mkdir(parents=True, exist_ok=True)
+                with open(out_path, "w", encoding="utf-8") as f:
+                    json.dump(report_data, f, ensure_ascii=False, indent=2)
+                print(f"Report JSON saved: {out_path}")
         else:
             print("Please specify a novel file with --report")
         sys.exit(0)
