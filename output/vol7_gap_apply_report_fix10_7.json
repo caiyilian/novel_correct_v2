@@ -1,0 +1,33 @@
+{
+  "target": "output\\corrected_第7卷.txt",
+  "before": {
+    "left": 1171,
+    "right": 1171,
+    "balanced": true,
+    "empty": 0,
+    "book_title_left": 1,
+    "book_title_right": 1
+  },
+  "after": {
+    "left": 1172,
+    "right": 1172,
+    "balanced": true,
+    "empty": 0,
+    "book_title_left": 1,
+    "book_title_right": 1
+  },
+  "applied": [
+    {
+      "case_id": "vol7_gap_safe_split_001",
+      "before": "「您的预算是？两枚崔尼银币。」",
+      "after": "「您的预算是？」「两枚崔尼银币。」",
+      "reason": "Two adjacent speaker turns were wrapped as one dialogue pair; split without changing text.",
+      "offset": 90301
+    }
+  ],
+  "manual_review_count": 4,
+  "remaining_gap_after_safe_apply": {
+    "left": 4,
+    "right": 4
+  }
+}

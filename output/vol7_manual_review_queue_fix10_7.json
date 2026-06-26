@@ -1,0 +1,44 @@
+{
+  "cases": [
+    {
+      "case_id": "vol7_gap_manual_001",
+      "answer_alignment": "？ + 啊，艾里亚丝！",
+      "corrected_alignment": "艾里亚丝！",
+      "anchor": "「艾里亚丝！」",
+      "reason": "Answer has extra punctuation/text not present in OCR corrected dialogue; auto-fix would add answer-side text.",
+      "anchor_offset": 844,
+      "ocr_context": "蒙上一层污垢，但离远一点看，那模样还挺像只小羊的。 \n \n    她的名字是艾里亚丝。 \n \n    艾里亚丝说她不知道自己的年纪多大，但身高比卡拉斯高了一些。 \n \n    因为觉得不服气，所以卡拉斯认定艾里亚丝大他两岁。 \n \n    「艾里亚丝！」 \n \n    听到卡拉斯呼唤自己的名字，艾里亚丝总算抬起了头。 \n \n    「我们不是约好，在中午前要爬过四座山丘吗？」 \n \n    虽然卡拉斯到现在还搞不太懂艾里亚丝的思绪，但掌握到了几个事实。 \n \n    其中一个事实是，就算拜",
+      "status": "needs_manual_source_review"
+    },
+    {
+      "case_id": "vol7_gap_manual_002",
+      "answer_alignment": "啊，好的。 + 你在这里休息。",
+      "corrected_alignment": "在这里休息！",
+      "anchor": "「在这里休息！」",
+      "reason": "Answer split uses substantially different text; no existing OCR fragment can be wrapped safely.",
+      "anchor_offset": 19843,
+      "ocr_context": "己为什么感到无趣。 \n \n    「那么，咱的行李在那边，帮咱搬一下呗。」 \n \n    「啊，好的。」 \n \n    看见艾里亚丝准备站起身子，卡拉斯阻止她说： \n \n    「你在这里休息。」 \n \n    「可是……」 \n \n    「在这里休息！」 \n \n    听到卡拉斯语气有些强硬地反覆说道，艾里亚丝一脸惊讶，胆怯地点了点头。 \n \n    赫萝一副享受著卡拉斯与艾里亚丝的互动似地，愉快地说了句：「往这边。」然后迈步走了出去。 \n \n    「呵呵，其实没必要那么凶呗。」 \n \n",
+      "status": "needs_manual_source_review"
+    },
+    {
+      "case_id": "vol7_gap_manual_003",
+      "answer_alignment": "咦？ + 抱歉。",
+      "corrected_alignment": "抱、抱歉什么？",
+      "anchor": "「抱、抱歉什么？」",
+      "reason": "Answer split uses different wording; auto-fix would replace or add OCR text.",
+      "anchor_offset": 64790,
+      "ocr_context": "\n    「抱歉。」 \n \n    「咦？」 \n \n    卡拉斯想著是不是自己听错时，赫萝重复一遍说： \n \n    「抱歉。」 \n \n    卡拉斯一脸呆然地杵在原地不动。他一边抱著痛苦地靠在他身上的艾里亚丝，一边反问： \n \n    「抱、抱歉什么？」 \n \n    「咱可能没办法救汝等。」 \n \n    「怎──」 \n \n    卡拉斯说到一半停了下来。 \n \n    他并不是因为看见艾里亚丝瘫软在地，也不是因为看见赫萝一脸悲痛地咬著嘴唇，才停止说下去。 \n \n    而是他感觉到一股",
+      "status": "needs_manual_source_review"
+    },
+    {
+      "case_id": "vol7_gap_manual_004",
+      "answer_alignment": "抱、抱歉什么？ + 咱可能没办法救汝等。",
+      "corrected_alignment": "咱可能没办法救汝等。",
+      "anchor": "「咱可能没办法救汝等。」",
+      "reason": "This is downstream alignment after the previous source/text mismatch, not a safe standalone wrapper fix.",
+      "anchor_offset": 64807,
+      "ocr_context": " 「咦？」 \n \n    卡拉斯想著是不是自己听错时，赫萝重复一遍说： \n \n    「抱歉。」 \n \n    卡拉斯一脸呆然地杵在原地不动。他一边抱著痛苦地靠在他身上的艾里亚丝，一边反问： \n \n    「抱、抱歉什么？」 \n \n    「咱可能没办法救汝等。」 \n \n    「怎──」 \n \n    卡拉斯说到一半停了下来。 \n \n    他并不是因为看见艾里亚丝瘫软在地，也不是因为看见赫萝一脸悲痛地咬著嘴唇，才停止说下去。 \n \n    而是他感觉到一股不知名的强烈寒气，从地面猛烈地爬上双脚，",
+      "status": "needs_manual_source_review"
+    }
+  ]
+}
