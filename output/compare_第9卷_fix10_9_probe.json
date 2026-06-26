@@ -1,0 +1,42 @@
+{
+  "corrected_total": 995,
+  "corrected_empty": 0,
+  "corrected_nonempty": 995,
+  "answer_total": 997,
+  "answer_empty": 0,
+  "answer_nonempty": 997,
+  "exact_matches": 0,
+  "punct_differences": 0,
+  "content_differences": 995,
+  "total_compared": 995,
+  "empty_dialogues": [],
+  "extra_dialogues": [],
+  "alignment_diffs": [
+    {
+      "type": "corrected_split",
+      "corrected_idx": 452,
+      "answer_idx": 452,
+      "corrected": [
+        "我们想请罗伦斯先生为我们传递情报。",
+        "方便请教原因吗？"
+      ],
+      "answer": "方便的话，我想请罗伦斯先生一人到这边来。",
+      "similarity": 0.5
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 994,
+      "answer": "如果以后要写传记，就让故事在这里落幕好了。"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 995,
+      "answer": "转"
+    },
+    {
+      "type": "answer_extra",
+      "answer_idx": 996,
+      "answer": "不然来摆一个漂亮的水族箱吧"
+    }
+  ]
+}

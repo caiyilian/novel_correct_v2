@@ -1,0 +1,38 @@
+{
+  "corrected_total": 997,
+  "corrected_empty": 0,
+  "corrected_nonempty": 997,
+  "answer_total": 997,
+  "answer_empty": 0,
+  "answer_nonempty": 997,
+  "exact_matches": 858,
+  "punct_differences": 0,
+  "content_differences": 139,
+  "total_compared": 997,
+  "empty_dialogues": [],
+  "extra_dialogues": [],
+  "alignment_diffs": [
+    {
+      "type": "answer_split",
+      "corrected_idx": 0,
+      "answer_idx": 0,
+      "corrected": "对立的城镇",
+      "answer": [
+        "狼骨",
+        "对立的城镇"
+      ],
+      "similarity": 0.714
+    },
+    {
+      "type": "corrected_split",
+      "corrected_idx": 45,
+      "answer_idx": 46,
+      "corrected": [
+        "狼骨",
+        "算是类似的东西吧。那东西来自北海，是一种头上长了角、拥有魔法的生物。据说只要生吃它的肉，就能够长生不老；拿它的角熬汤来喝，还能够治万病。它的名字是一角鲸，听说北凯尔贝的船只就是捕获了一角鲸。"
+      ],
+      "answer": "算是类似的东西吧。那东西来自北海，是一种头上长了角、拥有魔法的生物。据说只要生吃牠的肉，就能够长生不老；拿牠的角熬汤来喝，还能够治万病。牠的名字是一角鲸，听说北凯尔贝的船只就是捕获了一角鲸。",
+      "similarity": 0.949
+    }
+  ]
+}
