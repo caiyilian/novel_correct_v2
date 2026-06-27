@@ -33,9 +33,6 @@ python main.py data/ori_story/第1卷.txt --detect
 # 检测 + 修正
 python main.py data/ori_story/第1卷.txt
 
-# 使用旧的 tool-calling Agent 实验模式
-python main.py data/ori_story/第1卷.txt --agent-tool-mode
-
 # 从 checkpoint 恢复
 python main.py data/ori_story/第1卷.txt --resume
 
