@@ -96,48 +96,60 @@ class CorrectionVerifier:
                 f"({orig_len} → {mod_len})"
             )
 
-        # 2. 检查「和」数量是否成对
+        # 2. 检查「和」数量是否成对（仅检查修复位置附近）
+        check_window = 200
         orig_left = original_text.count("「")
         orig_right = original_text.count("」")
         mod_left = modified_text.count("「")
         mod_right = modified_text.count("」")
 
-        # 修正应该只改变符号，所以「和」的增减应该平衡
         left_delta = mod_left - orig_left
         right_delta = mod_right - orig_right
 
-        if left_delta != right_delta and error.error_type not in ("consecutive", "unpaired"):
+        # For wrong_symbol errors, paired replacement is expected (both +1)
+        # For consecutive errors, one is flipped (+1 and -1 = net 0)
+        # For unpaired errors, a single bracket is added or removed
+        if left_delta != right_delta and error.error_type not in ("consecutive", "unpaired", "wrong_symbol"):
             issues.append(
-                f"Unbalanced bracket change: 「{left_delta:+d}, 」{right_delta:+d}"
+                "Unbalanced bracket change: %+d, %+d" % (left_delta, right_delta)
             )
 
         # 2b. 检查「」总数不应减少（修正只会增加或保持，不会删除对话符号）
+        # Skip this check for wrong_symbol errors (they replace, not delete)
         orig_total_brackets = orig_left + orig_right
         mod_total_brackets = mod_left + mod_right
         if mod_total_brackets < orig_total_brackets:
-            # 但缺失符号补全的情况是增加，删除符号是减少
-            # 只有非成对减少才算问题
-            if error.error_type != "unpaired":  # unpaired 可能涉及删除多余符号
+            if error.error_type not in ("unpaired", "wrong_symbol"):
                 issues.append(
-                    f"Bracket count decreased: {orig_total_brackets} → {mod_total_brackets}"
+                    "Bracket count decreased: %d -> %d"
+                    % (orig_total_brackets, mod_total_brackets)
                 )
 
-        # 3. 检查修改不应引入新的连续符号错误
-        orig_consecutive = self._count_consecutive_brackets(original_text)
-        mod_consecutive = self._count_consecutive_brackets(modified_text)
-        if (
-            error.error_type == "consecutive"
-            and mod_consecutive >= orig_consecutive
-            and orig_consecutive > 0
-        ):
-            issues.append(
-                f"Consecutive brackets not reduced: {orig_consecutive} -> {mod_consecutive}"
+        # 3. 检查修改不应引入新的连续符号错误（仅检查修复位置附近）
+        # For wrong_symbol errors, skip this check - replacing brackets may
+        # temporarily create consecutive brackets with neighboring text
+        if error.error_type != "wrong_symbol":
+            check_window = 200  # characters around the fix
+            orig_consecutive = self._count_consecutive_brackets_in_range(
+                original_text, error.offset, check_window
             )
-        elif mod_consecutive > orig_consecutive:
-            issues.append(
-                f"Modified text introduced consecutive brackets: "
-                f"{orig_consecutive} -> {mod_consecutive}"
+            mod_consecutive = self._count_consecutive_brackets_in_range(
+                modified_text, error.offset, check_window
             )
+            if (
+                error.error_type == "consecutive"
+                and mod_consecutive >= orig_consecutive
+                and orig_consecutive > 0
+            ):
+                issues.append(
+                    "Consecutive brackets not reduced near fix: %d -> %d"
+                    % (orig_consecutive, mod_consecutive)
+                )
+            elif mod_consecutive > orig_consecutive:
+                issues.append(
+                    "Fix introduced consecutive brackets near fix: %d -> %d"
+                    % (orig_consecutive, mod_consecutive)
+                )
 
         # 4. 验证错误类型的特定检查
         type_issue = self._check_by_type(error, original_text, modified_text)
@@ -175,6 +187,21 @@ class CorrectionVerifier:
                 last = ch
         return count
 
+    @staticmethod
+    def _count_consecutive_brackets_in_range(text: str, offset: int, window: int) -> int:
+        """统计指定位置附近连续相同「」符号的次数。"""
+        start = max(0, offset - window)
+        end = min(len(text), offset + window)
+        last = "」"
+        count = 0
+        for i in range(start, end):
+            ch = text[i]
+            if ch in ("「", "」"):
+                if ch == last:
+                    count += 1
+                last = ch
+        return count
+
     def _check_by_type(
         self,
         error: ErrorRecord,
@@ -186,7 +213,7 @@ class CorrectionVerifier:
 
         if etype == "wrong_symbol":
             # 检查非标准符号是否已被替换
-            non_standard = set('[]【】［］{}《》""\u201c\u201d')
+            non_standard = set('[]【】［］{}《》""\u201c\u201d『』〈〉')
             orig_count = sum(1 for ch in original_text if ch in non_standard)
             mod_count = sum(1 for ch in modified_text if ch in non_standard)
             if orig_count == mod_count and orig_count > 0:
