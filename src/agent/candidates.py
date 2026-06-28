@@ -49,41 +49,51 @@ class CandidateGenerator:
 
     _OPEN_TO_CLOSE = {
         "[": "]",
-        "【": "】",
-        "［": "］",
+        "\u3010": "\u3011",  # 【】
+        "\uff3b": "\uff3d",  # ［］
         "{": "}",
-        "《": "》",
-        "“": "”",
-        '"': '"',
+        "\u300a": "\u300b",  # 《》
+        "\u201c": "\u201d",  # ""
+        "\u2018": "\u2019",  # ''
+        # Japanese-style white corner brackets
+        "\u300e": "\u300f",  # 『』
         # Half-width variants
         "(": ")",
-        "＜": "＞",
+        "\uff1c": "\uff1e",  # ＜＞
+        "\u3008": "\u3009",  # 〈〉
     }
     _CLOSE_TO_OPEN = {v: k for k, v in _OPEN_TO_CLOSE.items()}
     _WRONG_TO_STANDARD = {
-        "[": "「",
-        "【": "「",
-        "［": "「",
-        "{": "「",
-        "《": "「",
-        "“": "「",
-        '"': "「",
-        "]": "」",
-        "】": "」",
-        "］": "」",
-        "}": "」",
-        "》": "」",
-        "”": "」",
+        # Standard bracket types
+        "[": "\u300c",       # [
+        "\u3010": "\u300c",  # 【 → 「
+        "\uff3b": "\u300c",  # ［ → 「
+        "{": "\u300c",       # {
+        "\u300a": "\u300c",  # 《 → 「
+        "\u201c": "\u300c",  # " → 「
+        "\u2018": "\u300c",  # ' → 「
+        "]": "\u300d",       # ]
+        "\u3011": "\u300d",  # 】 → 」
+        "\uff3d": "\u300d",  # ］ → 」
+        "}": "\u300d",       # }
+        "\u300b": "\u300d",  # 》 → 」
+        "\u201d": "\u300d",  # " → 」
+        "\u2019": "\u300d",  # ' → 」
+        # Japanese-style white corner brackets (most common remaining)
+        "\u300e": "\u300c",  # 『 → 「
+        "\u300f": "\u300d",  # 』 → 」
         # Half-width and other variants
-        "(": "「",
-        ")": "」",
-        "＜": "「",
-        "＞": "」",
+        "(": "\u300c",       # ( → 「
+        ")": "\u300d",       # ) → 」
+        "\uff1c": "\u300c",  # ＜ → 「
+        "\uff1e": "\u300d",  # ＞ → 」
+        "\u3008": "\u300c",  # 〈 → 「
+        "\u3009": "\u300d",  # 〉 → 」
     }
     _WRONG_DIALOGUE_CLOSERS = (
-        "]", "】", "］", "}", "》", "”", '"',
-        "[", "【", "［", "{", "《", "“",
-        ")", "＞", "）", "（",
+        "]", "\u3011", "\uff3d", "}", "\u300b", "\u201d", '"',
+        "[", "\u3010", "\uff3b", "{", "\u300a", "\u201c",
+        ")", "\uff1e", "\uff09", "\uff08",
     )
     _NARRATION_CUES = (
         "他", "她", "我", "你", "少年", "少女", "男人", "女人",
@@ -165,19 +175,7 @@ class CandidateGenerator:
                 "将成对的非标准包裹符号替换为「」",
             )
 
-        # Strategy 2: Single symbol replacement
-        mapped = self._WRONG_TO_STANDARD.get(ch)
-        if mapped:
-            self._candidate(
-                candidates,
-                error,
-                offset,
-                offset + 1,
-                mapped,
-                f"将单个非标准符号 {ch!r} 替换为 {mapped!r}",
-            )
-
-        # Strategy 3: Handle nested symbols like [text「text」text]
+        # Strategy 2: Handle nested symbols like [text「text」text]
         # Look for mixed bracket patterns
         for open_ch, close_ch in self._OPEN_TO_CLOSE.items():
             if open_ch in ("「", "」"):
@@ -198,17 +196,10 @@ class CandidateGenerator:
                         f"将嵌套的非标准包裹符号 {open_ch}{close_ch} 替换为「」",
                     )
 
-        # Strategy 4: Handle cases where 「」 encloses wrong symbols like 「text[text]text」
+        # Strategy 3 (was 4): Handle cases where 「」 encloses wrong symbols like 「text[text]text」
         # The detector may flag the inner [ or ]
-        if ch in ("[", "]", "【", "】", "［", "］", "{", "}", "《", "》", '"', "“", "”"):
-            # Check if we're inside a valid 「...」 pair
-            left_quote = full.rfind("「", max(0, offset - 500), offset)
-            right_quote = full.find("」", offset + 1, min(len(full), offset + 500))
-            if left_quote != -1 and right_quote != -1:
-                # We're inside a dialogue, just replace the single wrong symbol
-                if mapped:
-                    # Already added above, but ensure it's there
-                    pass
+        # For now, skip these - they need LLM judgment to determine if the inner
+        # symbol should be replaced or if the outer 「」 is wrong
 
         return self._dedupe(candidates)
 
@@ -217,7 +208,7 @@ class CandidateGenerator:
         text: str,
         offset: int,
         ch: str,
-        window: int = 240,
+        window: int = 5000,
     ) -> Optional[tuple[int, int]]:
         if ch in self._OPEN_TO_CLOSE:
             closer = self._OPEN_TO_CLOSE[ch]
